@@ -1,81 +1,798 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>The Raipurian Club</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<link rel="stylesheet" href="style.css">
+  <title>
+    GM Morshed Hossain | Google Ads • Lead Gen • Web Developer
+  </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    #particles-js{
+      position:fixed;
+      width:100%;
+      height:100%;
+      z-index:-1;
+      top:0;
+      left:0;
+      background:#0f172a;
+    }
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(12px);
+      background:rgba(15,23,42,.8);
+      border-bottom:1px solid rgba(132,255,0,.15);
+    }
+
+    .nav-container{
+      max-width:1200px;
+      margin:auto;
+      padding:18px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-family:'Orbitron',sans-serif;
+      color:#84ff00;
+      font-size:1.3rem;
+      text-shadow:0 0 15px #84ff00;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:#e2e8f0;
+      text-decoration:none;
+      transition:.3s;
+      font-weight:500;
+    }
+
+    .nav-links a:hover{
+      color:#84ff00;
+      text-shadow:0 0 10px #84ff00;
+    }
+
+    section{
+      padding:100px 20px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      line-height:1.1;
+      font-family:'Orbitron',sans-serif;
+      margin-bottom:20px;
+    }
+
+    .hero span{
+      color:#84ff00;
+      text-shadow:0 0 20px #84ff00;
+    }
+
+    .hero p{
+      color:#cbd5e1;
+      max-width:750px;
+      margin:auto;
+      line-height:1.8;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:14px;
+      background:#84ff00;
+      color:black;
+      text-decoration:none;
+      font-weight:700;
+      transition:.3s;
+      box-shadow:0 0 20px rgba(132,255,0,.5);
+    }
+
+    .btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 30px rgba(132,255,0,.8);
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+      font-size:2.5rem;
+      color:#84ff00;
+      font-family:'Orbitron',sans-serif;
+      text-shadow:0 0 12px rgba(132,255,0,.6);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      position:relative;
+      background:#1e293b;
+      border-radius:20px;
+      padding:30px;
+      overflow:hidden;
+      border:1px solid rgba(132,255,0,.15);
+      transition:.4s;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:200%;
+      height:200%;
+      top:-50%;
+      left:-50%;
+      background:linear-gradient(
+        45deg,
+        transparent,
+        rgba(132,255,0,.15),
+        transparent
+      );
+      animation:rotate 7s linear infinite;
+    }
+
+    @keyframes rotate{
+      from{
+        transform:rotate(0deg);
+      }
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 30px rgba(132,255,0,.3);
+      border-color:#84ff00;
+    }
+
+    .card h3,
+    .card p,
+    .card li{
+      position:relative;
+      z-index:2;
+    }
+
+    .card h3{
+      color:#84ff00;
+      margin-bottom:15px;
+    }
+
+    .card p,
+    .card li{
+      color:#cbd5e1;
+      line-height:1.7;
+    }
+
+    .counter-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:25px;
+      text-align:center;
+    }
+
+    .counter-box{
+      background:#1e293b;
+      padding:35px;
+      border-radius:20px;
+      border:1px solid rgba(132,255,0,.2);
+    }
+
+    .counter{
+      font-size:3rem;
+      color:#84ff00;
+      font-weight:700;
+      text-shadow:0 0 15px #84ff00;
+    }
+
+    .testimonial{
+      font-style:italic;
+    }
+
+    .portfolio-img{
+      width:100%;
+      border-radius:12px;
+      margin-bottom:15px;
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    input,
+    textarea{
+      background:#0f172a;
+      border:1px solid rgba(132,255,0,.2);
+      padding:16px;
+      border-radius:12px;
+      color:white;
+      outline:none;
+    }
+
+    textarea{
+      min-height:150px;
+      resize:none;
+    }
+
+    footer{
+      text-align:center;
+      padding:40px;
+      color:#94a3b8;
+      border-top:1px solid rgba(132,255,0,.15);
+    }
+
+    .whatsapp{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      width:65px;
+      height:65px;
+      border-radius:50%;
+      background:#25D366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2rem;
+      color:white;
+      text-decoration:none;
+      box-shadow:0 0 20px rgba(37,211,102,.6);
+      z-index:999;
+    }
+
+    .chatbot{
+      position:fixed;
+      bottom:100px;
+      right:20px;
+      width:320px;
+      background:#1e293b;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(132,255,0,.2);
+      box-shadow:0 0 20px rgba(132,255,0,.25);
+    }
+
+    .chat-header{
+      background:#84ff00;
+      color:black;
+      padding:15px;
+      font-weight:700;
+    }
+
+    .chat-body{
+      padding:15px;
+      color:#cbd5e1;
+      font-size:.95rem;
+    }
+
+    .chat-body input{
+      width:100%;
+      margin-top:10px;
+    }
+
+    iframe{
+      width:100%;
+      border:none;
+      border-radius:18px;
+      min-height:700px;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.5rem;
+      }
+
+      .nav-links{
+        gap:12px;
+        font-size:.9rem;
+      }
+
+      .chatbot{
+        width:90%;
+        right:5%;
+      }
+    }
+
+  </style>
 </head>
-
 <body>
 
-<header>
-  <div class="logo">RAIPURIAN</div>
-  <div class="tagline">Unity • Culture • Friendship • Progress</div>
-</header>
+<div id="particles-js"></div>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#vision">Vision</a>
-  <a href="#mission">Mission</a>
-  <a href="#members">Members</a>
-  <a href="#projects">Projects</a>
-  <a href="#meeting">Meeting</a>
+
+  <div class="nav-container">
+
+    <div class="logo">
+      GM MH
+    </div>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+  </div>
+
 </nav>
 
-<section id="about">
-<h2>About</h2>
-<div class="box">
-The Raipurian Club, established in 2026, is a vibrant community promoting Unity, Culture, Friendship, and Progress. It brings people together through events, learning, and collaboration, celebrating diversity while building strong bonds and encouraging personal growth and collective development for a better future. Always forward together united.
-</div>
+<section class="hero">
+
+  <div>
+
+    <h1>
+      <span>Google Ads</span><br>
+      Lead Generation<br>
+      Web Development
+    </h1>
+
+    <p>
+      Helping businesses scale with high-converting Google Ads,
+      AI-powered marketing, lead generation systems,
+      web development, analytics, and social media growth.
+    </p>
+
+    <a href="#contact" class="btn">
+      Start Your Project
+    </a>
+
+  </div>
+
 </section>
 
-<section id="vision">
-<h2>Vision</h2>
-<div class="box">
-Our vision is to become a leading community that inspires unity, preserves and promotes cultural heritage, and builds strong, lasting connections among people. The Raipurian Club aspires to create a future where collaboration, inclusivity, and innovation drive progress, empowering every member to contribute toward a harmonious, progressive, and thriving society.
-</div>
+<section>
+
+  <div class="container">
+
+    <div class="counter-grid">
+
+      <div class="counter-box">
+        <div class="counter" data-target="8">0</div>
+        <p>Google Certifications</p>
+      </div>
+
+      <div class="counter-box">
+        <div class="counter" data-target="25">0</div>
+        <p>Projects Completed</p>
+      </div>
+
+      <div class="counter-box">
+        <div class="counter" data-target="100">0</div>
+        <p>Lead Campaigns</p>
+      </div>
+
+      <div class="counter-box">
+        <div class="counter" data-target="98">0</div>
+        <p>Client Satisfaction %</p>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section id="mission">
-<h2>Mission</h2>
-<div class="box">
-Our mission at The Raipurian Club is to create a dynamic and inclusive platform that fosters unity, celebrates cultural diversity, and builds lasting friendships. We are committed to empowering individuals through meaningful connections, collaborative initiatives, and continuous learning, while inspiring progress and positive change within the community. Through shared values and collective effort, we strive to nurture a supportive environment where every member can grow, contribute, and thrive.
-</div>
+<section id="services">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Services
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Lead Generation</h3>
+        <p>
+          Build powerful lead funnels for businesses,
+          local services, and agencies.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Google Ads</h3>
+        <p>
+          Search, Display, Shopping, Analytics,
+          AI-powered performance campaigns.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Web Development</h3>
+        <p>
+          High-converting responsive websites,
+          landing pages, and GitHub Pages deployment.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>SMMA</h3>
+        <p>
+          Social media management, paid ads,
+          branding, and audience growth.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section id="members">
-<h2>Members</h2>
-<div class="grid" id="memberGrid"></div>
+<section id="portfolio">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Portfolio Projects
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+          class="portfolio-img"
+        />
+
+        <h3>Lead Generation Landing Page</h3>
+
+        <p>
+          Built modern landing page optimized
+          for Google Ads conversion.
+        </p>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1552664730-d307ca884978"
+          class="portfolio-img"
+        />
+
+        <h3>Agency Dashboard</h3>
+
+        <p>
+          Analytics and campaign reporting
+          dashboard for ad clients.
+        </p>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+          class="portfolio-img"
+        />
+
+        <h3>Business Website</h3>
+
+        <p>
+          Responsive business website
+          with lead forms and SEO optimization.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section id="projects">
-<h2>Projects & Initiatives</h2>
-<div class="box">
-📌 Community Development Program<br>
-🎓 Educational Support<br>
-🌱 Green Raipur Project<br>
-🤝 Youth Leadership Program
-</div>
+<section id="cases">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Case Studies
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Local Business Ads</h3>
+
+        <p>
+          Increased qualified leads by 230%
+          using Google Search campaigns.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>eCommerce Growth</h3>
+
+        <p>
+          Reduced CPC by 37% while increasing
+          conversions through AI campaigns.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Landing Page Optimization</h3>
+
+        <p>
+          Improved conversion rates with
+          UX redesign and lead capture forms.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section id="meeting">
-<h2>Minutes of Meeting (04 April 2026)</h2>
-<div class="box">
-✔ Club approved for Raipur & Dhaka connection<br>
-✔ Founder members = Life members (max 100)<br>
-✔ Fee Tk 50,000 (deadline 30 April 2026)<br>
-✔ Interim 7-member committee active<br>
-✔ Name: Raipur Club Limited<br>
-✔ Equality for all members<br>
-</div>
+<section id="testimonials">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Client Testimonials
+    </h2>
+
+    <div class="grid">
+
+      <div class="card testimonial">
+        <p>
+          "Amazing Google Ads optimization.
+          We saw massive lead growth within weeks."
+        </p>
+
+        <br>
+
+        <h3>- Marketing Client</h3>
+      </div>
+
+      <div class="card testimonial">
+        <p>
+          "Professional website with modern UI
+          and excellent communication."
+        </p>
+
+        <br>
+
+        <h3>- Business Owner</h3>
+      </div>
+
+      <div class="card testimonial">
+        <p>
+          "Great analytics and campaign setup.
+          ROI improved significantly."
+        </p>
+
+        <br>
+
+        <h3>- eCommerce Brand</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contact">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Contact & Lead Form
+    </h2>
+
+    <div class="card">
+
+      <form>
+
+        <input
+          type="text"
+          placeholder="Your Name"
+          required
+        >
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          required
+        >
+
+        <input
+          type="text"
+          placeholder="Business / Company"
+        >
+
+        <textarea
+          placeholder="Tell me about your project..."
+        ></textarea>
+
+        <button class="btn">
+          Submit Inquiry
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Book a Meeting
+    </h2>
+
+    <iframe
+      src="https://calendly.com/"
+    ></iframe>
+
+  </div>
+
 </section>
 
 <footer>
-© 2026 The Raipurian Club
+  © 2026 GM Morshed Hossain • Google Ads • Lead Generation • Web Development
 </footer>
 
-<script src="script.js"></script>
+<a
+  class="whatsapp"
+  href="https://wa.me/07920462736"
+  target="_blank"
+>
+  💬
+</a>
+
+<div class="chatbot">
+
+  <div class="chat-header">
+    AI Assistant
+  </div>
+
+  <div class="chat-body">
+
+    Hi 👋 <br><br>
+
+    Need help with:
+    <br>
+    • Google Ads
+    <br>
+    • Lead Generation
+    <br>
+    • Website Development
+    <br><br>
+
+    <input
+      type="text"
+      placeholder="Ask something..."
+    >
+
+  </div>
+
+</div>
+
+<script>
+
+particlesJS("particles-js", {
+  particles: {
+    number: {
+      value: 90
+    },
+
+    color: {
+      value: "#84ff00"
+    },
+
+    shape: {
+      type: "circle"
+    },
+
+    opacity: {
+      value: 0.5
+    },
+
+    size: {
+      value: 3
+    },
+
+    move: {
+      enable: true,
+      speed: 2
+    },
+
+    line_linked: {
+      enable: true,
+      color: "#84ff00",
+      opacity: 0.2
+    }
+  }
+});
+
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+
+  counter.innerText = '0';
+
+  const updateCounter = () => {
+
+    const target = +counter.getAttribute('data-target');
+
+    const c = +counter.innerText;
+
+    const increment = target / 100;
+
+    if(c < target){
+
+      counter.innerText = `${Math.ceil(c + increment)}`;
+
+      setTimeout(updateCounter,20);
+
+    } else {
+
+      counter.innerText = target;
+
+    }
+  };
+
+  updateCounter();
+
+});
+
+</script>
+
 </body>
 </html>
