@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
+/* ─── GMHCO Design Tokens ────────────────────────────────────────────────── */
+@theme {
+  /* Brand colours */
+  --color-lime: #84ff00;
+  --color-lime-dim: rgba(132, 255, 0, 0.15);
+  --color-navy: #0f172a;
+  --color-card: #1e293b;
+  --color-card-hover: #263148;
+  --color-slate-mid: #cbd5e1;
+  --color-slate-light: #e2e8f0;
+  --color-slate-muted: #94a3b8;
+  --color-purple: #7c4dff;
+  --color-cyan: #00e5ff;
+
+  /* Fonts */
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow: glow-pulse 2s ease-in-out infinite alternate;
+  --animate-scroll-left: scroll-left 35s linear infinite;
+  --animate-spin-slow: spin 7s linear infinite;
+  --animate-counter: none;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes glow-pulse {
+  from { box-shadow: 0 0 20px rgba(132,255,0,0.3); }
+  to   { box-shadow: 0 0 40px rgba(132,255,0,0.6), 0 0 80px rgba(132,255,0,0.2); }
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes card-rotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f172a;
+  --foreground: #e2e8f0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #84ff00 #1e293b;
 }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1e293b; }
+::-webkit-scrollbar-thumb { background: #84ff00; border-radius: 3px; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Utility Classes ────────────────────────────────────────────────────── */
+.font-orbitron { font-family: "Orbitron", sans-serif; }
+
+.text-lime    { color: #84ff00; }
+.bg-lime      { background-color: #84ff00; }
+.border-lime  { border-color: #84ff00; }
+.text-navy    { color: #0f172a; }
+.bg-navy      { background-color: #0f172a; }
+.bg-card      { background-color: #1e293b; }
+
+.lime-glow {
+  box-shadow: 0 0 20px rgba(132,255,0,0.3);
+}
+
+/* Glowing card border effect */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(from 0deg, #84ff00, #00e5ff, #7c4dff, #84ff00);
+  border-radius: inherit;
+  animation: card-rotate 4s linear infinite;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.card-glow:hover::before { opacity: 1; }
+.card-glow > * { position: relative; z-index: 1; }
+
+/* Section headings */
+.section-tag {
+  display: inline-block;
+  background: rgba(132,255,0,0.1);
+  color: #84ff00;
+  border: 1px solid rgba(132,255,0,0.3);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #84ff00, #00e5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated underline on hover */
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #84ff00;
+  transition: width 0.3s ease;
+}
+.hover-underline:hover::after { width: 100%; }
+
+/* Certification carousel */
+.cert-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: scroll-left 35s linear infinite;
+}
+.cert-track:hover { animation-play-state: paused; }
+
+/* Hover card — server component safe */
+.hover-card {
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.hover-card:hover {
+  border-color: rgba(132,255,0,0.4) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 8px 40px rgba(132,255,0,0.12);
+}
+
+/* Textarea resize */
+textarea { resize: vertical; }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid #84ff00;
+  outline-offset: 2px;
 }
