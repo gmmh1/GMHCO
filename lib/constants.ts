@@ -6,7 +6,7 @@ export const SITE = {
   email: "hello@gmhco.org",
   phone: "+44 7920 462736",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "447920462736",
-  cal: process.env.NEXT_PUBLIC_CAL_URL ?? "https://cal.com/gmhco/discovery-call",
+  cal: process.env.NEXT_PUBLIC_CAL_URL ?? "#contact",
   location: "London, United Kingdom",
   founded: "2023",
   linkedin: "https://www.linkedin.com/in/gmmorshedhossain",
@@ -375,14 +375,6 @@ export const CERTIFICATIONS = [
     issued: "Jul 2024",
     expires: "No Expiry",
     color: "#0A0A23",
-  },
-  {
-    name: "CILEX Paralegal Member",
-    issuer: "CILEX",
-    credentialId: "CILEX-2024",
-    issued: "Oct 2024",
-    expires: "Dec 2024",
-    color: "#1B3A6B",
   },
 ];
 
