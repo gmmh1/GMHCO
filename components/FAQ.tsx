@@ -38,7 +38,8 @@ export default function FAQ() {
               style={{ border: open === i ? "1px solid rgba(132,255,0,0.4)" : "1px solid rgba(132,255,0,0.1)" }}
             >
               <button
-                className="w-full flex items-center justify-between gap-4 px-8 py-6 text-left"
+                className="w-full flex items-center justify-between gap-4 text-left"
+                style={{ padding: "1.5rem 2rem" }}
                 onClick={() => setOpen(open === i ? null : i)}
               >
                 <span className="text-sm sm:text-base font-medium text-slate-200 leading-snug">
@@ -58,7 +59,7 @@ export default function FAQ() {
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <p className="px-8 pb-8 text-sm leading-relaxed text-slate-400">{faq.answer}</p>
+                    <p className="text-sm leading-relaxed text-slate-400" style={{ padding: "0 2rem 2rem" }}>{faq.answer}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

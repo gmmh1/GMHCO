@@ -93,7 +93,7 @@ export default function Contact() {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="rounded-2xl p-10 sm:p-12 bg-card border border-lime/[0.15]">
+          <div className="rounded-2xl bg-card border border-lime/[0.15]" style={{ padding: "2.5rem" }}>
 
             {step === 1 && (
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
