@@ -18,17 +18,14 @@ export default function BookingSection() {
   }, []);
 
   return (
-    <section id="booking" className="py-24 px-4" style={{ background: "#0f172a" }} ref={sectionRef}>
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
+    <section id="booking" className="section-py" style={{ background: "#0f172a" }} ref={sectionRef}>
+      <div className="page-wrap">
+        <div className="mb-12 flex flex-col items-center text-center">
           <span className="section-tag">Free Consultation</span>
-          <h2
-            className="mt-4 text-3xl sm:text-4xl font-bold"
-            style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
-          >
+          <h2 className="mt-4 py-2 text-3xl sm:text-4xl font-bold font-orbitron text-slate-100">
             Book a Free 30-Minute Strategy Call
           </h2>
-          <p className="mt-3 max-w-xl mx-auto" style={{ color: "#94a3b8" }}>
+          <p className="mt-3 max-w-xl text-base leading-relaxed" style={{ color: "#94a3b8", textAlign: "center" }}>
             No sales pitch. No obligation. Just a direct conversation about your goals and how we can help.
           </p>
         </div>
@@ -47,7 +44,7 @@ export default function BookingSection() {
           ))}
         </div>
 
-        {/* Cal.com embed or CTA */}
+        {/* Cal.eu embed */}
         <div
           className="rounded-2xl overflow-hidden"
           style={{ border: "1px solid rgba(132,255,0,0.15)", minHeight: "500px", background: "#1e293b" }}
@@ -59,12 +56,12 @@ export default function BookingSection() {
               height="600"
               frameBorder="0"
               loading="lazy"
-              title="Book a discovery call with GMHCO"
+              title="Book a 30-minute strategy call"
               style={{ border: "none" }}
             />
           ) : (
             <div className="flex items-center justify-center h-64">
-              <p style={{ color: "#94a3b8" }}>Loading booking calendar...</p>
+              <p style={{ color: "#94a3b8" }}>Loading booking calendar…</p>
             </div>
           )}
         </div>
