@@ -50,10 +50,12 @@ export default function BlogPage() {
           {BLOG_POSTS.map((post, i) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <article
-                className="hover-card h-full rounded-2xl p-6 flex flex-col gap-4 group"
+                className="hover-card h-full rounded-2xl flex flex-col group"
                 style={{
                   background: "#1e293b",
                   border: "1px solid rgba(132,255,0,0.1)",
+                  padding: "1.5rem",
+                  gap: "1rem",
                 }}
               >
                 {/* Category + read time */}
