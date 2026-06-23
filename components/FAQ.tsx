@@ -19,18 +19,13 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 px-4" style={{ background: "#0f172a" }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-14">
+    <section id="faq" className="section-py overflow-hidden bg-navy">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <div className="page-wrap-md">
+
+        <div className="flex flex-col items-center text-center mb-16">
           <span className="section-tag">FAQ</span>
-          <h2
-            className="mt-4 text-3xl sm:text-4xl font-bold"
-            style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
-          >
+          <h2 className="mt-6 py-2 text-3xl sm:text-4xl lg:text-5xl font-bold font-orbitron text-slate-100">
             Common Questions, Direct Answers
           </h2>
         </div>
@@ -39,28 +34,18 @@ export default function FAQ() {
           {FAQS.map((faq, i) => (
             <div
               key={i}
-              className="rounded-xl overflow-hidden transition-all duration-200"
-              style={{
-                background: "#1e293b",
-                border: open === i ? "1px solid rgba(132,255,0,0.4)" : "1px solid rgba(132,255,0,0.1)",
-              }}
+              className="rounded-xl overflow-hidden transition-all duration-200 bg-card"
+              style={{ border: open === i ? "1px solid rgba(132,255,0,0.4)" : "1px solid rgba(132,255,0,0.1)" }}
             >
               <button
-                className="w-full flex items-center justify-between gap-4 p-5 text-left"
+                className="w-full flex items-center justify-between gap-4 px-8 py-6 text-left"
                 onClick={() => setOpen(open === i ? null : i)}
               >
-                <span
-                  className="text-sm sm:text-base font-medium"
-                  style={{ color: "#e2e8f0" }}
-                >
+                <span className="text-sm sm:text-base font-medium text-slate-200 leading-snug">
                   {faq.question}
                 </span>
                 <span className="flex-shrink-0">
-                  {open === i ? (
-                    <Minus size={18} style={{ color: "#84ff00" }} />
-                  ) : (
-                    <Plus size={18} style={{ color: "#84ff00" }} />
-                  )}
+                  {open === i ? <Minus size={18} className="text-lime" /> : <Plus size={18} className="text-lime" />}
                 </span>
               </button>
 
@@ -73,12 +58,7 @@ export default function FAQ() {
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <p
-                      className="px-5 pb-5 text-sm leading-relaxed"
-                      style={{ color: "#94a3b8" }}
-                    >
-                      {faq.answer}
-                    </p>
+                    <p className="px-8 pb-8 text-sm leading-relaxed text-slate-400">{faq.answer}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
