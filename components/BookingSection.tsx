@@ -37,10 +37,16 @@ export default function BookingSection() {
             { icon: Video, text: "Google Meet or Zoom" },
             { icon: Calendar, text: "Pick any available slot" },
           ].map(({ icon: Icon, text }) => (
-            <div key={text} className="flex items-center gap-2">
+            <a
+              key={text}
+              href={SITE.cal}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 transition-opacity hover:opacity-70"
+            >
               <Icon size={16} style={{ color: "#84ff00" }} />
               <span className="text-sm" style={{ color: "#94a3b8" }}>{text}</span>
-            </div>
+            </a>
           ))}
         </div>
 
