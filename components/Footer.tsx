@@ -6,13 +6,13 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer
+    <footer className="section-py"
       style={{
         background: "#0a1022",
         borderTop: "1px solid rgba(132,255,0,0.15)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="page-wrap">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
@@ -122,16 +122,16 @@ export default function Footer() {
           className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
           style={{ borderTop: "1px solid rgba(132,255,0,0.1)" }}
         >
-          <p className="text-xs" style={{ color: "#64748b" }}>
-            © {year} GM Morshed Hossain Company (GMHCO). All rights reserved.
+          <p className="text-xs" style={{ color: "#94a3b8" }}>
+            © {year} GMHCO. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a
               href={SITE.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs transition-colors"
-              style={{ color: "#64748b" }}
+              className="text-xs transition-colors hover:text-lime"
+              style={{ color: "#94a3b8" }}
             >
               LinkedIn
             </a>
@@ -139,14 +139,14 @@ export default function Footer() {
               href={SITE.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs transition-colors"
-              style={{ color: "#64748b" }}
+              className="text-xs transition-colors hover:text-lime"
+              style={{ color: "#94a3b8" }}
             >
               GitHub
             </a>
-            <span className="text-xs" style={{ color: "#64748b" }}>
-              London, UK
-            </span>
+            <a href="/privacy" className="text-xs transition-colors hover:text-lime" style={{ color: "#94a3b8" }}>Privacy</a>
+            <a href="/terms" className="text-xs transition-colors hover:text-lime" style={{ color: "#94a3b8" }}>Terms</a>
+            <span className="text-xs" style={{ color: "#64748b" }}>London, UK</span>
           </div>
         </div>
       </div>

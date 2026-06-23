@@ -11,7 +11,7 @@ export default function Testimonials() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIdx((i) => (i + 1) % TESTIMONIALS.length);
-    }, 4000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
@@ -19,14 +19,14 @@ export default function Testimonials() {
 
   return (
     <section className="section-py relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #080e1a 0%, #0f172a 100%)" }}>
+      style={{ background: "linear-gradient(180deg, #0d1527 0%, #0f172a 100%)" }}>
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(132,255,0,0.04) 0%, transparent 60%)" }} />
 
       <div className="page-wrap-md relative">
 
         <motion.div
-          className="flex flex-col items-center text-center mb-16"
+          className="flex flex-col items-center text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

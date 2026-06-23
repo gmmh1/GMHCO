@@ -13,6 +13,7 @@ import BookingSection from "@/components/BookingSection";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
       <Footer />
       <ChatWidget />
       <WhatsAppButton />
+      <BackToTop />
     </>
   );
 }
