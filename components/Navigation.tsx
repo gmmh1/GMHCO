@@ -8,13 +8,13 @@ import { cn } from "@/lib/utils";
 import { LogoMark } from "@/components/LogoMark";
 
 const NAV_LINKS = [
-  { href: "#services",       label: "Services" },
-  { href: "#process",        label: "Process" },
-  { href: "#certifications", label: "Certifications" },
-  { href: "#portfolio",      label: "Portfolio" },
-  { href: "#case-studies",   label: "Case Studies" },
-  { href: "/blog",           label: "Blog" },
-  { href: "#contact",        label: "Contact" },
+  { href: "/#services",       label: "Services" },
+  { href: "/#process",        label: "Process" },
+  { href: "/#certifications", label: "Certifications" },
+  { href: "/#portfolio",      label: "Portfolio" },
+  { href: "/#case-studies",   label: "Case Studies" },
+  { href: "/blog",            label: "Blog" },
+  { href: "/#contact",        label: "Contact" },
 ];
 
 export default function Navigation() {
