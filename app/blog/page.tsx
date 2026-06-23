@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowRight, ArrowLeft, Clock, Tag } from "lucide-react";
 import { BLOG_POSTS, SITE } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
+import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
   title: "Blog & Insights",
@@ -14,8 +15,16 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main style={{ background: "#0f172a", minHeight: "100vh", color: "#e2e8f0" }}>
-      <div className="max-w-7xl mx-auto px-4 py-24">
-        <div className="text-center mb-14">
+      <Navigation />
+      <div className="page-wrap" style={{ paddingTop: "7rem", paddingBottom: "5rem" }}>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-sm mb-10 transition-colors hover:text-lime"
+          style={{ color: "#94a3b8" }}
+        >
+          <ArrowLeft size={16} /> Back to Home
+        </Link>
+        <div className="flex flex-col items-center text-center mb-14">
           <span
             className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4"
             style={{

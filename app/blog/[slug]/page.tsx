@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock, Tag, ArrowRight } from "lucide-react";
+import { ArrowLeft, Clock, Tag, ArrowRight, Home } from "lucide-react";
 import { BLOG_POSTS, SITE } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
+import Navigation from "@/components/Navigation";
 
 export async function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
@@ -305,19 +306,30 @@ export default async function BlogPostPage({
 
   return (
     <main style={{ background: "#0f172a", minHeight: "100vh", color: "#e2e8f0" }}>
+      <Navigation />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <div className="max-w-3xl mx-auto px-4 py-24">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-sm mb-8 transition-colors"
-          style={{ color: "#94a3b8" }}
-        >
-          <ArrowLeft size={16} /> Back to Blog
-        </Link>
+      <div className="page-wrap-md" style={{ paddingTop: "7rem", paddingBottom: "5rem" }}>
+        <div className="flex items-center gap-4 mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-1.5 text-sm transition-colors hover:text-lime"
+            style={{ color: "#64748b" }}
+          >
+            <Home size={14} /> Home
+          </Link>
+          <span style={{ color: "#334155" }}>/</span>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-1.5 text-sm transition-colors hover:text-lime"
+            style={{ color: "#94a3b8" }}
+          >
+            <ArrowLeft size={14} /> Blog
+          </Link>
+        </div>
 
         {/* Meta */}
         <div className="flex items-center gap-3 mb-6">
