@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { SITE, SERVICES } from "@/lib/constants";
+import { LogoMark } from "@/components/LogoMark";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/logos/gmhco-logo.png" alt="GMHCO" width={42} height={42} className="rounded-lg" />
+              <LogoMark size={42} />
               <span
                 className="text-2xl font-bold"
                 style={{ fontFamily: "Orbitron, sans-serif", color: "#84ff00" }}
