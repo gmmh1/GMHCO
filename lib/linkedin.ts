@@ -47,12 +47,13 @@ async function getMemberUrn(accessToken: string): Promise<string> {
 export async function saveLinkedInInstall(tokens: LinkedInTokens) {
   const memberUrn = await getMemberUrn(tokens.access_token);
   const db = createServerSupabase();
-  await db.from("linkedin_installs").upsert({
+  const { error } = await db.from("linkedin_installs").upsert({
     id: INSTALL_ID,
     access_token: tokens.access_token,
     member_urn: memberUrn,
     expires_at: new Date(Date.now() + tokens.expires_in * 1000).toISOString(),
   });
+  if (error) throw new Error(`Failed to save LinkedIn tokens: ${error.message}`);
 }
 
 type PostResult = { ok: true } | { ok: false; error: string };

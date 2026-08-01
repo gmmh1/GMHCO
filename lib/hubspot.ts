@@ -56,12 +56,13 @@ async function refreshHubSpotTokens(refreshToken: string): Promise<HubSpotTokens
 
 export async function saveHubSpotTokens(tokens: HubSpotTokens) {
   const db = createServerSupabase();
-  await db.from("hubspot_installs").upsert({
+  const { error } = await db.from("hubspot_installs").upsert({
     id: INSTALL_ID,
     access_token: tokens.access_token,
     refresh_token: tokens.refresh_token,
     expires_at: new Date(Date.now() + tokens.expires_in * 1000).toISOString(),
   });
+  if (error) throw new Error(`Failed to save HubSpot tokens: ${error.message}`);
 }
 
 // Prefers the connected OAuth install (refreshing it if near expiry), falling
