@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { sendTelegramMessage, formatContactLead } from "@/lib/telegram";
 import { createServerSupabase } from "@/lib/supabase-server";
+import { upsertHubSpotContact } from "@/lib/hubspot";
 
 const ContactSchema = z.object({
   name: z.string().min(2).max(100),
@@ -12,38 +13,6 @@ const ContactSchema = z.object({
   budget: z.string().optional(),
   message: z.string().min(10).max(3000),
 });
-
-async function pushToHubSpot(data: { name: string; email: string; phone?: string; company?: string; service?: string; message: string }) {
-  const token = process.env.HUBSPOT_ACCESS_TOKEN;
-  if (!token) return;
-
-  const [firstName, ...rest] = data.name.split(" ");
-  const lastName = rest.join(" ") || "-";
-
-  try {
-    await fetch("https://api.hubapi.com/crm/v3/objects/contacts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        properties: {
-          firstname: firstName,
-          lastname: lastName,
-          email: data.email,
-          phone: data.phone ?? "",
-          company: data.company ?? "",
-          hs_lead_status: "NEW",
-          lifecyclestage: "lead",
-          message: `Service: ${data.service ?? "General"}\n\n${data.message}`,
-        },
-      }),
-    });
-  } catch (err) {
-    console.error("[HubSpot] Failed to create contact:", err);
-  }
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -62,7 +31,14 @@ export async function POST(req: NextRequest) {
     // Run all side effects in parallel
     await Promise.all([
       sendTelegramMessage(formatContactLead(data)),
-      pushToHubSpot(data),
+      upsertHubSpotContact({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company,
+        message: `Service: ${data.service ?? "General"}\n\n${data.message}`,
+        source: "contact_form",
+      }),
       (async () => {
         try {
           const db = createServerSupabase();

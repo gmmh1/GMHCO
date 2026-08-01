@@ -20,7 +20,11 @@ export type Lead = {
 
 export type ChatLead = {
   id: string;
+  name?: string;
   email: string;
+  phone?: string;
+  company?: string;
+  website?: string;
   conversation_summary: string;
   created_at: string;
 };

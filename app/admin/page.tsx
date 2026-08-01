@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createServerSupabase } from "@/lib/supabase-server";
 import type { Lead, ChatLead } from "@/lib/supabase";
+import LinkedInComposer from "@/components/admin/LinkedInComposer";
 
 async function getData() {
   try {
@@ -49,13 +50,29 @@ export default async function AdminDashboard() {
         <h1 style={{ fontFamily: "Orbitron, sans-serif", color: "#84ff00", fontSize: "1.1rem" }}>
           GMHCO Admin
         </h1>
-        <a
-          href="/api/admin/logout"
-          className="text-sm px-4 py-2 rounded-full"
-          style={{ border: "1px solid rgba(132,255,0,0.3)", color: "#94a3b8" }}
-        >
-          Sign Out
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="/api/hubspot/install"
+            className="text-sm px-4 py-2 rounded-full"
+            style={{ border: "1px solid rgba(255,122,0,0.4)", color: "#ff7a00" }}
+          >
+            Connect HubSpot
+          </a>
+          <a
+            href="/api/linkedin/install"
+            className="text-sm px-4 py-2 rounded-full"
+            style={{ border: "1px solid rgba(0,229,255,0.4)", color: "#00e5ff" }}
+          >
+            Connect LinkedIn
+          </a>
+          <a
+            href="/api/admin/logout"
+            className="text-sm px-4 py-2 rounded-full"
+            style={{ border: "1px solid rgba(132,255,0,0.3)", color: "#94a3b8" }}
+          >
+            Sign Out
+          </a>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
@@ -124,6 +141,8 @@ export default async function AdminDashboard() {
           )}
         </section>
 
+        <LinkedInComposer />
+
         {/* Chat Leads */}
         <section>
           <h2 className="text-lg font-semibold mb-4" style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}>
@@ -140,12 +159,18 @@ export default async function AdminDashboard() {
                   style={{ background: "#1e293b", border: "1px solid rgba(0,229,255,0.15)" }}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <a href={`mailto:${lead.email}`} className="text-sm font-semibold" style={{ color: "#00e5ff" }}>
-                      {lead.email}
-                    </a>
+                    <span className="text-sm font-semibold" style={{ color: "#e2e8f0" }}>
+                      {lead.name ?? "Name not captured"}
+                    </span>
                     <span className="text-xs" style={{ color: "#64748b" }}>
                       {formatTime(lead.created_at)}
                     </span>
+                  </div>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 mb-2 text-xs" style={{ color: "#94a3b8" }}>
+                    <a href={`mailto:${lead.email}`} style={{ color: "#00e5ff" }}>{lead.email}</a>
+                    {lead.phone && <span>📱 {lead.phone}</span>}
+                    {lead.company && <span>🏢 {lead.company}</span>}
+                    {lead.website && <span>🔗 {lead.website}</span>}
                   </div>
                   <p className="text-xs whitespace-pre-wrap" style={{ color: "#94a3b8" }}>
                     {lead.conversation_summary?.slice(0, 300)}

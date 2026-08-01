@@ -45,13 +45,21 @@ ${data.message}
 🌐 <b>Source:</b> gmhco.org contact form`.trim();
 }
 
-export function formatChatLead(data: {
+export function formatPotentialLead(data: {
   email: string;
+  name?: string;
+  phone?: string;
+  company?: string;
+  website?: string;
   summary: string;
 }): string {
-  return `🤖 <b>AI CHATBOT LEAD CAPTURED</b>
+  return `🤖 <b>AI CHATBOT — POTENTIAL LEAD</b>
 ━━━━━━━━━━━━━━━━━━━━
+👤 <b>Name:</b> ${data.name ?? "Not provided"}
 📧 <b>Email:</b> ${data.email}
+📱 <b>Phone:</b> ${data.phone ?? "Not provided"}
+🏢 <b>Company:</b> ${data.company ?? "Not provided"}
+🔗 <b>Website:</b> ${data.website ?? "Not provided"}
 ━━━━━━━━━━━━━━━━━━━━
 📝 <b>Conversation snippet:</b>
 ${data.summary.slice(0, 400)}
