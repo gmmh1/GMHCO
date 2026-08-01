@@ -6,120 +6,55 @@ import { CASE_STUDIES } from "@/lib/constants";
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="py-24 px-4" style={{ background: "#0f172a" }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <section id="case-studies" className="section-py overflow-hidden bg-navy">
+      <div className="page-wrap">
+
+        <div className="flex flex-col items-center text-center mb-20">
           <span className="section-tag">Proof of Work</span>
-          <h2
-            className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold"
-            style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
-          >
+          <h2 className="mt-6 py-2 text-3xl sm:text-4xl lg:text-5xl font-bold font-orbitron text-slate-100">
             Results That Speak for Themselves
           </h2>
-          <p className="mt-4 max-w-xl mx-auto" style={{ color: "#94a3b8" }}>
+          <p className="mt-5 max-w-xl mx-auto text-base text-slate-400 leading-relaxed text-center">
             Real client problems. Real solutions. Real numbers.
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-24">
           {CASE_STUDIES.map((cs, i) => (
-            <motion.div
-              key={cs.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${
-                i % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Image side */}
+            <motion.div key={cs.title}
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.5 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
               <div className={i % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="relative h-72 rounded-2xl overflow-hidden">
-                  <Image
-                    src={cs.image}
-                    alt={cs.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(132,255,0,0.15) 0%, rgba(0,0,0,0.6) 100%)",
-                    }}
-                  />
+                  <Image src={cs.image} alt={cs.title} fill className="object-cover" />
+                  <div className="absolute inset-0"
+                    style={{ background: "linear-gradient(135deg,rgba(132,255,0,0.15) 0%,rgba(0,0,0,0.6) 100%)" }} />
                 </div>
               </div>
 
-              {/* Content side */}
               <div className={i % 2 === 1 ? "lg:order-1" : ""}>
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {cs.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="text-xs px-2.5 py-1 rounded-full"
-                      style={{
-                        background: "rgba(132,255,0,0.08)",
-                        color: "#84ff00",
-                        border: "1px solid rgba(132,255,0,0.2)",
-                      }}
-                    >
-                      {t}
-                    </span>
-                  ))}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {cs.tags.map(t => <span key={t} className="tag">{t}</span>)}
                 </div>
-
-                <p className="text-xs uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>
-                  {cs.client}
-                </p>
-                <h3
-                  className="text-xl sm:text-2xl font-bold mb-4"
-                  style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1.2rem" }}
-                >
-                  {cs.title}
-                </h3>
-
-                <div className="space-y-3 mb-6">
+                <p className="text-xs uppercase tracking-widest mb-2 text-slate-500 font-semibold">{cs.client}</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-6 font-orbitron text-slate-100 leading-snug">{cs.title}</h3>
+                <div className="space-y-5 mb-8">
                   <div>
-                    <p className="text-xs uppercase tracking-wider mb-1" style={{ color: "#84ff00" }}>
-                      The Challenge
-                    </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
-                      {cs.challenge}
-                    </p>
+                    <p className="text-xs uppercase tracking-widest mb-2 text-lime font-bold">The Challenge</p>
+                    <p className="text-sm leading-relaxed text-slate-400">{cs.challenge}</p>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-wider mb-1" style={{ color: "#84ff00" }}>
-                      Our Solution
-                    </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
-                      {cs.solution}
-                    </p>
+                    <p className="text-xs uppercase tracking-widest mb-2 text-lime font-bold">Our Solution</p>
+                    <p className="text-sm leading-relaxed text-slate-400">{cs.solution}</p>
                   </div>
                 </div>
-
-                {/* Results grid */}
                 <div className="grid grid-cols-2 gap-3">
-                  {cs.results.map((r) => (
-                    <div
-                      key={r.label}
-                      className="rounded-xl p-4 text-center"
-                      style={{
-                        background: "#1e293b",
-                        border: "1px solid rgba(132,255,0,0.15)",
-                      }}
-                    >
-                      <div
-                        className="text-2xl font-bold mb-1"
-                        style={{ fontFamily: "Orbitron, sans-serif", color: "#84ff00" }}
-                      >
-                        {r.metric}
-                      </div>
-                      <div className="text-xs" style={{ color: "#94a3b8" }}>
-                        {r.label}
-                      </div>
+                  {cs.results.map(r => (
+                    <div key={r.label} className="rounded-xl p-5 text-center bg-card border border-lime/[0.15]">
+                      <div className="text-2xl font-bold mb-1.5 font-orbitron text-lime">{r.metric}</div>
+                      <div className="text-sm text-slate-400">{r.label}</div>
                     </div>
                   ))}
                 </div>
