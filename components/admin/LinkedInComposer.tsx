@@ -31,10 +31,10 @@ export default function LinkedInComposer() {
   }
 
   return (
-    <section className="mb-10">
+    <section style={{ marginBottom: "2.5rem" }}>
       <h2
-        className="text-lg font-semibold mb-4"
-        style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}
+        className="text-lg font-semibold"
+        style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem", marginBottom: "1rem" }}
       >
         Post to LinkedIn
       </h2>
@@ -43,15 +43,15 @@ export default function LinkedInComposer() {
         onChange={(e) => setText(e.target.value)}
         placeholder="Paste or write the post text here — review it before posting, this goes live immediately."
         rows={6}
-        className="w-full rounded-xl p-4 text-sm"
-        style={{ background: "#1e293b", border: "1px solid rgba(0,229,255,0.15)", color: "#e2e8f0" }}
+        className="w-full rounded-xl text-sm"
+        style={{ background: "#1e293b", border: "1px solid rgba(0,229,255,0.15)", color: "#e2e8f0", padding: "1rem" }}
       />
-      <div className="flex items-center gap-3 mt-3">
+      <div className="flex items-center gap-3" style={{ marginTop: "0.75rem" }}>
         <button
           onClick={handlePost}
           disabled={status === "posting" || text.trim().length === 0}
-          className="text-sm px-5 py-2 rounded-full disabled:opacity-40"
-          style={{ border: "1px solid rgba(0,229,255,0.4)", color: "#00e5ff" }}
+          className="text-sm rounded-full disabled:opacity-40"
+          style={{ border: "1px solid rgba(0,229,255,0.4)", color: "#00e5ff", paddingLeft: "1.25rem", paddingRight: "1.25rem", paddingTop: "0.5rem", paddingBottom: "0.5rem" }}
         >
           {status === "posting" ? "Posting…" : "Post to LinkedIn"}
         </button>

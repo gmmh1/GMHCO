@@ -44,8 +44,8 @@ export default async function AdminDashboard() {
     <main style={{ background: "#0f172a", minHeight: "100vh", color: "#e2e8f0" }}>
       {/* Nav */}
       <div
-        className="px-6 py-4 flex items-center justify-between"
-        style={{ background: "#1e293b", borderBottom: "1px solid rgba(132,255,0,0.15)" }}
+        className="flex items-center justify-between"
+        style={{ background: "#1e293b", borderBottom: "1px solid rgba(132,255,0,0.15)", paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "1rem", paddingBottom: "1rem" }}
       >
         <h1 style={{ fontFamily: "Orbitron, sans-serif", color: "#84ff00", fontSize: "1.1rem" }}>
           GMHCO Admin
@@ -53,41 +53,42 @@ export default async function AdminDashboard() {
         <div className="flex items-center gap-3">
           <a
             href="/api/hubspot/install"
-            className="text-sm px-4 py-2 rounded-full"
-            style={{ border: "1px solid rgba(255,122,0,0.4)", color: "#ff7a00" }}
+            className="text-sm rounded-full"
+            style={{ border: "1px solid rgba(255,122,0,0.4)", color: "#ff7a00", paddingLeft: "1rem", paddingRight: "1rem", paddingTop: "0.5rem", paddingBottom: "0.5rem" }}
           >
             Connect HubSpot
           </a>
           <a
             href="/api/linkedin/install"
-            className="text-sm px-4 py-2 rounded-full"
-            style={{ border: "1px solid rgba(0,229,255,0.4)", color: "#00e5ff" }}
+            className="text-sm rounded-full"
+            style={{ border: "1px solid rgba(0,229,255,0.4)", color: "#00e5ff", paddingLeft: "1rem", paddingRight: "1rem", paddingTop: "0.5rem", paddingBottom: "0.5rem" }}
           >
             Connect LinkedIn
           </a>
           <a
             href="/api/admin/logout"
-            className="text-sm px-4 py-2 rounded-full"
-            style={{ border: "1px solid rgba(132,255,0,0.3)", color: "#94a3b8" }}
+            className="text-sm rounded-full"
+            style={{ border: "1px solid rgba(132,255,0,0.3)", color: "#94a3b8", paddingLeft: "1rem", paddingRight: "1rem", paddingTop: "0.5rem", paddingBottom: "0.5rem" }}
           >
             Sign Out
           </a>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <div className="mx-auto" style={{ maxWidth: "80rem", paddingLeft: "1rem", paddingRight: "1rem", paddingTop: "2.5rem", paddingBottom: "2.5rem" }}>
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" style={{ marginBottom: "2.5rem" }}>
           {stats.map((s) => (
             <div
               key={s.label}
-              className="rounded-2xl p-6 text-center"
+              className="rounded-2xl text-center"
               style={{
                 background: "#1e293b",
                 border: `1px solid ${s.color}30`,
+                padding: "1.5rem",
               }}
             >
-              <div className="text-3xl font-bold mb-1" style={{ fontFamily: "Orbitron, sans-serif", color: s.color }}>
+              <div className="text-3xl font-bold" style={{ fontFamily: "Orbitron, sans-serif", color: s.color, marginBottom: "0.25rem" }}>
                 {s.value}
               </div>
               <div className="text-sm" style={{ color: "#94a3b8" }}>{s.label}</div>
@@ -96,8 +97,8 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Contact Form Leads */}
-        <section className="mb-10">
-          <h2 className="text-lg font-semibold mb-4" style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}>
+        <section style={{ marginBottom: "2.5rem" }}>
+          <h2 className="text-lg font-semibold" style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem", marginBottom: "1rem" }}>
             Contact Form Leads ({leads.length})
           </h2>
           {leads.length === 0 ? (
@@ -108,7 +109,7 @@ export default async function AdminDashboard() {
                 <thead>
                   <tr style={{ background: "#1e293b", borderBottom: "1px solid rgba(132,255,0,0.12)" }}>
                     {["Date", "Name", "Email", "Company", "Service", "Budget", "Message"].map((h) => (
-                      <th key={h} className="text-left px-4 py-3 font-medium" style={{ color: "#84ff00", whiteSpace: "nowrap" }}>
+                      <th key={h} className="text-left font-medium" style={{ color: "#84ff00", whiteSpace: "nowrap", padding: "0.75rem 1rem" }}>
                         {h}
                       </th>
                     ))}
@@ -120,17 +121,17 @@ export default async function AdminDashboard() {
                       key={lead.id}
                       style={{ background: i % 2 === 0 ? "#0f172a" : "#1e293b", borderBottom: "1px solid rgba(132,255,0,0.06)" }}
                     >
-                      <td className="px-4 py-3 whitespace-nowrap text-xs" style={{ color: "#64748b" }}>
+                      <td className="whitespace-nowrap text-xs" style={{ color: "#64748b", padding: "0.75rem 1rem" }}>
                         {formatTime(lead.created_at)}
                       </td>
-                      <td className="px-4 py-3 font-medium" style={{ color: "#e2e8f0" }}>{lead.name}</td>
-                      <td className="px-4 py-3">
+                      <td className="font-medium" style={{ color: "#e2e8f0", padding: "0.75rem 1rem" }}>{lead.name}</td>
+                      <td style={{ padding: "0.75rem 1rem" }}>
                         <a href={`mailto:${lead.email}`} style={{ color: "#84ff00" }}>{lead.email}</a>
                       </td>
-                      <td className="px-4 py-3" style={{ color: "#94a3b8" }}>{lead.company ?? "—"}</td>
-                      <td className="px-4 py-3 text-xs" style={{ color: "#94a3b8" }}>{lead.service ?? "—"}</td>
-                      <td className="px-4 py-3 text-xs" style={{ color: "#94a3b8" }}>{lead.budget ?? "—"}</td>
-                      <td className="px-4 py-3 max-w-xs text-xs truncate" style={{ color: "#94a3b8" }}>
+                      <td style={{ color: "#94a3b8", padding: "0.75rem 1rem" }}>{lead.company ?? "—"}</td>
+                      <td className="text-xs" style={{ color: "#94a3b8", padding: "0.75rem 1rem" }}>{lead.service ?? "—"}</td>
+                      <td className="text-xs" style={{ color: "#94a3b8", padding: "0.75rem 1rem" }}>{lead.budget ?? "—"}</td>
+                      <td className="max-w-xs text-xs truncate" style={{ color: "#94a3b8", padding: "0.75rem 1rem" }}>
                         {lead.message}
                       </td>
                     </tr>
@@ -145,7 +146,7 @@ export default async function AdminDashboard() {
 
         {/* Chat Leads */}
         <section>
-          <h2 className="text-lg font-semibold mb-4" style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}>
+          <h2 className="text-lg font-semibold" style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem", marginBottom: "1rem" }}>
             AI Chatbot Leads ({chatLeads.length})
           </h2>
           {chatLeads.length === 0 ? (
@@ -155,10 +156,10 @@ export default async function AdminDashboard() {
               {chatLeads.map((lead) => (
                 <div
                   key={lead.id}
-                  className="rounded-xl p-4"
-                  style={{ background: "#1e293b", border: "1px solid rgba(0,229,255,0.15)" }}
+                  className="rounded-xl"
+                  style={{ background: "#1e293b", border: "1px solid rgba(0,229,255,0.15)", padding: "1rem" }}
                 >
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between" style={{ marginBottom: "0.5rem" }}>
                     <span className="text-sm font-semibold" style={{ color: "#e2e8f0" }}>
                       {lead.name ?? "Name not captured"}
                     </span>
@@ -166,7 +167,7 @@ export default async function AdminDashboard() {
                       {formatTime(lead.created_at)}
                     </span>
                   </div>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 mb-2 text-xs" style={{ color: "#94a3b8" }}>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs" style={{ color: "#94a3b8", marginBottom: "0.5rem" }}>
                     <a href={`mailto:${lead.email}`} style={{ color: "#00e5ff" }}>{lead.email}</a>
                     {lead.phone && <span>📱 {lead.phone}</span>}
                     {lead.company && <span>🏢 {lead.company}</span>}
