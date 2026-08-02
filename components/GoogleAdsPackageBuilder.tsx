@@ -1,8 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
-import { GOOGLE_ADS_PACKAGE_BUILDER, SITE } from "@/lib/constants";
+import { GOOGLE_ADS_PACKAGE_BUILDER, SERVICES } from "@/lib/constants";
+import { PACKAGE_REQUEST_KEY, buildPackageMessage } from "@/lib/packageRequest";
+
+const SERVICE_TITLE = SERVICES.find((s) => s.slug === "google-ads-analytics")!.title;
 
 export default function GoogleAdsPackageBuilder() {
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -25,6 +29,16 @@ export default function GoogleAdsPackageBuilder() {
   );
 
   const total = GOOGLE_ADS_PACKAGE_BUILDER.basePrice + selectedAddons.reduce((sum, a) => sum + a.price, 0);
+
+  const handleGetPackage = () => {
+    const message = buildPackageMessage({
+      basePrice: GOOGLE_ADS_PACKAGE_BUILDER.basePrice,
+      addons: selectedAddons.map((a) => ({ label: a.label, price: a.price })),
+      total,
+      recommendedSpend: GOOGLE_ADS_PACKAGE_BUILDER.recommendedSpend,
+    });
+    sessionStorage.setItem(PACKAGE_REQUEST_KEY, JSON.stringify({ service: SERVICE_TITLE, message }));
+  };
 
   return (
     <div className="mb-16">
@@ -128,15 +142,14 @@ export default function GoogleAdsPackageBuilder() {
               £{total}<span className="text-base font-normal" style={{ color: "#94a3b8" }}>/month</span>
             </p>
           </div>
-          <a
-            href={SITE.cal}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/#contact"
+            onClick={handleGetPackage}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all hover:-translate-y-0.5 flex-shrink-0"
             style={{ background: "#84ff00", color: "#0f172a" }}
           >
             Get This Package <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
         {selectedAddons.length > 0 && (
           <div className="pt-4 space-y-1.5" style={{ borderTop: "1px solid rgba(132,255,0,0.15)" }}>

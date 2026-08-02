@@ -3,6 +3,7 @@ import { z } from "zod";
 import { sendTelegramMessage, formatContactLead } from "@/lib/telegram";
 import { createServerSupabase } from "@/lib/supabase-server";
 import { upsertHubSpotContact } from "@/lib/hubspot";
+import { sendCustomerConfirmationEmail } from "@/lib/email";
 
 const ContactSchema = z.object({
   name: z.string().min(2).max(100),
@@ -31,6 +32,11 @@ export async function POST(req: NextRequest) {
     // Run all side effects in parallel
     await Promise.all([
       sendTelegramMessage(formatContactLead(data)),
+      sendCustomerConfirmationEmail({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      }),
       upsertHubSpotContact({
         name: data.name,
         email: data.email,

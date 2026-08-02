@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { Send, CheckCircle, AlertCircle, ChevronRight, ChevronLeft } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, ChevronRight, ChevronLeft, Package } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
+import { PACKAGE_REQUEST_KEY, type PendingPackageRequest } from "@/lib/packageRequest";
 
 const schema = z.object({
   name:    z.string().min(2),
@@ -29,8 +30,26 @@ export default function Contact() {
   const [step,     setStep]    = useState(1);
   const [status,   setStatus]  = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [hasPendingPackage, setHasPendingPackage] = useState(false);
 
-  const { register, handleSubmit, trigger, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
+  const { register, handleSubmit, trigger, setValue, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
+
+  useEffect(() => {
+    const raw = sessionStorage.getItem(PACKAGE_REQUEST_KEY);
+    if (!raw) return;
+    sessionStorage.removeItem(PACKAGE_REQUEST_KEY);
+    try {
+      const pending: PendingPackageRequest = JSON.parse(raw);
+      setValue("service", pending.service);
+      setValue("message", pending.message);
+      // One-time hydration from sessionStorage on mount, guarded by the `if (!raw) return`
+      // above — not a subscription loop, so the set-state-in-effect rule doesn't apply here.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setHasPendingPackage(true);
+    } catch {
+      // malformed sessionStorage payload — ignore, form stays blank
+    }
+  }, [setValue]);
 
   const nextStep = async () => {
     const fields: (keyof FormData)[][] = [["name", "email", "phone"], ["company", "service", "budget"], ["message"]];
@@ -71,6 +90,15 @@ export default function Contact() {
           <h2 className="mt-6 py-2 text-4xl sm:text-5xl font-bold font-orbitron text-slate-100">Start Your Project</h2>
           <p className="mt-4 text-base text-slate-400">Tell us what you&apos;re building. We respond within 24 hours.</p>
         </div>
+
+        {hasPendingPackage && (
+          <div className="flex items-center gap-3 mb-8 p-4 rounded-xl bg-lime/10 border border-lime/30">
+            <Package size={18} className="text-lime flex-shrink-0" />
+            <p className="text-sm text-slate-200">
+              Your custom Google Ads package is ready to send — just add your contact details below.
+            </p>
+          </div>
+        )}
 
         {/* Progress bar */}
         <div className="flex items-center gap-2 mb-10">
