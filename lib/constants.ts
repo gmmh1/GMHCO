@@ -382,32 +382,27 @@ export const PROCESS_STEPS = [
   {
     step: "01",
     title: "Discovery",
-    description:
-      "Deep-dive into your business goals, technical constraints, audience, and competitive landscape. We build a shared picture of what success looks like before a single line of code is written.",
+    description: "Your goals, constraints, and audience — mapped before a line of code is written.",
   },
   {
     step: "02",
     title: "Strategy",
-    description:
-      "Design the technology architecture, content strategy, and implementation roadmap. Every decision is tied to a measurable business outcome — not just best practice.",
+    description: "Architecture and roadmap, with every decision tied to a measurable outcome.",
   },
   {
     step: "03",
     title: "Build",
-    description:
-      "Agile development with weekly demos. You see real progress every step of the way, not just at the end. Feedback is incorporated in real time.",
+    description: "Agile development with weekly demos — real progress, real-time feedback.",
   },
   {
     step: "04",
     title: "Launch",
-    description:
-      "Production deployment with full monitoring, analytics instrumentation, and SEO validation. Zero-downtime, fully tested, fully documented.",
+    description: "Zero-downtime deployment with full monitoring, analytics, and SEO validation.",
   },
   {
     step: "05",
     title: "Optimise",
-    description:
-      "Post-launch data analysis, A/B testing, performance tuning, and continuous improvement loops. The work does not stop at go-live.",
+    description: "Post-launch testing and tuning. The work doesn't stop at go-live.",
   },
 ];
 
