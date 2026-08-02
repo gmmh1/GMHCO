@@ -42,8 +42,8 @@ export const metadata: Metadata = {
     "business automation consultant",
     "mobile app development UK",
   ],
-  authors: [{ name: "GM Morshed Hossain", url: SITE_URL }],
-  creator: "GM Morshed Hossain",
+  authors: [{ name: "Gazi Morshed", url: SITE_URL }],
+  creator: "Gazi Morshed",
   publisher: "GMHCO",
   robots: {
     index: true,
@@ -90,12 +90,12 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": ["Organization", "ProfessionalService"],
   name: "GMHCO",
-  legalName: "GM Morshed Hossain Company",
+  legalName: "Gazi Morshed Company",
   url: SITE_URL,
   logo: `${SITE_URL}/logos/gmhco-logo.png`,
   description:
     "AI-powered IT solutions, SaaS development, and Google Ads management for enterprise clients worldwide.",
-  founder: { "@type": "Person", name: "GM Morshed Hossain" },
+  founder: { "@type": "Person", name: "Gazi Morshed" },
   foundingDate: "2023",
   address: {
     "@type": "PostalAddress",

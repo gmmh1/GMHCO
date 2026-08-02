@@ -29,7 +29,7 @@ export async function generateMetadata({
       url: `${SITE.url}/blog/${slug}`,
       type: "article",
       publishedTime: post.date,
-      authors: ["GM Morshed Hossain"],
+      authors: ["Gazi Morshed"],
     },
   };
 }
@@ -298,7 +298,7 @@ export default async function BlogPostPage({
     description: post.excerpt,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Person", name: "GM Morshed Hossain", url: SITE.url },
+    author: { "@type": "Person", name: "Gazi Morshed", url: SITE.url },
     publisher: { "@type": "Organization", name: "GMHCO", url: SITE.url },
     url: `${SITE.url}/blog/${slug}`,
     keywords: post.keywords.join(", "),
@@ -394,7 +394,7 @@ export default async function BlogPostPage({
             Want to Apply These Strategies to Your Business?
           </h3>
           <p className="text-sm mb-6" style={{ color: "#94a3b8" }}>
-            Book a free 30-minute strategy call with GM Morshed Hossain.
+            Book a free 30-minute strategy call with Gazi Morshed.
           </p>
           <Link
             href="/#contact"

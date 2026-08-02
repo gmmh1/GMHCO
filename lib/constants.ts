@@ -1,6 +1,6 @@
 export const SITE = {
   name: "GMHCO",
-  fullName: "GM Morshed Hossain Company",
+  fullName: "Gazi Morshed Company",
   tagline: "AI-Powered IT Solutions & Enterprise Digital Strategy",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://gmhco.org",
   email: "hello@gmhco.org",
@@ -579,7 +579,7 @@ export const FAQS = [
     slug: "differentiator",
     question: "What makes GMHCO different from a typical agency?",
     answer:
-      "GMHCO is founder-led and specialist-focused. Every engagement is managed personally by GM Morshed Hossain — not handed off to junior staff. You get certified expertise, direct communication, and full accountability at every stage.",
+      "GMHCO is founder-led and specialist-focused. Every engagement is managed personally by Gazi Morshed — not handed off to junior staff. You get certified expertise, direct communication, and full accountability at every stage.",
   },
   {
     slug: "gdpr-compliance",
@@ -645,7 +645,7 @@ export const FAQS = [
     slug: "location-and-regions",
     question: "Where is GMHCO based and which regions does it serve?",
     answer:
-      "GMHCO is based in London, UK, founded in 2023. It serves clients across the UK, US, Europe, and the Middle East, with all engagements led directly by founder GM Morshed Hossain.",
+      "GMHCO is based in London, UK, founded in 2023. It serves clients across the UK, US, Europe, and the Middle East, with all engagements led directly by founder Gazi Morshed.",
   },
 ];
 
@@ -735,10 +735,10 @@ export const BLOG_POSTS = [
   },
 ];
 
-export const GROQ_SYSTEM_PROMPT = `You are the AI assistant for GMHCO (GM Morshed Hossain Company), an elite IT solutions, SaaS development, and digital strategy firm based in London, UK.
+export const GROQ_SYSTEM_PROMPT = `You are the AI assistant for GMHCO (Gazi Morshed Company), an elite IT solutions, SaaS development, and digital strategy firm based in London, UK.
 
 ABOUT GMHCO:
-- Founded by GM Morshed Hossain, a certified technology strategist and Google Ads expert
+- Founded by Gazi Morshed, a certified technology strategist and Google Ads expert
 - 12+ active certifications: Google Analytics (GA4), Google Ads Search, AI-Powered Performance Ads, Google Ads Measurement, Campaign Manager 360 (CM360), Foundations of AI-Powered Search Ads, HubSpot Academy, Google IT Support Professional Certificate, Data Analysis with Python
 - Serves enterprise and high-growth clients worldwide
 
