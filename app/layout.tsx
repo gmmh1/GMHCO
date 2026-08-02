@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Orbitron, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { SITE } from "@/lib/constants";
+import { GA_MEASUREMENT_ID } from "@/lib/gtag";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -127,6 +129,22 @@ export default function RootLayout({
       <body style={{ fontFamily: "Inter, sans-serif", background: "#0f172a", color: "#e2e8f0" }}>
         {children}
         <Analytics />
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

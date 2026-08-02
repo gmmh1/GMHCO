@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { Send, CheckCircle, AlertCircle, ChevronRight, ChevronLeft, Package } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { PACKAGE_REQUEST_KEY, type PendingPackageRequest } from "@/lib/packageRequest";
+import { trackEvent } from "@/lib/gtag";
 
 const schema = z.object({
   name:    z.string().min(2),
@@ -62,6 +63,7 @@ export default function Contact() {
     try {
       const res = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
       if (!res.ok) throw new Error();
+      trackEvent("generate_lead", { service: data.service, source: "contact_form" });
       setStatus("success");
     } catch {
       setStatus("error");
