@@ -22,8 +22,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const BUDGET_OPTIONS = [
-  "Under $2,000", "$2,000 – $5,000", "$5,000 – $15,000",
-  "$15,000 – $50,000", "$50,000+", "Prefer not to say",
+  "Under $5,000", "$5,000 – $10,000", "$10,000 – $25,000",
+  "$25,000 – $50,000", "$50,000+", "Prefer not to say",
 ];
 
 export default function Contact() {

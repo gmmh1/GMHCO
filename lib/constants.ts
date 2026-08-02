@@ -50,7 +50,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["IT consulting", "solution architecture", "technology strategy", "enterprise consulting"],
-    startingAt: "$2,500",
+    startingAt: "$4,500",
   },
   {
     slug: "google-ads-analytics",
@@ -81,7 +81,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["Google Ads management", "GA4 setup", "PPC agency London", "AI-powered performance ads", "Campaign Manager 360"],
-    startingAt: "£695/mo",
+    startingAt: "£950/mo",
   },
   {
     slug: "data-analytics-bi",
@@ -108,11 +108,11 @@ export const SERVICES = [
       },
       {
         q: "Do you provide ongoing reporting retainers?",
-        a: "Yes. Monthly analytics retainers are available from $500/month for dashboard maintenance and automated report delivery.",
+        a: "Yes. Monthly analytics retainers are available from $1,000/month for dashboard maintenance and automated report delivery.",
       },
     ],
     keywords: ["business intelligence", "data analytics consultant", "Power BI consultant", "Python data analysis", "KPI dashboard"],
-    startingAt: "$3,000",
+    startingAt: "$6,000",
   },
   {
     slug: "api-systems-integration",
@@ -143,7 +143,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["API development", "systems integration", "CRM integration", "REST API developer", "Stripe integration"],
-    startingAt: "$2,000",
+    startingAt: "$4,500",
   },
   {
     slug: "cloud-devops",
@@ -174,7 +174,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["cloud infrastructure consultant", "DevOps as a service", "AWS deployment", "CI/CD pipeline", "Terraform consultant"],
-    startingAt: "$3,500",
+    startingAt: "$6,500",
   },
   {
     slug: "ai-solutions-automation",
@@ -205,7 +205,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["AI automation agency", "business process automation", "n8n consultant", "workflow automation UK", "LLM integration"],
-    startingAt: "$4,000",
+    startingAt: "$7,000",
   },
   {
     slug: "fullstack-saas-development",
@@ -237,7 +237,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["SaaS development company", "full stack developer UK", "Next.js developer", "web application development London"],
-    startingAt: "$5,000",
+    startingAt: "$12,000",
   },
   {
     slug: "ai-agents-chatbots-rag",
@@ -268,7 +268,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["AI chatbot development", "RAG system build", "custom AI agent", "knowledge base chatbot", "LangChain developer"],
-    startingAt: "$3,500",
+    startingAt: "$7,500",
   },
   {
     slug: "mobile-app-development",
@@ -299,7 +299,7 @@ export const SERVICES = [
       },
     ],
     keywords: ["mobile app development UK", "React Native developer", "iOS Android app agency", "cross-platform mobile app"],
-    startingAt: "$6,000",
+    startingAt: "$12,000",
   },
 ];
 
@@ -375,10 +375,9 @@ export const GOOGLE_ADS_SERVICE_DETAIL = {
 };
 
 // Interactive "build your own package" pricing data for the google-ads-analytics
-// service page. Base price + optional add-ons, priced against UK PPC market rates
-// (typical UK agency retainers run £300-£2,000/mo, avg ~£1,040/mo; entry-level
-// scoped retainers £500-£750/mo) so £695 base + modular add-ons reads as
-// competitive rather than arbitrary.
+// service page. Base price + optional add-ons, positioned mid-market against UK
+// PPC rates (agency retainers run £300-£2,000/mo, avg ~£1,040/mo) — £950 base
+// sits just above the UK average rather than at the entry-level £500-£750 floor.
 export type PackageAddon = { id: string; label: string; price: number; desc: string };
 export type PackageCategory = { name: string; addons: PackageAddon[] };
 export type PackageBuilderConfig = {
@@ -391,14 +390,15 @@ export type PackageBuilderConfig = {
 };
 
 // "Build your own package" pricing for every service detail page. One-time
-// project services (everything except Google Ads) are priced against 2026
-// market research: agency per-integration/per-feature add-ons typically run
-// $2,000-$8,000, so these boutique increments ($450-$2,000) sit deliberately
-// below that — consistent with GMHCO's existing base prices already being
-// well under typical agency/enterprise rates for the same scope of work.
+// project services (everything except Google Ads) are priced mid-market against
+// 2026 research: agency per-integration/per-feature add-ons commonly run
+// $2,000-$8,000+ (CRM integrations $3k-8k, SaaS Stripe billing $1.5k-4k, RAG
+// data-source ingestion $2k-5k, etc.), so these increments are scaled up from
+// GMHCO's original boutique-floor pricing to sit solidly mid-market rather
+// than undercutting even budget/offshore rates.
 export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
   "google-ads-analytics": {
-    basePrice: 695,
+    basePrice: 950,
     currency: "£",
     unit: "month",
     baseIncludes: [
@@ -418,45 +418,45 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "Campaign Types",
         addons: [
-          { id: "pmax", label: "Performance Max Campaigns", price: 150, desc: "AI-powered campaigns across Search, Display, Maps, YouTube, Gmail and Discover." },
-          { id: "display", label: "Google Display Campaigns", price: 125, desc: "Expand your reach through Google's Display Network." },
-          { id: "shopping", label: "Google Shopping Campaigns", price: 175, desc: "For ecommerce businesses selling physical products." },
-          { id: "demandgen", label: "Demand Gen Campaigns", price: 175, desc: "Reach new audiences using Google's AI-powered discovery placements." },
-          { id: "youtube", label: "YouTube Advertising", price: 200, desc: "Video advertising for brand awareness and lead generation." },
+          { id: "pmax", label: "Performance Max Campaigns", price: 200, desc: "AI-powered campaigns across Search, Display, Maps, YouTube, Gmail and Discover." },
+          { id: "display", label: "Google Display Campaigns", price: 175, desc: "Expand your reach through Google's Display Network." },
+          { id: "shopping", label: "Google Shopping Campaigns", price: 250, desc: "For ecommerce businesses selling physical products." },
+          { id: "demandgen", label: "Demand Gen Campaigns", price: 250, desc: "Reach new audiences using Google's AI-powered discovery placements." },
+          { id: "youtube", label: "YouTube Advertising", price: 275, desc: "Video advertising for brand awareness and lead generation." },
         ],
       },
       {
         name: "Tracking & Analytics",
         addons: [
-          { id: "enhanced-conversions", label: "Enhanced Conversions", price: 75, desc: "Improve conversion accuracy and campaign optimisation." },
-          { id: "call-tracking", label: "Call Tracking", price: 95, desc: "Track phone enquiries generated by your campaigns." },
-          { id: "ecommerce-tracking", label: "Ecommerce Tracking", price: 125, desc: "Advanced purchase and revenue tracking for online stores." },
-          { id: "custom-dashboard", label: "Custom GA4 Dashboard", price: 95, desc: "A bespoke dashboard tailored to your business KPIs." },
+          { id: "enhanced-conversions", label: "Enhanced Conversions", price: 100, desc: "Improve conversion accuracy and campaign optimisation." },
+          { id: "call-tracking", label: "Call Tracking", price: 125, desc: "Track phone enquiries generated by your campaigns." },
+          { id: "ecommerce-tracking", label: "Ecommerce Tracking", price: 175, desc: "Advanced purchase and revenue tracking for online stores." },
+          { id: "custom-dashboard", label: "Custom GA4 Dashboard", price: 125, desc: "A bespoke dashboard tailored to your business KPIs." },
         ],
       },
       {
         name: "Optimisation & Growth",
         addons: [
-          { id: "weekly-optimisation", label: "Weekly Campaign Optimisation", price: 150, desc: "More frequent optimisation for faster performance improvements." },
-          { id: "landing-page-reviews", label: "Landing Page Reviews & Recommendations", price: 125, desc: "Monthly conversion-focused landing page analysis." },
-          { id: "ab-testing", label: "A/B Ad Copy Testing", price: 95, desc: "Continuous testing to improve click-through and conversion rates." },
-          { id: "competitor-monitoring", label: "Competitor Monitoring", price: 95, desc: "Track competitor activity and identify new opportunities." },
-          { id: "audience-optimisation", label: "Advanced Audience Optimisation", price: 125, desc: "Build and refine audience segments for improved targeting." },
+          { id: "weekly-optimisation", label: "Weekly Campaign Optimisation", price: 200, desc: "More frequent optimisation for faster performance improvements." },
+          { id: "landing-page-reviews", label: "Landing Page Reviews & Recommendations", price: 175, desc: "Monthly conversion-focused landing page analysis." },
+          { id: "ab-testing", label: "A/B Ad Copy Testing", price: 125, desc: "Continuous testing to improve click-through and conversion rates." },
+          { id: "competitor-monitoring", label: "Competitor Monitoring", price: 125, desc: "Track competitor activity and identify new opportunities." },
+          { id: "audience-optimisation", label: "Advanced Audience Optimisation", price: 175, desc: "Build and refine audience segments for improved targeting." },
         ],
       },
       {
         name: "Reporting & Strategy",
         addons: [
-          { id: "live-dashboard", label: "Live Performance Dashboard", price: 75, desc: "24/7 access to campaign performance." },
-          { id: "monthly-call", label: "Monthly Strategy Call", price: 95, desc: "A one-to-one session to review performance and discuss next steps." },
-          { id: "fortnightly-calls", label: "Fortnightly Strategy Calls", price: 175, desc: "Ideal for businesses scaling quickly." },
+          { id: "live-dashboard", label: "Live Performance Dashboard", price: 100, desc: "24/7 access to campaign performance." },
+          { id: "monthly-call", label: "Monthly Strategy Call", price: 125, desc: "A one-to-one session to review performance and discuss next steps." },
+          { id: "fortnightly-calls", label: "Fortnightly Strategy Calls", price: 250, desc: "Ideal for businesses scaling quickly." },
         ],
       },
     ],
   },
 
   "technology-consulting": {
-    basePrice: 2500,
+    basePrice: 4500,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -470,25 +470,25 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "Deeper Discovery",
         addons: [
-          { id: "extended-workshops", label: "Extended Discovery Workshops", price: 750, desc: "Additional stakeholder sessions to align multiple teams before scoping." },
-          { id: "competitor-analysis", label: "Competitor & Market Technology Analysis", price: 500, desc: "See how your tech stack compares to direct competitors." },
-          { id: "post-roadmap-advisory", label: "90-Day Post-Roadmap Advisory", price: 600, desc: "Check-ins as you begin implementation to keep decisions on track." },
+          { id: "extended-workshops", label: "Extended Discovery Workshops", price: 1350, desc: "Additional stakeholder sessions to align multiple teams before scoping." },
+          { id: "competitor-analysis", label: "Competitor & Market Technology Analysis", price: 900, desc: "See how your tech stack compares to direct competitors." },
+          { id: "post-roadmap-advisory", label: "90-Day Post-Roadmap Advisory", price: 1100, desc: "Check-ins as you begin implementation to keep decisions on track." },
         ],
       },
       {
         name: "Execution Support",
         addons: [
-          { id: "vendor-rfp", label: "Vendor Selection & RFP Support", price: 600, desc: "We help shortlist, script RFPs, and evaluate vendor proposals." },
-          { id: "poc-build", label: "Rapid Proof-of-Concept Build", price: 1500, desc: "Validate the riskiest assumption in your roadmap before full investment." },
-          { id: "pitch-deck", label: "Board-Ready Presentation & Pitch Deck", price: 450, desc: "A polished deck to secure budget and buy-in from stakeholders." },
-          { id: "change-management", label: "Change Management & Team Training Plan", price: 800, desc: "A rollout plan that gets your team using the new system, not resisting it." },
+          { id: "vendor-rfp", label: "Vendor Selection & RFP Support", price: 1100, desc: "We help shortlist, script RFPs, and evaluate vendor proposals." },
+          { id: "poc-build", label: "Rapid Proof-of-Concept Build", price: 2700, desc: "Validate the riskiest assumption in your roadmap before full investment." },
+          { id: "pitch-deck", label: "Board-Ready Presentation & Pitch Deck", price: 800, desc: "A polished deck to secure budget and buy-in from stakeholders." },
+          { id: "change-management", label: "Change Management & Team Training Plan", price: 1450, desc: "A rollout plan that gets your team using the new system, not resisting it." },
         ],
       },
     ],
   },
 
   "data-analytics-bi": {
-    basePrice: 3000,
+    basePrice: 6000,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -498,29 +498,29 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       "Automated Reporting System",
       "Data Quality & Governance Assessment",
     ],
-    note: "Monthly dashboard maintenance retainers available from $500/month.",
+    note: "Monthly dashboard maintenance retainers available from $1,000/month.",
     categories: [
       {
         name: "More Dashboards & Data",
         addons: [
-          { id: "extra-dashboard", label: "Additional Dashboard", price: 900, desc: "A second dashboard for another team, department, or metric set." },
-          { id: "multi-source", label: "Multi-Source Data Consolidation", price: 700, desc: "Connect 2+ extra data sources into one unified view." },
-          { id: "etl-pipeline", label: "Automated ETL Data Pipeline", price: 900, desc: "Scheduled extraction and transformation so your data refreshes itself." },
+          { id: "extra-dashboard", label: "Additional Dashboard", price: 1800, desc: "A second dashboard for another team, department, or metric set." },
+          { id: "multi-source", label: "Multi-Source Data Consolidation", price: 1400, desc: "Connect 2+ extra data sources into one unified view." },
+          { id: "etl-pipeline", label: "Automated ETL Data Pipeline", price: 1800, desc: "Scheduled extraction and transformation so your data refreshes itself." },
         ],
       },
       {
         name: "Advanced Capabilities",
         addons: [
-          { id: "predictive-analytics", label: "Predictive Analytics / Forecasting Model", price: 1200, desc: "Forward-looking projections built on your historical data." },
-          { id: "client-portal", label: "White-Labelled Client Reporting Portal", price: 800, desc: "Branded, shareable reporting for your own clients or investors." },
-          { id: "data-governance", label: "Data Governance & Access Control Setup", price: 500, desc: "Role-based permissions and audit trails for sensitive data." },
+          { id: "predictive-analytics", label: "Predictive Analytics / Forecasting Model", price: 2400, desc: "Forward-looking projections built on your historical data." },
+          { id: "client-portal", label: "White-Labelled Client Reporting Portal", price: 1600, desc: "Branded, shareable reporting for your own clients or investors." },
+          { id: "data-governance", label: "Data Governance & Access Control Setup", price: 1000, desc: "Role-based permissions and audit trails for sensitive data." },
         ],
       },
     ],
   },
 
   "api-systems-integration": {
-    basePrice: 2000,
+    basePrice: 4500,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -534,24 +534,24 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "Additional Integrations",
         addons: [
-          { id: "extra-system", label: "Additional System Integration", price: 800, desc: "Connect one more platform to your existing integration architecture." },
-          { id: "legacy-adapter", label: "Legacy / Non-Standard API Adapter", price: 1200, desc: "A custom adapter layer for systems without a modern REST API." },
-          { id: "data-migration", label: "Historical Data Migration", price: 900, desc: "One-time transfer of existing records into the connected systems." },
+          { id: "extra-system", label: "Additional System Integration", price: 1800, desc: "Connect one more platform to your existing integration architecture." },
+          { id: "legacy-adapter", label: "Legacy / Non-Standard API Adapter", price: 2700, desc: "A custom adapter layer for systems without a modern REST API." },
+          { id: "data-migration", label: "Historical Data Migration", price: 2000, desc: "One-time transfer of existing records into the connected systems." },
         ],
       },
       {
         name: "Reliability & Docs",
         addons: [
-          { id: "realtime-sync", label: "Real-Time Sync & Webhook Automation", price: 600, desc: "Instant two-way updates instead of scheduled batch syncs." },
-          { id: "api-security", label: "API Security Hardening & Rate Limiting", price: 500, desc: "Extra protection against abuse, key leaks, and traffic spikes." },
-          { id: "api-docs-portal", label: "API Documentation Portal", price: 450, desc: "A developer-facing docs site for your own team or partners." },
+          { id: "realtime-sync", label: "Real-Time Sync & Webhook Automation", price: 1350, desc: "Instant two-way updates instead of scheduled batch syncs." },
+          { id: "api-security", label: "API Security Hardening & Rate Limiting", price: 1125, desc: "Extra protection against abuse, key leaks, and traffic spikes." },
+          { id: "api-docs-portal", label: "API Documentation Portal", price: 1000, desc: "A developer-facing docs site for your own team or partners." },
         ],
       },
     ],
   },
 
   "cloud-devops": {
-    basePrice: 3500,
+    basePrice: 6500,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -565,24 +565,24 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "Architecture & Scale",
         addons: [
-          { id: "multi-region", label: "Multi-Cloud / Multi-Region Architecture", price: 1500, desc: "Redundancy across providers or regions for maximum uptime." },
-          { id: "kubernetes", label: "Kubernetes / Container Orchestration", price: 1800, desc: "Full container orchestration for services that need to scale independently." },
-          { id: "blue-green", label: "Zero-Downtime Blue-Green Deployment", price: 800, desc: "Ship releases with no visible downtime and instant rollback." },
+          { id: "multi-region", label: "Multi-Cloud / Multi-Region Architecture", price: 2800, desc: "Redundancy across providers or regions for maximum uptime." },
+          { id: "kubernetes", label: "Kubernetes / Container Orchestration", price: 3300, desc: "Full container orchestration for services that need to scale independently." },
+          { id: "blue-green", label: "Zero-Downtime Blue-Green Deployment", price: 1500, desc: "Ship releases with no visible downtime and instant rollback." },
         ],
       },
       {
         name: "Resilience & Cost",
         addons: [
-          { id: "disaster-recovery", label: "Disaster Recovery & Backup Strategy", price: 900, desc: "A tested plan and automated backups to recover fast from failure." },
-          { id: "advanced-monitoring", label: "Advanced Monitoring & Alerting Setup", price: 700, desc: "Deeper observability so your team knows before your users do." },
-          { id: "cost-optimisation", label: "Cloud Cost Optimisation Audit", price: 600, desc: "Identify and eliminate wasted cloud spend." },
+          { id: "disaster-recovery", label: "Disaster Recovery & Backup Strategy", price: 1700, desc: "A tested plan and automated backups to recover fast from failure." },
+          { id: "advanced-monitoring", label: "Advanced Monitoring & Alerting Setup", price: 1300, desc: "Deeper observability so your team knows before your users do." },
+          { id: "cost-optimisation", label: "Cloud Cost Optimisation Audit", price: 1100, desc: "Identify and eliminate wasted cloud spend." },
         ],
       },
     ],
   },
 
   "ai-solutions-automation": {
-    basePrice: 4000,
+    basePrice: 7000,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -596,24 +596,24 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "More Automation",
         addons: [
-          { id: "extra-workflow", label: "Additional Automated Workflow", price: 700, desc: "One more end-to-end workflow automated on top of the first." },
-          { id: "multistep-agent", label: "Multi-Step Autonomous AI Agent", price: 1500, desc: "An agent that chains multiple tools and decisions, not just one task." },
-          { id: "self-hosted-infra", label: "Self-Hosted Automation Infrastructure", price: 600, desc: "Run automation on your own infrastructure instead of per-task SaaS fees." },
+          { id: "extra-workflow", label: "Additional Automated Workflow", price: 1200, desc: "One more end-to-end workflow automated on top of the first." },
+          { id: "multistep-agent", label: "Multi-Step Autonomous AI Agent", price: 2600, desc: "An agent that chains multiple tools and decisions, not just one task." },
+          { id: "self-hosted-infra", label: "Self-Hosted Automation Infrastructure", price: 1050, desc: "Run automation on your own infrastructure instead of per-task SaaS fees." },
         ],
       },
       {
         name: "Advanced AI & Handover",
         addons: [
-          { id: "model-finetuning", label: "Custom Model Fine-Tuning", price: 2000, desc: "A model tuned specifically on your business's language and data." },
-          { id: "automation-dashboard", label: "Automation Analytics Dashboard", price: 500, desc: "See exactly what your automations are doing and where they save time." },
-          { id: "staff-training", label: "Staff Training & Handover Sessions", price: 450, desc: "Get your team confident maintaining and extending the automation." },
+          { id: "model-finetuning", label: "Custom Model Fine-Tuning", price: 3500, desc: "A model tuned specifically on your business's language and data." },
+          { id: "automation-dashboard", label: "Automation Analytics Dashboard", price: 900, desc: "See exactly what your automations are doing and where they save time." },
+          { id: "staff-training", label: "Staff Training & Handover Sessions", price: 800, desc: "Get your team confident maintaining and extending the automation." },
         ],
       },
     ],
   },
 
   "fullstack-saas-development": {
-    basePrice: 5000,
+    basePrice: 12000,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -628,24 +628,24 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "Platform Features",
         addons: [
-          { id: "admin-dashboard", label: "Admin Dashboard & Role-Based Access", price: 1200, desc: "Internal tooling to manage users, permissions, and content." },
-          { id: "multi-tenant", label: "Multi-Tenant Architecture", price: 1800, desc: "Serve multiple customer organisations from one codebase, cleanly isolated." },
-          { id: "subscription-billing", label: "Subscription Billing & Usage Metering", price: 900, desc: "Plans, upgrades, downgrades, and usage-based billing logic." },
+          { id: "admin-dashboard", label: "Admin Dashboard & Role-Based Access", price: 2900, desc: "Internal tooling to manage users, permissions, and content." },
+          { id: "multi-tenant", label: "Multi-Tenant Architecture", price: 4300, desc: "Serve multiple customer organisations from one codebase, cleanly isolated." },
+          { id: "subscription-billing", label: "Subscription Billing & Usage Metering", price: 2200, desc: "Plans, upgrades, downgrades, and usage-based billing logic." },
         ],
       },
       {
         name: "Growth & Reach",
         addons: [
-          { id: "third-party-integration", label: "Third-Party Integration", price: 700, desc: "Connect one more platform — Slack, Twilio, HubSpot, or similar." },
-          { id: "localisation", label: "Multi-Language / Localisation", price: 800, desc: "Serve customers in more than one language from day one." },
-          { id: "advanced-analytics", label: "Advanced Analytics & Reporting", price: 600, desc: "In-product usage analytics and reporting for your own customers." },
+          { id: "third-party-integration", label: "Third-Party Integration", price: 1700, desc: "Connect one more platform — Slack, Twilio, HubSpot, or similar." },
+          { id: "localisation", label: "Multi-Language / Localisation", price: 1900, desc: "Serve customers in more than one language from day one." },
+          { id: "advanced-analytics", label: "Advanced Analytics & Reporting", price: 1450, desc: "In-product usage analytics and reporting for your own customers." },
         ],
       },
     ],
   },
 
   "ai-agents-chatbots-rag": {
-    basePrice: 3500,
+    basePrice: 7500,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -659,24 +659,24 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "Knowledge & Intelligence",
         addons: [
-          { id: "extra-data-source", label: "Additional Data Source Ingestion", price: 600, desc: "Ingest one more document set, database, or knowledge base." },
-          { id: "domain-finetuning", label: "Fine-Tuned Domain-Specific Model", price: 1500, desc: "A model tuned on your industry's language for sharper answers." },
-          { id: "multilingual-chat", label: "Multi-Language Support", price: 700, desc: "Answer questions in more than one language automatically." },
+          { id: "extra-data-source", label: "Additional Data Source Ingestion", price: 1300, desc: "Ingest one more document set, database, or knowledge base." },
+          { id: "domain-finetuning", label: "Fine-Tuned Domain-Specific Model", price: 3200, desc: "A model tuned on your industry's language for sharper answers." },
+          { id: "multilingual-chat", label: "Multi-Language Support", price: 1500, desc: "Answer questions in more than one language automatically." },
         ],
       },
       {
         name: "Experience & Support",
         addons: [
-          { id: "voice-interface", label: "Voice Interface", price: 1200, desc: "Speech-to-text and text-to-speech for voice-based interactions." },
-          { id: "human-handoff", label: "Human Handoff / Live Agent Escalation", price: 500, desc: "Seamless escalation to a real person when the AI reaches its limits." },
-          { id: "branded-widget", label: "Custom Branded Widget UI", price: 450, desc: "A chat widget designed to match your brand, not a generic template." },
+          { id: "voice-interface", label: "Voice Interface", price: 2600, desc: "Speech-to-text and text-to-speech for voice-based interactions." },
+          { id: "human-handoff", label: "Human Handoff / Live Agent Escalation", price: 1100, desc: "Seamless escalation to a real person when the AI reaches its limits." },
+          { id: "branded-widget", label: "Custom Branded Widget UI", price: 950, desc: "A chat widget designed to match your brand, not a generic template." },
         ],
       },
     ],
   },
 
   "mobile-app-development": {
-    basePrice: 6000,
+    basePrice: 12000,
     currency: "$",
     unit: "one-time",
     baseIncludes: [
@@ -690,17 +690,17 @@ export const PACKAGE_BUILDERS: Record<string, PackageBuilderConfig> = {
       {
         name: "Monetisation & Engagement",
         addons: [
-          { id: "in-app-purchases", label: "In-App Purchases / Subscriptions", price: 1200, desc: "Native billing for one-off purchases or recurring subscriptions." },
-          { id: "push-campaigns", label: "Advanced Push Notification Campaigns", price: 500, desc: "Segmented, scheduled, and triggered push notification flows." },
-          { id: "native-feature-module", label: "Native Platform-Specific Feature Module", price: 800, desc: "A feature that needs deep native integration on iOS or Android." },
+          { id: "in-app-purchases", label: "In-App Purchases / Subscriptions", price: 2400, desc: "Native billing for one-off purchases or recurring subscriptions." },
+          { id: "push-campaigns", label: "Advanced Push Notification Campaigns", price: 1000, desc: "Segmented, scheduled, and triggered push notification flows." },
+          { id: "native-feature-module", label: "Native Platform-Specific Feature Module", price: 1600, desc: "A feature that needs deep native integration on iOS or Android." },
         ],
       },
       {
         name: "Experience & Security",
         addons: [
-          { id: "offline-mode", label: "Offline Mode & Local Data Sync", price: 900, desc: "The app stays usable without a connection and syncs when back online." },
-          { id: "biometric-auth", label: "Biometric Authentication", price: 600, desc: "Face ID / fingerprint login for faster, more secure access." },
-          { id: "aso-package", label: "App Store Optimisation Package", price: 450, desc: "Keyword research, screenshots, and listing copy to improve store ranking." },
+          { id: "offline-mode", label: "Offline Mode & Local Data Sync", price: 1800, desc: "The app stays usable without a connection and syncs when back online." },
+          { id: "biometric-auth", label: "Biometric Authentication", price: 1200, desc: "Face ID / fingerprint login for faster, more secure access." },
+          { id: "aso-package", label: "App Store Optimisation Package", price: 900, desc: "Keyword research, screenshots, and listing copy to improve store ranking." },
         ],
       },
     ],
@@ -917,7 +917,7 @@ export const FAQS = [
     slug: "retainers",
     question: "Do you offer retainer-based engagements?",
     answer:
-      "Yes. Google Ads management is available from £695/month, with analytics support and AI system maintenance also available on monthly retainers.",
+      "Yes. Google Ads management is available from £950/month, with analytics support and AI system maintenance also available on monthly retainers.",
   },
   {
     slug: "differentiator",
@@ -953,7 +953,7 @@ export const FAQS = [
     slug: "google-ads-pricing",
     question: "How much does GMHCO's Google Ads management cost?",
     answer:
-      "Google Ads management starts at £695 per month for the base package (Search campaigns, GA4, GTM, conversion tracking, monthly optimisation and reporting). You then build your own package by adding only the extra campaign types, tracking, or reporting you need — the price updates accordingly. Recommended ad spend on top of that is £1,000–£3,000 monthly for local businesses, £3,000–£10,000 for growing businesses, or £10,000+ for national campaigns.",
+      "Google Ads management starts at £950 per month for the base package (Search campaigns, GA4, GTM, conversion tracking, monthly optimisation and reporting). You then build your own package by adding only the extra campaign types, tracking, or reporting you need — the price updates accordingly. Recommended ad spend on top of that is £1,000–£3,000 monthly for local businesses, £3,000–£10,000 for growing businesses, or £10,000+ for national campaigns.",
   },
   {
     slug: "google-ads-results",
@@ -965,7 +965,7 @@ export const FAQS = [
     slug: "saas-development-pricing",
     question: "How much does custom SaaS development cost with GMHCO?",
     answer:
-      "Full-stack SaaS development starts at $5,000. GMHCO has designed and shipped its own production SaaS products — including TeamsAI (teamsai.uk) and SalonTime (salontime.org) — both live today.",
+      "Full-stack SaaS development starts at $12,000. GMHCO has designed and shipped its own production SaaS products — including TeamsAI (teamsai.uk) and SalonTime (salontime.org) — both live today.",
   },
   {
     slug: "rag-support-tickets",
@@ -983,7 +983,7 @@ export const FAQS = [
     slug: "mobile-app-pricing",
     question: "How much does mobile app development cost?",
     answer:
-      "Cross-platform mobile app development starts at $6,000, using React Native to ship a single codebase to both iOS and Android without sacrificing native performance.",
+      "Cross-platform mobile app development starts at $12,000, using React Native to ship a single codebase to both iOS and Android without sacrificing native performance.",
   },
   {
     slug: "location-and-regions",
@@ -1097,15 +1097,17 @@ ABOUT GMHCO:
 - Serves enterprise and high-growth clients worldwide
 
 9 CORE SERVICES WITH STARTING PRICES:
-1. Technology Consulting & Solution Strategy — Starting at $2,500
-2. Digital Growth, Google Ads & Analytics — Starting at £695/month base package, fully customisable: clients pick add-on campaign types (Performance Max, Display, Shopping, Demand Gen, YouTube), extra tracking, optimisation frequency, and reporting/strategy calls, each with its own monthly price, so the final quote reflects exactly what they need (see /services/google-ads-analytics for the package builder)
-3. Data Analytics, Business Intelligence & Reporting — Starting at $3,000
-4. API Development & Systems Integration — Starting at $2,000
-5. Cloud Infrastructure, DevOps & Deployment — Starting at $3,500
-6. AI Solutions Architect & Business Automation — Starting at $4,000
-7. Full-Stack Web & SaaS Development — Starting at $5,000
-8. AI Agents, Chatbots & RAG Systems — Starting at $3,500
-9. Mobile App Development & Cross-Platform Solutions — Starting at $6,000
+1. Technology Consulting & Solution Strategy — Starting at $4,500
+2. Digital Growth, Google Ads & Analytics — Starting at £950/month base package, fully customisable: clients pick add-on campaign types (Performance Max, Display, Shopping, Demand Gen, YouTube), extra tracking, optimisation frequency, and reporting/strategy calls, each with its own monthly price, so the final quote reflects exactly what they need (see /services/google-ads-analytics for the package builder)
+3. Data Analytics, Business Intelligence & Reporting — Starting at $6,000
+4. API Development & Systems Integration — Starting at $4,500
+5. Cloud Infrastructure, DevOps & Deployment — Starting at $6,500
+6. AI Solutions Architect & Business Automation — Starting at $7,000
+7. Full-Stack Web & SaaS Development — Starting at $12,000
+8. AI Agents, Chatbots & RAG Systems — Starting at $7,500
+9. Mobile App Development & Cross-Platform Solutions — Starting at $12,000
+
+All 9 services now use an interactive "build your own package" model — clients select add-on features/campaign types/integrations beyond the base package, and the price updates live. When discussing pricing, mention this is a starting/base price and the final quote depends on what they select — direct them to the relevant /services/<slug> page to build their package, or offer to help scope it during the conversation.
 
 YOUR ROLE:
 - Answer questions about GMHCO services, pricing, process, and capabilities with confidence and clarity
