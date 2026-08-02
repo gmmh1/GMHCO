@@ -312,91 +312,6 @@ export const GOOGLE_ADS_SERVICE_DETAIL = {
     "As Google-certified specialists in Search, Display, Shopping, AI-Powered Performance Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4), we help businesses generate more qualified leads, reduce wasted ad spend, and maximise return on investment through data-driven marketing strategies.",
     "Whether you're launching your first campaign or improving an existing account, we build, manage, and optimise every aspect of your advertising to deliver sustainable, long-term growth.",
   ],
-  sections: [
-    {
-      title: "Strategy & Planning",
-      desc: "Every successful campaign starts with a clear strategy.",
-      items: [
-        "Business & competitor analysis",
-        "Market and audience research",
-        "Keyword research & search intent analysis",
-        "Campaign strategy and account planning",
-        "Budget planning & KPI recommendations",
-      ],
-    },
-    {
-      title: "Google Ads Management",
-      desc: "Professionally structured campaigns built for performance.",
-      items: [
-        "Google Search Campaigns",
-        "Performance Max Campaigns",
-        "Display Campaigns",
-        "Shopping Campaigns (where applicable)",
-        "Demand Gen Campaigns (where suitable)",
-        "Audience targeting & segmentation",
-        "Geographic and device targeting",
-        "Ad extensions & campaign assets",
-      ],
-    },
-    {
-      title: "Conversion Tracking & Analytics",
-      desc: "Accurate data is essential for making informed marketing decisions.",
-      items: [
-        "Google Analytics 4 (GA4) setup & audit",
-        "Google Tag Manager implementation",
-        "Conversion tracking setup",
-        "Enhanced Conversions",
-        "Phone call tracking",
-        "Form submission tracking",
-        "Ecommerce tracking (where applicable)",
-        "Cross-domain tracking (where required)",
-      ],
-    },
-    {
-      title: "Continuous Campaign Optimisation",
-      desc: "Google Ads requires ongoing management to achieve the best results. Our monthly optimisation includes:",
-      items: [
-        "Keyword optimisation",
-        "Negative keyword management",
-        "Search term analysis",
-        "Bid adjustments",
-        "Budget optimisation",
-        "Audience refinement",
-        "Device & location optimisation",
-        "Ad schedule optimisation",
-        "Landing page recommendations",
-        "Quality Score improvements",
-        "Campaign performance reviews",
-      ],
-    },
-    {
-      title: "Ad Copy & Creative Optimisation",
-      desc: "Better ads attract better customers.",
-      items: [
-        "Professional ad copywriting",
-        "Responsive Search Ads",
-        "Headline & description testing",
-        "Performance Max asset optimisation",
-        "Ongoing A/B testing",
-        "Call-to-action optimisation",
-      ],
-    },
-    {
-      title: "Performance Reporting",
-      desc: "Know exactly how your campaigns are performing. You'll receive:",
-      items: [
-        "Live performance dashboard",
-        "Monthly performance report",
-        "Cost Per Lead (CPL)",
-        "Cost Per Acquisition (CPA)",
-        "Conversion Rate",
-        "Return on Ad Spend (ROAS)",
-        "Revenue attribution (where available)",
-        "Strategic recommendations",
-        "Next month's action plan",
-      ],
-    },
-  ],
   whyChooseUs: [
     "Google Ads Certified Professionals",
     "Google Analytics 4 (GA4) Certified",
@@ -445,12 +360,77 @@ export const GOOGLE_ADS_SERVICE_DETAIL = {
       a: "No. Your Google Ads budget is paid directly to Google, while our monthly management fee covers strategy, campaign management, optimisation, reporting, and ongoing support.",
     },
     {
+      q: "Can I change my add-ons after we start?",
+      a: "Yes. Your package isn't fixed — add extra campaign types, tracking, or reporting as your needs grow, or scale back if priorities shift. Changes take effect from the start of the following month.",
+    },
+    {
       q: "How long does it take to see results?",
       a: "Most campaigns begin generating meaningful data within 2–4 weeks. Significant improvements in lead quality, cost per acquisition, and return on ad spend are typically achieved within 8–12 weeks through continuous optimisation and testing.",
     },
     {
       q: "Can you improve my existing Google Ads account?",
       a: "Absolutely. We can audit your current campaigns, identify opportunities for improvement, implement accurate tracking, and optimise performance to maximise your return on investment.",
+    },
+  ],
+};
+
+// Interactive "build your own package" pricing data for the google-ads-analytics
+// service page. Base price + optional add-ons, priced against UK PPC market rates
+// (typical UK agency retainers run £300-£2,000/mo, avg ~£1,040/mo; entry-level
+// scoped retainers £500-£750/mo) so £695 base + modular add-ons reads as
+// competitive rather than arbitrary.
+export const GOOGLE_ADS_PACKAGE_BUILDER = {
+  basePrice: 695,
+  baseIncludes: [
+    "Dedicated Account Manager",
+    "Business & Competitor Analysis",
+    "Google Ads Account Setup or Audit",
+    "Google Search Campaign Management",
+    "Google Analytics 4 (GA4) Setup & Audit",
+    "Google Tag Manager (GTM) Implementation",
+    "Conversion Tracking",
+    "Monthly Campaign Optimisation",
+    "Monthly Performance Report",
+    "Email Support",
+  ],
+  recommendedSpend: "£1,000–£3,000/month",
+  categories: [
+    {
+      name: "Campaign Types",
+      addons: [
+        { id: "pmax", label: "Performance Max Campaigns", price: 150, desc: "AI-powered campaigns across Search, Display, Maps, YouTube, Gmail and Discover." },
+        { id: "display", label: "Google Display Campaigns", price: 125, desc: "Expand your reach through Google's Display Network." },
+        { id: "shopping", label: "Google Shopping Campaigns", price: 175, desc: "For ecommerce businesses selling physical products." },
+        { id: "demandgen", label: "Demand Gen Campaigns", price: 175, desc: "Reach new audiences using Google's AI-powered discovery placements." },
+        { id: "youtube", label: "YouTube Advertising", price: 200, desc: "Video advertising for brand awareness and lead generation." },
+      ],
+    },
+    {
+      name: "Tracking & Analytics",
+      addons: [
+        { id: "enhanced-conversions", label: "Enhanced Conversions", price: 75, desc: "Improve conversion accuracy and campaign optimisation." },
+        { id: "call-tracking", label: "Call Tracking", price: 95, desc: "Track phone enquiries generated by your campaigns." },
+        { id: "ecommerce-tracking", label: "Ecommerce Tracking", price: 125, desc: "Advanced purchase and revenue tracking for online stores." },
+        { id: "custom-dashboard", label: "Custom GA4 Dashboard", price: 95, desc: "A bespoke dashboard tailored to your business KPIs." },
+      ],
+    },
+    {
+      name: "Optimisation & Growth",
+      addons: [
+        { id: "weekly-optimisation", label: "Weekly Campaign Optimisation", price: 150, desc: "More frequent optimisation for faster performance improvements." },
+        { id: "landing-page-reviews", label: "Landing Page Reviews & Recommendations", price: 125, desc: "Monthly conversion-focused landing page analysis." },
+        { id: "ab-testing", label: "A/B Ad Copy Testing", price: 95, desc: "Continuous testing to improve click-through and conversion rates." },
+        { id: "competitor-monitoring", label: "Competitor Monitoring", price: 95, desc: "Track competitor activity and identify new opportunities." },
+        { id: "audience-optimisation", label: "Advanced Audience Optimisation", price: 125, desc: "Build and refine audience segments for improved targeting." },
+      ],
+    },
+    {
+      name: "Reporting & Strategy",
+      addons: [
+        { id: "live-dashboard", label: "Live Performance Dashboard", price: 75, desc: "24/7 access to campaign performance." },
+        { id: "monthly-call", label: "Monthly Strategy Call", price: 95, desc: "A one-to-one session to review performance and discuss next steps." },
+        { id: "fortnightly-calls", label: "Fortnightly Strategy Calls", price: 175, desc: "Ideal for businesses scaling quickly." },
+      ],
     },
   ],
 };
@@ -701,7 +681,7 @@ export const FAQS = [
     slug: "google-ads-pricing",
     question: "How much does GMHCO's Google Ads management cost?",
     answer:
-      "Google Ads management starts at £695 per month. Recommended ad spend on top of that is £1,000–£3,000 monthly for local businesses, £3,000–£10,000 for growing businesses, or £10,000+ for national campaigns.",
+      "Google Ads management starts at £695 per month for the base package (Search campaigns, GA4, GTM, conversion tracking, monthly optimisation and reporting). You then build your own package by adding only the extra campaign types, tracking, or reporting you need — the price updates accordingly. Recommended ad spend on top of that is £1,000–£3,000 monthly for local businesses, £3,000–£10,000 for growing businesses, or £10,000+ for national campaigns.",
   },
   {
     slug: "google-ads-results",
@@ -846,7 +826,7 @@ ABOUT GMHCO:
 
 9 CORE SERVICES WITH STARTING PRICES:
 1. Technology Consulting & Solution Strategy — Starting at $2,500
-2. Digital Growth, Google Ads & Analytics — Starting at £695/month
+2. Digital Growth, Google Ads & Analytics — Starting at £695/month base package, fully customisable: clients pick add-on campaign types (Performance Max, Display, Shopping, Demand Gen, YouTube), extra tracking, optimisation frequency, and reporting/strategy calls, each with its own monthly price, so the final quote reflects exactly what they need (see /services/google-ads-analytics for the package builder)
 3. Data Analytics, Business Intelligence & Reporting — Starting at $3,000
 4. API Development & Systems Integration — Starting at $2,000
 5. Cloud Infrastructure, DevOps & Deployment — Starting at $3,500

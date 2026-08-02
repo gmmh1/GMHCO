@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
 import { SERVICES, SITE, GOOGLE_ADS_SERVICE_DETAIL } from "@/lib/constants";
+import GoogleAdsPackageBuilder from "@/components/GoogleAdsPackageBuilder";
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -133,42 +134,7 @@ export default async function ServicePage({
 
         {detail ? (
           <>
-            {/* What's Included */}
-            <div className="mb-16">
-              <h2
-                className="text-2xl font-bold mb-8"
-                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
-              >
-                What&apos;s Included
-              </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {detail.sections.map((section) => (
-                  <div
-                    key={section.title}
-                    className="rounded-2xl p-6"
-                    style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.15)" }}
-                  >
-                    <h3
-                      className="text-base font-semibold mb-2"
-                      style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
-                    >
-                      {section.title}
-                    </h3>
-                    <p className="text-sm mb-4" style={{ color: "#94a3b8" }}>
-                      {section.desc}
-                    </p>
-                    <ul className="space-y-2.5">
-                      {section.items.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <CheckCircle size={15} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
-                          <span className="text-sm" style={{ color: "#cbd5e1" }}>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <GoogleAdsPackageBuilder />
 
             {/* Why Choose Us */}
             <div className="mb-16">
