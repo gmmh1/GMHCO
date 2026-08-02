@@ -40,10 +40,10 @@ export default function Portfolio() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((p, i) => (
-            <motion.div key={p.title}
+            <motion.a key={p.title} href={p.link} target="_blank" rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: i * 0.06 }}
-              className="rounded-2xl overflow-hidden group bg-card border border-lime/10 hover-card">
+              className="rounded-2xl overflow-hidden group bg-card border border-lime/10 hover-card block">
               <div className="relative h-48 overflow-hidden">
                 <Image src={p.image} alt={p.title} fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -61,7 +61,7 @@ export default function Portfolio() {
                   {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

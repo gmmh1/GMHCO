@@ -408,146 +408,91 @@ export const PROCESS_STEPS = [
 
 export const PORTFOLIO_PROJECTS = [
   {
-    title: "Enterprise SaaS Analytics Platform",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    tags: ["Next.js", "Python", "Power BI", "Supabase"],
-    metric: "+340% user engagement",
-    description:
-      "Built a multi-tenant SaaS analytics platform for a UK logistics company with real-time dashboards, predictive reporting, and role-based access control.",
-    category: "SaaS",
-  },
-  {
-    title: "AI-Powered Lead Generation System",
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
-    tags: ["AI Agents", "Google Ads", "HubSpot CRM"],
-    metric: "4.2x ROAS achieved",
-    description:
-      "End-to-end lead funnel with AI qualification chatbot, Google Ads Performance Max campaigns, and automated HubSpot CRM pipeline — zero manual lead sorting.",
-    category: "AI",
-  },
-  {
-    title: "E-Commerce Google Ads Transformation",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    tags: ["Google Ads", "GA4", "Performance Max"],
-    metric: "37% CPC reduction",
-    description:
-      "Rebuilt entire Google Ads account structure with AI bidding strategies, precise audience segmentation, and full GA4 conversion tracking for a UK retailer.",
-    category: "Google Ads",
-  },
-  {
-    title: "RAG Legal Knowledge System",
+    title: "TeamsAI — AI Legal Operating System",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
-    tags: ["RAG", "Groq AI", "Pinecone", "Next.js"],
-    metric: "60% support ticket reduction",
+    tags: ["AI Agents", "SaaS", "Legal Tech", "Self-Hosted LLMs"],
+    metric: "Live product · from £199/mo",
     description:
-      "Private RAG system ingesting 2,400+ legal documents into a vector database, enabling paralegals to query case law in natural language with source citations.",
-    category: "AI",
+      "GMHCO's own SaaS product: nine specialist AI workers covering Family Law, Employment, Corporate, and Property practice areas, with self-hosted, GDPR-compliant private LLMs.",
+    category: "SaaS",
+    link: "https://teamsai.uk",
   },
   {
-    title: "Cross-Platform FinTech Mobile App",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
-    tags: ["React Native", "Node.js", "Stripe", "Biometric Auth"],
-    metric: "4.8/5 App Store rating",
+    title: "SalonTime — AI Booking Platform",
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80",
+    tags: ["SaaS", "AI", "Booking Platform"],
+    metric: "Live product",
     description:
-      "iOS/Android fintech app with biometric authentication, real-time transaction feeds, Stripe payment integration, and automated fraud detection.",
-    category: "Mobile",
+      "GMHCO's own SaaS product: an AI-powered discovery and booking platform for salons, barbershops, and spas, with instant booking and verified trust scores.",
+    category: "SaaS",
+    link: "https://salontime.org",
   },
   {
-    title: "Cloud Migration & DevOps Overhaul",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-    tags: ["AWS", "Terraform", "GitHub Actions", "Docker"],
-    metric: "99.97% uptime achieved",
+    title: "Fixies — Trusted Tradespeople Marketplace",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    tags: ["SaaS", "Marketplace", "AI Matching"],
+    metric: "Live product",
     description:
-      "Migrated a legacy PHP monolith to AWS microservices with Terraform IaC, GitHub Actions CI/CD, CloudWatch monitoring, and 99.97% uptime SLA.",
-    category: "Cloud",
+      "GMHCO's own SaaS product: a marketplace connecting verified, insured tradespeople with customers across the UK via AI-powered pricing and instant matching.",
+    category: "SaaS",
+    link: "https://www.fixies.uk",
+  },
+  {
+    title: "SHYN Legal — Immigration Advisory Website",
+    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80",
+    tags: ["Web Design", "Next.js"],
+    metric: "Live client site",
+    description:
+      "Full website design and build for a UK immigration advisory law firm — spouse & family visas, student visas, skilled worker visas, and naturalisation services.",
+    category: "Web",
+    link: "https://www.shynlegal.co.uk",
+  },
+  {
+    title: "Raipur Society UK — Community Platform",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80",
+    tags: ["Web Design", "Community"],
+    metric: "Live site",
+    description:
+      "Website for a UK community organisation built around culture, learning, and collective progress.",
+    category: "Web",
+    link: "https://raipursociety.uk",
   },
 ];
 
-export const PORTFOLIO_CATEGORIES = ["All", "AI", "Google Ads", "SaaS", "Mobile", "Cloud"];
+export const PORTFOLIO_CATEGORIES = ["All", "SaaS", "Web"];
 
 export const CASE_STUDIES = [
   {
-    title: "From £2k to £18k Monthly Revenue with Google Ads",
-    client: "UK Home Services Company",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
-    tags: ["Google Ads", "GA4", "Conversion Optimisation"],
-    challenge:
-      "Manual bidding, zero conversion tracking, 40% of budget wasted on irrelevant search terms. The client had never seen a positive ROAS from Google Ads in 18 months of self-management.",
-    solution:
-      "Rebuilt the campaign architecture with exact/phrase match hierarchy, implemented GA4 + GTM full conversion tracking for calls and form submissions, switched to Target CPA bidding with an AI-powered Performance Max layer for top-of-funnel reach.",
-    results: [
-      { metric: "230%", label: "Increase in Qualified Leads" },
-      { metric: "37%", label: "Reduction in Cost Per Click" },
-      { metric: "9x", label: "Return on Ad Spend" },
-      { metric: "12 wk", label: "Time to Break-Even" },
-    ],
-  },
-  {
-    title: "RAG System Saves 20 Hours Per Week",
-    client: "Mid-Size Legal Practice",
+    title: "TeamsAI — An AI Operating System for Law Firms",
+    client: "GMHCO Product",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80",
-    tags: ["AI Agents", "RAG", "Groq AI", "Vector DB"],
+    tags: ["AI Agents", "SaaS", "Legal Tech", "Self-Hosted LLMs"],
     challenge:
-      "Paralegals spending 4+ hours daily searching 2,400+ internal documents and case precedents manually. Knowledge was siloed in PDFs with no searchable index.",
+      "Law firms need AI help with repetitive work across practice areas, but most AI tools require sending confidential client data to third-party clouds — a non-starter under GDPR and professional conduct rules.",
     solution:
-      "Built a private RAG system ingesting all documents into a Pinecone vector database, with a Groq-powered Llama query interface, role-based access control, and source-cited answers so staff can trace every response back to the original document.",
+      "GMHCO designed and built TeamsAI from the ground up: nine specialist AI workers covering Family Law, Employment, Corporate, and Property, running on self-hosted, GDPR-compliant private LLMs — live today at teamsai.uk.",
     results: [
-      { metric: "60%", label: "Reduction in Support Tickets" },
-      { metric: "20 hrs", label: "Saved Per Week Per Team" },
-      { metric: "£85k", label: "Estimated Annual Cost Saving" },
-      { metric: "2 wk", label: "Implementation Time" },
+      { metric: "9", label: "Specialist AI Workers" },
+      { metric: "£199", label: "Starting Monthly Price" },
+      { metric: "100%", label: "Self-Hosted & GDPR-Compliant" },
+      { metric: "Live", label: "In Production Today" },
     ],
   },
   {
-    title: "SaaS Platform Launched in 8 Weeks",
-    client: "Logistics SaaS Startup",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-    tags: ["Next.js", "Supabase", "Stripe", "DevOps"],
+    title: "SalonTime — AI-Powered Booking Platform",
+    client: "GMHCO Product",
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
+    tags: ["SaaS", "AI", "Booking Platform"],
     challenge:
-      "Non-technical founder with a validated idea, zero codebase, and a hard 8-week launch deadline to meet their first investor milestone.",
+      "Booking a salon, barbershop, or spa still means phone calls, hold times, and no reliable way to compare trust and quality before you show up.",
     solution:
-      "Full discovery-to-deployment: Figma designs, Next.js + Supabase architecture, Stripe subscription billing, Vercel deployment with CI/CD, and Posthog product analytics — all within the 8-week window.",
+      "GMHCO designed and built SalonTime: an AI-powered discovery and booking platform with instant booking and verified trust scores — live today at salontime.org.",
     results: [
-      { metric: "8 wk", label: "Concept to Production" },
-      { metric: "340%", label: "User Engagement vs Benchmark" },
-      { metric: "$47k", label: "ARR in First Quarter" },
-      { metric: "0", label: "Critical Bugs at Launch" },
+      { metric: "Live", label: "In Production Today" },
+      { metric: "AI", label: "Powered Recommendations" },
+      { metric: "Instant", label: "Booking, No Waiting" },
+      { metric: "Verified", label: "Trust Scores" },
     ],
-  },
-];
-
-export const TESTIMONIALS = [
-  {
-    name: "Sarah Mitchell",
-    role: "Marketing Director",
-    company: "HomeServe UK",
-    rating: 5,
-    quote:
-      "GMHCO transformed our Google Ads account completely. Within 3 months we went from burning budget to consistently hitting 9x ROAS. The level of strategic thinking is unlike any agency I have worked with before.",
-  },
-  {
-    name: "James Okafor",
-    role: "Founder & CEO",
-    company: "LogiTrack SaaS",
-    rating: 5,
-    quote:
-      "Delivered our entire SaaS platform in 8 weeks. Clean code, excellent communication, and the app actually works exactly as we designed it. We already have paying customers. Cannot recommend highly enough.",
-  },
-  {
-    name: "Dr. Priya Sharma",
-    role: "Managing Partner",
-    company: "Sharma Legal Associates",
-    rating: 5,
-    quote:
-      "The RAG system GMHCO built has genuinely changed how our team works. Paralegals can query 2,000 case documents in seconds. We estimate it saves us over 20 hours per week across the team.",
-  },
-  {
-    name: "Marcus Chen",
-    role: "Head of Growth",
-    company: "NovaTech Ventures",
-    rating: 5,
-    quote:
-      "Exceptional data analytics work. The Power BI dashboards gave our leadership team real-time visibility into KPIs we had never tracked before. Decision-making has genuinely improved.",
   },
 ];
 
@@ -608,21 +553,21 @@ export const FAQS = [
   },
   {
     slug: "google-ads-results",
-    question: "What results has GMHCO delivered with Google Ads?",
+    question: "What experience does GMHCO have with Google Ads?",
     answer:
-      "One UK home services client grew from £2,000 to £18,000 in monthly revenue after a full account rebuild — 230% more qualified leads, a 37% lower cost-per-click, and 9x return on ad spend within 12 weeks.",
+      "GMHCO holds active Google Ads Search, Measurement, and AI-Powered Performance Ads certifications, and manages campaigns using GA4 and GTM conversion tracking with a Target CPA + Performance Max approach.",
   },
   {
     slug: "saas-development-pricing",
     question: "How much does custom SaaS development cost with GMHCO?",
     answer:
-      "Full-stack SaaS development starts at $5,000. One client's platform launched in 8 weeks from concept to production and reached $47,000 in first-quarter annual recurring revenue with zero critical bugs at launch.",
+      "Full-stack SaaS development starts at $5,000. GMHCO has designed and shipped its own production SaaS products — including TeamsAI (teamsai.uk) and SalonTime (salontime.org) — both live today.",
   },
   {
     slug: "rag-support-tickets",
     question: "Can a RAG system reduce support ticket volume?",
     answer:
-      "Yes. One GMHCO client's RAG-based knowledge system cut support tickets by 60% and saved roughly 20 hours per week per team, implemented in 2 weeks.",
+      "Yes — a well-built RAG system lets a team query internal documents in natural language instead of searching manually. GMHCO's own TeamsAI product applies this approach to legal knowledge work.",
   },
   {
     slug: "certifications",
@@ -634,7 +579,7 @@ export const FAQS = [
     slug: "mobile-app-pricing",
     question: "How much does mobile app development cost?",
     answer:
-      "Cross-platform mobile app development starts at $6,000. GMHCO has shipped a React Native fintech app with Stripe payments, biometric authentication, and automated fraud detection that reached a 4.8-out-of-5 App Store rating.",
+      "Cross-platform mobile app development starts at $6,000, using React Native to ship a single codebase to both iOS and Android without sacrificing native performance.",
   },
   {
     slug: "location-and-regions",

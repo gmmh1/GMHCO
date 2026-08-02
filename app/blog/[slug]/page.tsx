@@ -331,10 +331,6 @@ This is where cost climbs fastest:
 
 React Native (and similar frameworks) let you ship one codebase to both iOS and Android, typically cutting cost by 30–40% versus building two fully native apps — with no meaningful difference in user experience for the vast majority of apps. Fully native development is only worth the extra cost for apps pushing hard on platform-specific performance (heavy gaming, AR/VR, real-time audio processing).
 
-## A Real Example
-
-GMHCO built a cross-platform fintech app in React Native with Stripe payment integration, biometric authentication, real-time transaction feeds, and automated fraud detection. It shipped with a 4.8-out-of-5 App Store rating — proof that Tier 3 complexity doesn't have to mean a rough launch.
-
 ## The Right Way to Buy Mobile Development
 
 Don't accept a single fixed quote for a Tier 3 app before a proper scoping phase — payment and biometric features have too many edge cases to price accurately upfront. A transparent partner scopes the hard parts first, prices what's actually known, and builds in phases with working software at each stage.

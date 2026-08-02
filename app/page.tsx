@@ -6,7 +6,6 @@ import Process from "@/components/Process";
 import Certifications from "@/components/Certifications";
 import Portfolio from "@/components/Portfolio";
 import CaseStudies from "@/components/CaseStudies";
-import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import BookingSection from "@/components/BookingSection";
@@ -27,7 +26,6 @@ export default function Home() {
         <Certifications />
         <Portfolio />
         <CaseStudies />
-        <Testimonials />
         <FAQ />
         <Contact />
         <BookingSection />
