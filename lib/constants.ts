@@ -558,44 +558,94 @@ export const TESTIMONIALS = [
 
 export const FAQS = [
   {
+    slug: "client-types",
     question: "What types of clients does GMHCO work with?",
     answer:
       "GMHCO works with startups, scale-ups, and established enterprises worldwide — primarily in the UK, US, Europe, and the Middle East. Our clients typically have serious business goals, budgets to match, and want a strategic technology partner rather than a commodity vendor.",
   },
   {
+    slug: "project-start-time",
     question: "How quickly can a project start?",
     answer:
       "Discovery calls can be booked within 48 hours. For most engagements, scoped work begins within 1–2 weeks of contract signing.",
   },
   {
+    slug: "retainers",
     question: "Do you offer retainer-based engagements?",
     answer:
       "Yes. Google Ads management, analytics support, and AI system maintenance are all available on monthly retainers starting from $1,500/month.",
   },
   {
+    slug: "differentiator",
     question: "What makes GMHCO different from a typical agency?",
     answer:
       "GMHCO is founder-led and specialist-focused. Every engagement is managed personally by GM Morshed Hossain — not handed off to junior staff. You get certified expertise, direct communication, and full accountability at every stage.",
   },
   {
+    slug: "gdpr-compliance",
     question: "How do you handle data privacy and GDPR compliance?",
     answer:
       "All client data is handled under GDPR-compliant practices. Infrastructure is deployed with security hardening, role-based access controls, and encrypted data at rest and in transit.",
   },
   {
+    slug: "stack-integration",
     question: "Can you integrate with our existing technology stack?",
     answer:
       "Absolutely. Systems integration is a core service. We connect new solutions to your existing CRM, ERP, payment systems, or any API-accessible platform without disrupting your current operations.",
   },
   {
+    slug: "what-is-rag",
     question: "What is a RAG system and do I need one?",
     answer:
       "A Retrieval-Augmented Generation (RAG) system lets an AI model answer questions using your own documents, database, or knowledge base — not just its training data. If your team spends significant time searching internal information, a RAG system can save 10–30 hours per week per team member.",
   },
   {
+    slug: "post-launch-support",
     question: "Do you provide post-launch support?",
     answer:
       "Yes. All project engagements include 30 days of post-launch support at no additional cost. Ongoing maintenance and optimisation retainers are available beyond that period.",
+  },
+  {
+    slug: "google-ads-pricing",
+    question: "How much does GMHCO's Google Ads management cost?",
+    answer:
+      "Google Ads management starts at $1,500 per month. Recommended ad spend on top of that is £1,500–£3,000 monthly for local campaigns, or £5,000+ for national or competitive industries.",
+  },
+  {
+    slug: "google-ads-results",
+    question: "What results has GMHCO delivered with Google Ads?",
+    answer:
+      "One UK home services client grew from £2,000 to £18,000 in monthly revenue after a full account rebuild — 230% more qualified leads, a 37% lower cost-per-click, and 9x return on ad spend within 12 weeks.",
+  },
+  {
+    slug: "saas-development-pricing",
+    question: "How much does custom SaaS development cost with GMHCO?",
+    answer:
+      "Full-stack SaaS development starts at $5,000. One client's platform launched in 8 weeks from concept to production and reached $47,000 in first-quarter annual recurring revenue with zero critical bugs at launch.",
+  },
+  {
+    slug: "rag-support-tickets",
+    question: "Can a RAG system reduce support ticket volume?",
+    answer:
+      "Yes. One GMHCO client's RAG-based knowledge system cut support tickets by 60% and saved roughly 20 hours per week per team, implemented in 2 weeks.",
+  },
+  {
+    slug: "certifications",
+    question: "What Google certifications does GMHCO hold?",
+    answer:
+      "GMHCO holds 12+ active certifications, including Google Ads Search, Google Ads Measurement, AI-Powered Performance Ads, Campaign Manager 360, Google Analytics (GA4), and HubSpot Academy — all verifiable through Google Skillshop.",
+  },
+  {
+    slug: "mobile-app-pricing",
+    question: "How much does mobile app development cost?",
+    answer:
+      "Cross-platform mobile app development starts at $6,000. GMHCO has shipped a React Native fintech app with Stripe payments, biometric authentication, and automated fraud detection that reached a 4.8-out-of-5 App Store rating.",
+  },
+  {
+    slug: "location-and-regions",
+    question: "Where is GMHCO based and which regions does it serve?",
+    answer:
+      "GMHCO is based in London, UK, founded in 2023. It serves clients across the UK, US, Europe, and the Middle East, with all engagements led directly by founder GM Morshed Hossain.",
   },
 ];
 

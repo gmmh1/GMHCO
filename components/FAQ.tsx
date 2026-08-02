@@ -11,8 +11,11 @@ export default function FAQ() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    datePublished: "2026-06-21",
+    dateModified: "2026-08-02",
     mainEntity: FAQS.map((f) => ({
       "@type": "Question",
+      "@id": `https://gmhco.org/#faq-${f.slug}`,
       name: f.question,
       acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
@@ -33,9 +36,10 @@ export default function FAQ() {
         <div className="space-y-3">
           {FAQS.map((faq, i) => (
             <div
-              key={i}
+              key={faq.slug}
+              id={`faq-${faq.slug}`}
               className="rounded-xl overflow-hidden transition-all duration-200 bg-card"
-              style={{ border: open === i ? "1px solid rgba(132,255,0,0.4)" : "1px solid rgba(132,255,0,0.1)" }}
+              style={{ border: open === i ? "1px solid rgba(132,255,0,0.4)" : "1px solid rgba(132,255,0,0.1)", scrollMarginTop: "6rem" }}
             >
               <button
                 className="w-full flex items-center justify-between gap-4 text-left"
