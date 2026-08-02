@@ -30,7 +30,7 @@ export default function Contact() {
   const [step,     setStep]    = useState(1);
   const [status,   setStatus]  = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [hasPendingPackage, setHasPendingPackage] = useState(false);
+  const [pendingPackageService, setPendingPackageService] = useState<string | null>(null);
 
   const { register, handleSubmit, trigger, setValue, formState: { errors } } = useForm<FormData>({ resolver: zodResolver(schema) });
 
@@ -45,7 +45,7 @@ export default function Contact() {
       // One-time hydration from sessionStorage on mount, guarded by the `if (!raw) return`
       // above — not a subscription loop, so the set-state-in-effect rule doesn't apply here.
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setHasPendingPackage(true);
+      setPendingPackageService(pending.service);
     } catch {
       // malformed sessionStorage payload — ignore, form stays blank
     }
@@ -91,11 +91,11 @@ export default function Contact() {
           <p className="mt-4 text-base text-slate-400">Tell us what you&apos;re building. We respond within 24 hours.</p>
         </div>
 
-        {hasPendingPackage && (
+        {pendingPackageService && (
           <div className="flex items-center gap-3 mb-8 p-4 rounded-xl bg-lime/10 border border-lime/30">
             <Package size={18} className="text-lime flex-shrink-0" />
             <p className="text-sm text-slate-200">
-              Your custom Google Ads package is ready to send — just add your contact details below.
+              Your custom {pendingPackageService} package is ready to send — just add your contact details below.
             </p>
           </div>
         )}
