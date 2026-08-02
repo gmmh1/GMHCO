@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
-import { SERVICES, SITE, GOOGLE_ADS_SERVICE_DETAIL } from "@/lib/constants";
-import GoogleAdsPackageBuilder from "@/components/GoogleAdsPackageBuilder";
+import { SERVICES, SITE, GOOGLE_ADS_SERVICE_DETAIL, PACKAGE_BUILDERS } from "@/lib/constants";
+import PackageBuilder from "@/components/PackageBuilder";
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -40,6 +40,7 @@ export default async function ServicePage({
   if (!service) notFound();
 
   const detail = slug === "google-ads-analytics" ? GOOGLE_ADS_SERVICE_DETAIL : null;
+  const hasPackageBuilder = Boolean(PACKAGE_BUILDERS[slug]);
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -132,10 +133,10 @@ export default async function ServicePage({
           )}
         </div>
 
+        {hasPackageBuilder && <PackageBuilder slug={slug} />}
+
         {detail ? (
           <>
-            <GoogleAdsPackageBuilder />
-
             {/* Why Choose Us */}
             <div className="mb-16">
               <h2
@@ -219,27 +220,30 @@ export default async function ServicePage({
             </div>
           </>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Deliverables */}
-            <div
-              className="rounded-2xl p-6"
-              style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.15)" }}
-            >
-              <h2
-                className="text-lg font-semibold mb-4"
-                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}
+          <div className={hasPackageBuilder ? "" : "grid grid-cols-1 lg:grid-cols-2 gap-10"}>
+            {/* Deliverables — only shown as a fallback when there's no package builder,
+                since the builder's Base Package card already covers this. */}
+            {!hasPackageBuilder && (
+              <div
+                className="rounded-2xl p-6"
+                style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.15)" }}
               >
-                What You Get
-              </h2>
-              <ul className="space-y-3">
-                {service.deliverables.map((d) => (
-                  <li key={d} className="flex items-start gap-3">
-                    <CheckCircle size={16} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
-                    <span className="text-sm" style={{ color: "#cbd5e1" }}>{d}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <h2
+                  className="text-lg font-semibold mb-4"
+                  style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}
+                >
+                  What You Get
+                </h2>
+                <ul className="space-y-3">
+                  {service.deliverables.map((d) => (
+                    <li key={d} className="flex items-start gap-3">
+                      <CheckCircle size={16} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
+                      <span className="text-sm" style={{ color: "#cbd5e1" }}>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* FAQ */}
             <div className="space-y-4">

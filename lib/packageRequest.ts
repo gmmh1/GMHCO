@@ -1,7 +1,7 @@
-// Shared handoff between the Google Ads package builder (on the service detail
-// page) and the multi-step Contact form (on the homepage). The builder writes
-// a pending request to sessionStorage right before navigating to /#contact;
-// Contact.tsx reads and clears it on mount to prefill the form.
+// Shared handoff between a service page's package builder and the multi-step
+// Contact form (on the homepage). The builder writes a pending request to
+// sessionStorage right before navigating to /#contact; Contact.tsx reads and
+// clears it on mount to prefill the form.
 export const PACKAGE_REQUEST_KEY = "gmhco_package_request";
 
 export type PendingPackageRequest = {
@@ -10,20 +10,25 @@ export type PendingPackageRequest = {
 };
 
 export function buildPackageMessage(params: {
+  serviceTitle: string;
+  currency: "£" | "$";
+  unit: "month" | "one-time";
   basePrice: number;
   addons: { label: string; price: number }[];
   total: number;
-  recommendedSpend: string;
+  note?: string;
 }): string {
+  const suffix = params.unit === "month" ? "/month" : "";
   const lines = [
-    "I'd like to move forward with the following Google Ads package:",
+    `I'd like to move forward with the following ${params.serviceTitle} package:`,
     "",
-    `Base Package — £${params.basePrice}/month`,
-    ...params.addons.map((a) => `+ ${a.label} — £${a.price}/month`),
+    `Base Package — ${params.currency}${params.basePrice}${suffix}`,
+    ...params.addons.map((a) => `+ ${a.label} — ${params.currency}${a.price}${suffix}`),
     "",
-    `Total: £${params.total}/month`,
-    "",
-    `Recommended ad spend: ${params.recommendedSpend}`,
+    `Total: ${params.currency}${params.total}${suffix}`,
   ];
+  if (params.note) {
+    lines.push("", params.note);
+  }
   return lines.join("\n");
 }

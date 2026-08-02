@@ -3,12 +3,11 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { CheckCircle, ArrowRight } from "lucide-react";
-import { GOOGLE_ADS_PACKAGE_BUILDER, SERVICES } from "@/lib/constants";
+import { PACKAGE_BUILDERS, SERVICES } from "@/lib/constants";
 import { PACKAGE_REQUEST_KEY, buildPackageMessage } from "@/lib/packageRequest";
 
-const SERVICE_TITLE = SERVICES.find((s) => s.slug === "google-ads-analytics")!.title;
-
-export default function GoogleAdsPackageBuilder() {
+export default function PackageBuilder({ slug }: { slug: string }) {
+  const config = PACKAGE_BUILDERS[slug];
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   const toggle = (id: string) => {
@@ -21,23 +20,28 @@ export default function GoogleAdsPackageBuilder() {
   };
 
   const selectedAddons = useMemo(
-    () =>
-      GOOGLE_ADS_PACKAGE_BUILDER.categories
-        .flatMap((c) => c.addons)
-        .filter((a) => selected.has(a.id)),
-    [selected]
+    () => (config ? config.categories.flatMap((c) => c.addons).filter((a) => selected.has(a.id)) : []),
+    [config, selected]
   );
 
-  const total = GOOGLE_ADS_PACKAGE_BUILDER.basePrice + selectedAddons.reduce((sum, a) => sum + a.price, 0);
+  if (!config) return null;
+
+  const suffix = config.unit === "month" ? "/mo" : "";
+  const fullSuffix = config.unit === "month" ? "/month" : "";
+  const total = config.basePrice + selectedAddons.reduce((sum, a) => sum + a.price, 0);
+  const serviceTitle = SERVICES.find((s) => s.slug === slug)!.title;
 
   const handleGetPackage = () => {
     const message = buildPackageMessage({
-      basePrice: GOOGLE_ADS_PACKAGE_BUILDER.basePrice,
+      serviceTitle,
+      currency: config.currency,
+      unit: config.unit,
+      basePrice: config.basePrice,
       addons: selectedAddons.map((a) => ({ label: a.label, price: a.price })),
       total,
-      recommendedSpend: GOOGLE_ADS_PACKAGE_BUILDER.recommendedSpend,
+      note: config.note,
     });
-    sessionStorage.setItem(PACKAGE_REQUEST_KEY, JSON.stringify({ service: SERVICE_TITLE, message }));
+    sessionStorage.setItem(PACKAGE_REQUEST_KEY, JSON.stringify({ service: serviceTitle, message }));
   };
 
   return (
@@ -46,7 +50,7 @@ export default function GoogleAdsPackageBuilder() {
         Build Your Package
       </h2>
       <p className="text-sm mb-8" style={{ color: "#94a3b8", maxWidth: "700px" }}>
-        Every business is different. Select the services you need below — your monthly investment updates automatically, so you know exactly what {`£${GOOGLE_ADS_PACKAGE_BUILDER.basePrice}+`} actually gets you.
+        Every business is different. Select the services you need below — your investment updates automatically, so you know exactly what {`${config.currency}${config.basePrice}+`} actually gets you.
       </p>
 
       {/* Base package */}
@@ -59,28 +63,30 @@ export default function GoogleAdsPackageBuilder() {
             Base Package
           </h3>
           <span className="text-lg font-bold" style={{ color: "#84ff00" }}>
-            £{GOOGLE_ADS_PACKAGE_BUILDER.basePrice}/month
+            {config.currency}{config.basePrice}{fullSuffix}
           </span>
         </div>
         <p className="text-sm mb-4" style={{ color: "#94a3b8" }}>
-          Everything needed to launch and manage a professional Google Ads account. Included in every package.
+          Everything needed to get started. Included in every package.
         </p>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4">
-          {GOOGLE_ADS_PACKAGE_BUILDER.baseIncludes.map((item) => (
+          {config.baseIncludes.map((item) => (
             <li key={item} className="flex items-start gap-2.5">
               <CheckCircle size={15} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
               <span className="text-sm" style={{ color: "#cbd5e1" }}>{item}</span>
             </li>
           ))}
         </ul>
-        <p className="text-xs" style={{ color: "#64748b" }}>
-          Recommended Ad Spend: {GOOGLE_ADS_PACKAGE_BUILDER.recommendedSpend}
-        </p>
+        {config.note && (
+          <p className="text-xs" style={{ color: "#64748b" }}>
+            {config.note}
+          </p>
+        )}
       </div>
 
       {/* Add-on categories */}
       <div className="space-y-8 mb-8">
-        {GOOGLE_ADS_PACKAGE_BUILDER.categories.map((category) => (
+        {config.categories.map((category) => (
           <div key={category.name}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: "#e2e8f0" }}>
               {category.name}
@@ -110,7 +116,7 @@ export default function GoogleAdsPackageBuilder() {
                           {addon.label}
                         </span>
                         <span className="text-xs font-semibold flex-shrink-0" style={{ color: "#84ff00" }}>
-                          +£{addon.price}/mo
+                          +{config.currency}{addon.price}{suffix}
                         </span>
                       </div>
                       <p className="text-xs mt-1 leading-relaxed" style={{ color: "#94a3b8" }}>
@@ -139,7 +145,7 @@ export default function GoogleAdsPackageBuilder() {
               Your Custom Package
             </p>
             <p className="text-3xl font-bold" style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}>
-              £{total}<span className="text-base font-normal" style={{ color: "#94a3b8" }}>/month</span>
+              {config.currency}{total}<span className="text-base font-normal" style={{ color: "#94a3b8" }}>{fullSuffix}</span>
             </p>
           </div>
           <Link
@@ -155,12 +161,12 @@ export default function GoogleAdsPackageBuilder() {
           <div className="pt-4 space-y-1.5" style={{ borderTop: "1px solid rgba(132,255,0,0.15)" }}>
             <div className="flex items-center justify-between text-xs" style={{ color: "#94a3b8" }}>
               <span>Base Package</span>
-              <span>£{GOOGLE_ADS_PACKAGE_BUILDER.basePrice}/mo</span>
+              <span>{config.currency}{config.basePrice}{suffix}</span>
             </div>
             {selectedAddons.map((addon) => (
               <div key={addon.id} className="flex items-center justify-between text-xs" style={{ color: "#94a3b8" }}>
                 <span>{addon.label}</span>
-                <span>+£{addon.price}/mo</span>
+                <span>+{config.currency}{addon.price}{suffix}</span>
               </div>
             ))}
           </div>
