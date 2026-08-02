@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
-import { SERVICES, SITE } from "@/lib/constants";
+import { SERVICES, SITE, GOOGLE_ADS_SERVICE_DETAIL } from "@/lib/constants";
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -37,6 +37,8 @@ export default async function ServicePage({
   const { slug } = await params;
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) notFound();
+
+  const detail = slug === "google-ads-analytics" ? GOOGLE_ADS_SERVICE_DETAIL : null;
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -110,57 +112,194 @@ export default async function ServicePage({
           >
             {service.title}
           </h1>
-          <p className="text-lg leading-relaxed" style={{ color: "#94a3b8", maxWidth: "700px" }}>
-            {service.longDesc}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Deliverables */}
-          <div
-            className="rounded-2xl p-6"
-            style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.15)" }}
-          >
-            <h2
-              className="text-lg font-semibold mb-4"
-              style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}
-            >
-              What You Get
-            </h2>
-            <ul className="space-y-3">
-              {service.deliverables.map((d) => (
-                <li key={d} className="flex items-start gap-3">
-                  <CheckCircle size={16} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
-                  <span className="text-sm" style={{ color: "#cbd5e1" }}>{d}</span>
-                </li>
+          {detail ? (
+            <div className="space-y-4" style={{ maxWidth: "760px" }}>
+              {detail.intro.map((p, i) => (
+                <p
+                  key={i}
+                  className="text-lg leading-relaxed"
+                  style={{ color: i === 0 ? "#e2e8f0" : "#94a3b8" }}
+                >
+                  {p}
+                </p>
               ))}
-            </ul>
-          </div>
-
-          {/* FAQ */}
-          <div className="space-y-4">
-            <h2
-              className="text-lg font-semibold mb-4"
-              style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}
-            >
-              Common Questions
-            </h2>
-            {service.faqs.map((faq, i) => (
-              <div
-                key={i}
-                className="rounded-xl p-4"
-                style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.1)" }}
-              >
-                <p className="text-sm font-semibold mb-2" style={{ color: "#e2e8f0" }}>
-                  {faq.q}
-                </p>
-                <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
-                  {faq.a}
-                </p>
-              </div>
-            ))}
-          </div>
+            </div>
+          ) : (
+            <p className="text-lg leading-relaxed" style={{ color: "#94a3b8", maxWidth: "700px" }}>
+              {service.longDesc}
+            </p>
+          )}
         </div>
+
+        {detail ? (
+          <>
+            {/* What's Included */}
+            <div className="mb-16">
+              <h2
+                className="text-2xl font-bold mb-8"
+                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
+              >
+                What&apos;s Included
+              </h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {detail.sections.map((section) => (
+                  <div
+                    key={section.title}
+                    className="rounded-2xl p-6"
+                    style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.15)" }}
+                  >
+                    <h3
+                      className="text-base font-semibold mb-2"
+                      style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
+                    >
+                      {section.title}
+                    </h3>
+                    <p className="text-sm mb-4" style={{ color: "#94a3b8" }}>
+                      {section.desc}
+                    </p>
+                    <ul className="space-y-2.5">
+                      {section.items.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <CheckCircle size={15} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
+                          <span className="text-sm" style={{ color: "#cbd5e1" }}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Why Choose Us */}
+            <div className="mb-16">
+              <h2
+                className="text-2xl font-bold mb-3"
+                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
+              >
+                Why Choose Us?
+              </h2>
+              <p className="text-sm mb-6" style={{ color: "#94a3b8", maxWidth: "700px" }}>
+                We don&apos;t just manage campaigns — we build long-term growth strategies backed by data, automation, and continuous optimisation.
+              </p>
+              <div
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 rounded-2xl p-6"
+                style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.15)" }}
+              >
+                {detail.whyChooseUs.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckCircle size={16} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
+                    <span className="text-sm" style={{ color: "#cbd5e1" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Our Process */}
+            <div className="mb-16">
+              <h2
+                className="text-2xl font-bold mb-8"
+                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
+              >
+                Our Process
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {detail.process.map((step) => (
+                  <div
+                    key={step.step}
+                    className="rounded-2xl p-6"
+                    style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.1)" }}
+                  >
+                    <span
+                      className="text-2xl font-bold"
+                      style={{ fontFamily: "Orbitron, sans-serif", color: "#84ff00" }}
+                    >
+                      {step.step}
+                    </span>
+                    <h3 className="text-base font-semibold mt-2 mb-2" style={{ color: "#e2e8f0" }}>
+                      {step.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
+                      {step.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* FAQ */}
+            <div className="mb-4">
+              <h2
+                className="text-2xl font-bold mb-8"
+                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
+              >
+                Common Questions
+              </h2>
+              <div className="space-y-4">
+                {detail.faqs.map((faq, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-4"
+                    style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.1)" }}
+                  >
+                    <p className="text-sm font-semibold mb-2" style={{ color: "#e2e8f0" }}>
+                      {faq.q}
+                    </p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
+                      {faq.a}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {/* Deliverables */}
+            <div
+              className="rounded-2xl p-6"
+              style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.15)" }}
+            >
+              <h2
+                className="text-lg font-semibold mb-4"
+                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}
+              >
+                What You Get
+              </h2>
+              <ul className="space-y-3">
+                {service.deliverables.map((d) => (
+                  <li key={d} className="flex items-start gap-3">
+                    <CheckCircle size={16} style={{ color: "#84ff00", flexShrink: 0, marginTop: "2px" }} />
+                    <span className="text-sm" style={{ color: "#cbd5e1" }}>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* FAQ */}
+            <div className="space-y-4">
+              <h2
+                className="text-lg font-semibold mb-4"
+                style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0", fontSize: "1rem" }}
+              >
+                Common Questions
+              </h2>
+              {service.faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  className="rounded-xl p-4"
+                  style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.1)" }}
+                >
+                  <p className="text-sm font-semibold mb-2" style={{ color: "#e2e8f0" }}>
+                    {faq.q}
+                  </p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
+                    {faq.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* CTA */}
         <div

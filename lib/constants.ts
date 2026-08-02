@@ -58,7 +58,7 @@ export const SERVICES = [
     title: "Digital Growth, Google Ads & Analytics",
     shortDesc: "Google-certified campaign management that turns ad spend into measurable revenue.",
     longDesc:
-      "Certified in Google Ads Search, Display, Shopping, AI-Powered Performance Ads, Campaign Manager 360 (CM360), and Google Analytics (GA4). We build data-driven marketing strategies that improve visibility, reduce wasted spend, and deliver consistent return on investment.",
+      "Transform your advertising into measurable business growth with strategic Google Ads management, advanced analytics, and continuous optimisation. As Google-certified specialists in Search, Display, Shopping, AI-Powered Performance Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4), we help businesses generate more qualified leads, reduce wasted ad spend, and maximise return on investment.",
     deliverables: [
       "GA4 Property Setup & Audit",
       "Google Ads Campaign Architecture",
@@ -69,19 +69,19 @@ export const SERVICES = [
     faqs: [
       {
         q: "What Google Ads certifications do you hold?",
-        a: "Google Ads Search, AI-Powered Performance Ads, Google Ads Measurement, Foundations of AI-Powered Search Ads, Campaign Manager 360 (CM360), and Google Analytics (GA4) — all active certifications issued in 2026.",
+        a: "Google Ads Search, Display, Shopping, AI-Powered Performance Ads, Google Ads Measurement, Foundations of AI-Powered Search Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4) — all active certifications, kept up to date with the latest features and AI capabilities.",
       },
       {
-        q: "What minimum ad budget do you recommend?",
-        a: "For meaningful data and optimisation, we recommend a minimum monthly ad spend of £1,500–£3,000 for local campaigns and £5,000+ for national or competitive industries.",
+        q: "How much should I spend on Google Ads?",
+        a: "It depends on your goals, but as a guide: local businesses typically spend £1,000–£3,000/month, growing businesses £3,000–£10,000/month, and national campaigns £10,000+/month. We'll recommend the right budget during your discovery call.",
       },
       {
-        q: "How long before I see results from Google Ads?",
-        a: "Initial data and optimisation signals appear within 2–4 weeks. Significant ROAS improvements typically occur within 8–12 weeks of structured campaign management.",
+        q: "How long does it take to see results?",
+        a: "Most campaigns begin generating meaningful data within 2–4 weeks. Significant improvements in lead quality, cost per acquisition, and return on ad spend are typically achieved within 8–12 weeks through continuous optimisation and testing.",
       },
     ],
     keywords: ["Google Ads management", "GA4 setup", "PPC agency London", "AI-powered performance ads", "Campaign Manager 360"],
-    startingAt: "$1,500/mo",
+    startingAt: "£695/mo",
   },
   {
     slug: "data-analytics-bi",
@@ -303,6 +303,158 @@ export const SERVICES = [
   },
 ];
 
+// Extended page content for the google-ads-analytics service detail page.
+// Kept separate from SERVICES so the shared [slug] template's per-service
+// fields (deliverables/faqs) stay untouched for the other 8 services.
+export const GOOGLE_ADS_SERVICE_DETAIL = {
+  intro: [
+    "Transform your advertising into measurable business growth with strategic Google Ads management, advanced analytics, and continuous optimisation.",
+    "As Google-certified specialists in Search, Display, Shopping, AI-Powered Performance Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4), we help businesses generate more qualified leads, reduce wasted ad spend, and maximise return on investment through data-driven marketing strategies.",
+    "Whether you're launching your first campaign or improving an existing account, we build, manage, and optimise every aspect of your advertising to deliver sustainable, long-term growth.",
+  ],
+  sections: [
+    {
+      title: "Strategy & Planning",
+      desc: "Every successful campaign starts with a clear strategy.",
+      items: [
+        "Business & competitor analysis",
+        "Market and audience research",
+        "Keyword research & search intent analysis",
+        "Campaign strategy and account planning",
+        "Budget planning & KPI recommendations",
+      ],
+    },
+    {
+      title: "Google Ads Management",
+      desc: "Professionally structured campaigns built for performance.",
+      items: [
+        "Google Search Campaigns",
+        "Performance Max Campaigns",
+        "Display Campaigns",
+        "Shopping Campaigns (where applicable)",
+        "Demand Gen Campaigns (where suitable)",
+        "Audience targeting & segmentation",
+        "Geographic and device targeting",
+        "Ad extensions & campaign assets",
+      ],
+    },
+    {
+      title: "Conversion Tracking & Analytics",
+      desc: "Accurate data is essential for making informed marketing decisions.",
+      items: [
+        "Google Analytics 4 (GA4) setup & audit",
+        "Google Tag Manager implementation",
+        "Conversion tracking setup",
+        "Enhanced Conversions",
+        "Phone call tracking",
+        "Form submission tracking",
+        "Ecommerce tracking (where applicable)",
+        "Cross-domain tracking (where required)",
+      ],
+    },
+    {
+      title: "Continuous Campaign Optimisation",
+      desc: "Google Ads requires ongoing management to achieve the best results. Our monthly optimisation includes:",
+      items: [
+        "Keyword optimisation",
+        "Negative keyword management",
+        "Search term analysis",
+        "Bid adjustments",
+        "Budget optimisation",
+        "Audience refinement",
+        "Device & location optimisation",
+        "Ad schedule optimisation",
+        "Landing page recommendations",
+        "Quality Score improvements",
+        "Campaign performance reviews",
+      ],
+    },
+    {
+      title: "Ad Copy & Creative Optimisation",
+      desc: "Better ads attract better customers.",
+      items: [
+        "Professional ad copywriting",
+        "Responsive Search Ads",
+        "Headline & description testing",
+        "Performance Max asset optimisation",
+        "Ongoing A/B testing",
+        "Call-to-action optimisation",
+      ],
+    },
+    {
+      title: "Performance Reporting",
+      desc: "Know exactly how your campaigns are performing. You'll receive:",
+      items: [
+        "Live performance dashboard",
+        "Monthly performance report",
+        "Cost Per Lead (CPL)",
+        "Cost Per Acquisition (CPA)",
+        "Conversion Rate",
+        "Return on Ad Spend (ROAS)",
+        "Revenue attribution (where available)",
+        "Strategic recommendations",
+        "Next month's action plan",
+      ],
+    },
+  ],
+  whyChooseUs: [
+    "Google Ads Certified Professionals",
+    "Google Analytics 4 (GA4) Certified",
+    "Campaign Manager 360 (CM360) Certified",
+    "AI-Powered Campaign Optimisation",
+    "Data-Driven Decision Making",
+    "Transparent Reporting",
+    "Continuous Campaign Improvements",
+    "Dedicated Account Management",
+    "No Long-Term Contracts",
+    "Focused on Real Business Results",
+  ],
+  process: [
+    {
+      step: "01",
+      title: "Discovery & Strategy",
+      desc: "We take the time to understand your business, goals, competitors, audience, and current marketing performance before creating a tailored advertising strategy.",
+    },
+    {
+      step: "02",
+      title: "Campaign Build",
+      desc: "We build or optimise your Google Ads account using industry best practices, implement accurate conversion tracking, and ensure your campaigns are ready to perform from day one.",
+    },
+    {
+      step: "03",
+      title: "Launch & Optimisation",
+      desc: "Once your campaigns are live, we continuously monitor, test, and refine every element to improve lead quality, reduce costs, and maximise performance.",
+    },
+    {
+      step: "04",
+      title: "Reporting & Growth",
+      desc: "Every month you'll receive clear reporting, strategic insights, and recommendations designed to help your business scale confidently.",
+    },
+  ],
+  faqs: [
+    {
+      q: "What Google Ads certifications do you hold?",
+      a: "We hold active Google certifications in Google Ads Search, Google Ads Display, Google Ads Shopping, AI-Powered Performance Ads, Google Ads Measurement, Foundations of AI-Powered Search Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4). Our certifications are kept up to date to ensure we're using the latest Google Ads features, AI capabilities, and measurement best practices.",
+    },
+    {
+      q: "How much should I spend on Google Ads?",
+      a: "Every business is different, but we generally recommend: local businesses £1,000–£3,000/month, growing businesses £3,000–£10,000/month, and national campaigns £10,000+/month. We'll recommend the right budget during your discovery call based on your goals, market, and competition.",
+    },
+    {
+      q: "Is your management fee included in the advertising budget?",
+      a: "No. Your Google Ads budget is paid directly to Google, while our monthly management fee covers strategy, campaign management, optimisation, reporting, and ongoing support.",
+    },
+    {
+      q: "How long does it take to see results?",
+      a: "Most campaigns begin generating meaningful data within 2–4 weeks. Significant improvements in lead quality, cost per acquisition, and return on ad spend are typically achieved within 8–12 weeks through continuous optimisation and testing.",
+    },
+    {
+      q: "Can you improve my existing Google Ads account?",
+      a: "Absolutely. We can audit your current campaigns, identify opportunities for improvement, implement accurate tracking, and optimise performance to maximise your return on investment.",
+    },
+  ],
+};
+
 export const CERTIFICATIONS = [
   {
     name: "Google Analytics Certification (GA4)",
@@ -513,7 +665,7 @@ export const FAQS = [
     slug: "retainers",
     question: "Do you offer retainer-based engagements?",
     answer:
-      "Yes. Google Ads management, analytics support, and AI system maintenance are all available on monthly retainers starting from $1,500/month.",
+      "Yes. Google Ads management is available from £695/month, with analytics support and AI system maintenance also available on monthly retainers.",
   },
   {
     slug: "differentiator",
@@ -549,7 +701,7 @@ export const FAQS = [
     slug: "google-ads-pricing",
     question: "How much does GMHCO's Google Ads management cost?",
     answer:
-      "Google Ads management starts at $1,500 per month. Recommended ad spend on top of that is £1,500–£3,000 monthly for local campaigns, or £5,000+ for national or competitive industries.",
+      "Google Ads management starts at £695 per month. Recommended ad spend on top of that is £1,000–£3,000 monthly for local businesses, £3,000–£10,000 for growing businesses, or £10,000+ for national campaigns.",
   },
   {
     slug: "google-ads-results",
@@ -694,7 +846,7 @@ ABOUT GMHCO:
 
 9 CORE SERVICES WITH STARTING PRICES:
 1. Technology Consulting & Solution Strategy — Starting at $2,500
-2. Digital Growth, Google Ads & Analytics — Starting at $1,500/month
+2. Digital Growth, Google Ads & Analytics — Starting at £695/month
 3. Data Analytics, Business Intelligence & Reporting — Starting at $3,000
 4. API Development & Systems Integration — Starting at $2,000
 5. Cloud Infrastructure, DevOps & Deployment — Starting at $3,500
