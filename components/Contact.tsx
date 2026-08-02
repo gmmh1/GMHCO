@@ -202,11 +202,11 @@ export default function Contact() {
               ) : <div />}
 
               {step < 3 ? (
-                <button type="button" onClick={nextStep} className="btn-sm-lime">
+                <button key="continue" type="button" onClick={nextStep} className="btn-sm-lime">
                   Continue <ChevronRight size={16} />
                 </button>
               ) : (
-                <button type="submit" disabled={status === "loading"} className="btn-sm-lime disabled:opacity-60">
+                <button key="submit" type="submit" disabled={status === "loading"} className="btn-sm-lime disabled:opacity-60">
                   {status === "loading" ? "Sending…" : "Send Message"} <Send size={16} />
                 </button>
               )}
