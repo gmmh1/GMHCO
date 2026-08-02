@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { LogoMark } from "@/components/LogoMark";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -44,7 +44,7 @@ export default function AdminLogin() {
         }}
       >
         <div className="flex justify-center" style={{ marginBottom: "1.5rem" }}>
-          <Image src="/logos/gmhco-logo.png" alt="GMHCO" width={48} height={48} className="rounded-xl" />
+          <LogoMark size={48} />
         </div>
         <h1
           className="text-center text-xl font-bold"
