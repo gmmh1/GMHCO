@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowLeft, Clock, Tag } from "lucide-react";
-import { BLOG_POSTS, SITE } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
+import { getPublishedPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
 import Navigation from "@/components/Navigation";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Blog & Insights",
@@ -12,7 +15,8 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE.url}/blog` },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getPublishedPosts();
   return (
     <main style={{ background: "#0f172a", minHeight: "100vh", color: "#e2e8f0" }}>
       <Navigation />
@@ -47,7 +51,7 @@ export default function BlogPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {BLOG_POSTS.map((post, i) => (
+          {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
               <article
                 className="hover-card h-full rounded-2xl flex flex-col group"
@@ -71,7 +75,7 @@ export default function BlogPage() {
                     <Tag size={10} /> {post.category}
                   </span>
                   <span className="text-xs flex items-center gap-1" style={{ color: "#64748b" }}>
-                    <Clock size={10} /> {post.readTime}
+                    <Clock size={10} /> {post.read_time}
                   </span>
                 </div>
 
@@ -91,7 +95,7 @@ export default function BlogPage() {
                 {/* Footer */}
                 <div className="flex items-center justify-between mt-auto">
                   <span className="text-xs" style={{ color: "#64748b" }}>
-                    {formatDate(post.date)}
+                    {formatDate(post.published_at)}
                   </span>
                   <span
                     className="flex items-center gap-1 text-xs transition-transform group-hover:translate-x-1"

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
+import { ArrowLeft, CheckCircle, ArrowRight, Clock } from "lucide-react";
 import { SERVICES, SITE, GOOGLE_ADS_SERVICE_DETAIL, PACKAGE_BUILDERS } from "@/lib/constants";
 import PackageBuilder from "@/components/PackageBuilder";
+import { getPostsForService } from "@/lib/blog";
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -41,6 +42,7 @@ export default async function ServicePage({
 
   const detail = slug === "google-ads-analytics" ? GOOGLE_ADS_SERVICE_DETAIL : null;
   const hasPackageBuilder = Boolean(PACKAGE_BUILDERS[slug]);
+  const relatedPosts = await getPostsForService(slug);
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -266,6 +268,47 @@ export default async function ServicePage({
                     {faq.a}
                   </p>
                 </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* From the Blog */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-14">
+            <h2
+              className="text-2xl font-bold mb-6"
+              style={{ fontFamily: "Orbitron, sans-serif", color: "#e2e8f0" }}
+            >
+              From the Blog
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {relatedPosts.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+                  <div
+                    className="h-full rounded-2xl p-5 transition-colors"
+                    style={{ background: "#1e293b", border: "1px solid rgba(132,255,0,0.1)" }}
+                  >
+                    <span className="text-xs flex items-center gap-1 mb-3" style={{ color: "#64748b" }}>
+                      <Clock size={10} /> {post.read_time}
+                    </span>
+                    <h3
+                      className="text-sm font-semibold leading-snug mb-2"
+                      style={{ color: "#e2e8f0" }}
+                    >
+                      {post.title}
+                    </h3>
+                    <p className="text-xs leading-relaxed mb-3" style={{ color: "#94a3b8" }}>
+                      {post.excerpt}
+                    </p>
+                    <span
+                      className="text-xs flex items-center gap-1 transition-transform group-hover:translate-x-1"
+                      style={{ color: "#84ff00" }}
+                    >
+                      Read more <ArrowRight size={12} />
+                    </span>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

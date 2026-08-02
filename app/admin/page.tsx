@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import Link from "next/link";
 import { createServerSupabase } from "@/lib/supabase-server";
 import type { Lead, ChatLead } from "@/lib/supabase";
 import LinkedInComposer from "@/components/admin/LinkedInComposer";
@@ -34,10 +35,14 @@ export default async function AdminDashboard() {
 
   const { leads, chatLeads } = await getData();
 
+  // Server Component: computed once per request, not during a client re-render,
+  // so the "purity" concern this rule guards against doesn't apply here.
+  // eslint-disable-next-line react-hooks/purity
+  const weekAgo = new Date(Date.now() - 7 * 86400000);
   const stats = [
     { label: "Total Leads", value: leads.length, color: "#84ff00" },
     { label: "Chat Leads", value: chatLeads.length, color: "#00e5ff" },
-    { label: "This Week", value: leads.filter((l) => new Date(l.created_at) > new Date(Date.now() - 7 * 86400000)).length, color: "#7c4dff" },
+    { label: "This Week", value: leads.filter((l) => new Date(l.created_at) > weekAgo).length, color: "#7c4dff" },
   ];
 
   return (
@@ -51,6 +56,13 @@ export default async function AdminDashboard() {
           GMHCO Admin
         </h1>
         <div className="flex items-center gap-3">
+          <Link
+            href="/admin/blog"
+            className="text-sm rounded-full"
+            style={{ border: "1px solid rgba(132,255,0,0.4)", color: "#84ff00", paddingLeft: "1rem", paddingRight: "1rem", paddingTop: "0.5rem", paddingBottom: "0.5rem" }}
+          >
+            Manage Blog
+          </Link>
           <a
             href="/api/hubspot/install"
             className="text-sm rounded-full"

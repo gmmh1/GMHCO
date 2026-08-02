@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Tag, ArrowRight, Home } from "lucide-react";
-import { BLOG_POSTS, SITE } from "@/lib/constants";
+import { SITE, SERVICES } from "@/lib/constants";
+import { getPostBySlug, getPublishedPostSlugs } from "@/lib/blog";
+import { renderBlogMarkdown } from "@/lib/markdown";
 import { formatDate } from "@/lib/utils";
 import Navigation from "@/components/Navigation";
 
+export const revalidate = 300;
+
 export async function generateStaticParams() {
-  return BLOG_POSTS.map((p) => ({ slug: p.slug }));
+  const slugs = await getPublishedPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -16,7 +21,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -28,314 +33,11 @@ export async function generateMetadata({
       description: post.excerpt,
       url: `${SITE.url}/blog/${slug}`,
       type: "article",
-      publishedTime: post.date,
+      publishedTime: post.published_at,
       authors: ["Gazi Morshed"],
     },
   };
 }
-
-const BLOG_CONTENT: Record<string, string> = {
-  "ai-digital-marketing-2026": `
-## The AI Revolution in Digital Marketing
-
-Artificial intelligence is no longer a future trend in digital marketing — it is the present competitive edge that separates growing businesses from stagnating ones. In 2026, companies that have embedded AI into their marketing operations are outperforming competitors across every measurable channel.
-
-The shift is not about replacing human marketers. It is about giving them enterprise-level capabilities that were previously available only to organisations with enormous budgets and data science teams.
-
-## Three Ways AI is Reshaping Marketing
-
-### 1. Intelligent Campaign Optimisation
-
-Google's Performance Max campaigns, powered by Google AI, automatically optimise bids, creative assets, and audience targeting in real time — making adjustments that would take a human analyst days to compute.
-
-The result: brands using AI-powered campaigns are seeing 20–40% improvements in conversion rates compared to manually managed equivalents.
-
-### 2. Hyper-Personalisation at Scale
-
-AI enables businesses to deliver personalised experiences to thousands of customers simultaneously. Tools like HubSpot's AI features and Google Analytics 4's predictive audiences can identify your highest-value customer segments and automatically tailor messaging to each one.
-
-### 3. Predictive Analytics and Lead Scoring
-
-Instead of waiting for customers to convert, AI-powered CRM systems predict which leads are most likely to buy and surface them for priority follow-up — dramatically reducing the time from enquiry to sale.
-
-## What This Means for Your Business
-
-If your marketing team still runs campaigns manually, you are competing with one hand tied behind your back. The businesses winning in 2026 are the ones who have embraced AI as a force multiplier — not a replacement for strategy and creativity.
-
-The good news: you do not need a massive budget to access these capabilities. The tools exist. What you need is a partner who knows how to deploy them effectively.
-  `,
-  "google-ads-performance-max-guide": `
-## Understanding Performance Max in 2026
-
-Performance Max (PMax) has matured significantly since its introduction. In 2026, it is one of the most powerful tools in any Google Ads account — but only when used correctly. Misusing it is one of the fastest ways to waste ad budget.
-
-## What Performance Max Actually Does
-
-PMax is Google's fully automated campaign type that serves ads across all Google inventory: Search, Shopping, Display, YouTube, Gmail, and Maps — all from a single campaign. Google's AI decides where, when, and how to show your ads based on your conversion goals.
-
-## When to Use Performance Max
-
-**PMax works best when:**
-- You have strong, clean conversion tracking (GA4 + GTM properly configured)
-- Your account has at least 30–50 conversions per month for the AI to learn from
-- You are targeting a broad geographic area with varied intent signals
-- You want to expand beyond existing search campaigns to new audiences
-
-## When Standard Campaigns Still Win
-
-**Stick with standard Search campaigns when:**
-- Your budget is under £1,500/month (PMax needs sufficient spend to learn)
-- You need granular control over exactly which search terms trigger your ads
-- You are targeting a hyper-specific, narrow keyword set
-- You are in a highly competitive industry where impression share management is critical
-
-## The Recommended Architecture
-
-For most accounts with £3,000+/month budgets: run PMax for acquisition alongside tightly structured Search campaigns for brand and high-intent terms. They complement each other rather than cannibalise.
-
-The cardinal sin: running PMax without proper conversion tracking. Without accurate conversion signals, Google's AI optimises toward the wrong outcomes.
-  `,
-  "rag-systems-business-knowledge": `
-## What is a RAG System?
-
-Retrieval-Augmented Generation (RAG) is a technique that allows an AI model to answer questions using your specific documents, databases, and knowledge — not just its general training data.
-
-Think of it as giving ChatGPT a photographic memory of your entire company knowledge base, and then asking it questions.
-
-## How RAG Works in Practice
-
-1. **Ingestion**: Your documents (PDFs, Word files, web pages, databases) are processed and converted into mathematical representations called embeddings
-2. **Storage**: These embeddings are stored in a vector database (like Pinecone or pgvector in PostgreSQL)
-3. **Query**: When someone asks a question, the system finds the most relevant document sections and sends them to the AI along with the question
-4. **Response**: The AI answers based on your documents — with citations so you can verify every claim
-
-## Who Needs a RAG System?
-
-**You need RAG if your team:**
-- Spends more than 3 hours per week searching internal documents
-- Relies on specialist knowledge locked in PDFs, manuals, or previous case work
-- Has onboarding challenges because knowledge is not properly documented or searchable
-- Handles repetitive questions that could be answered from existing documentation
-
-## Real-World ROI
-
-One of GMHCO's clients — a legal practice with 2,400+ case documents — reduced their paralegal research time by 60% and saved an estimated £85,000 per year in billable hours. Implementation took 2 weeks.
-
-For knowledge-heavy businesses, RAG is consistently the highest-ROI AI investment available today.
-  `,
-  "ga4-setup-guide-2026": `
-## Why Most GA4 Setups Fail
-
-Google Analytics 4 has been the default for two years, yet the vast majority of businesses are still not using it correctly. The most common issues: misconfigured conversion events, missing cross-domain tracking, and relying on GA4's default event tracking without customisation.
-
-This guide covers the complete setup most businesses miss.
-
-## Step 1: Property Architecture
-
-GA4 uses a property-stream model. Each domain or app is a separate data stream feeding into one property. Ensure you have:
-- One GA4 property per brand
-- Correct data streams for web, iOS, and Android (if applicable)
-- Data retention set to 14 months (change from the default 2 months immediately)
-
-## Step 2: Google Tag Manager Integration
-
-Connect GA4 via GTM for maximum flexibility. Never hardcode the GA4 tag directly in your website — it makes future changes exponentially harder.
-
-GTM setup:
-- Create a GA4 Configuration tag with your Measurement ID
-- Set it to fire on All Pages
-- Use GTM's built-in variables to capture user data automatically
-
-## Step 3: Conversion Event Configuration
-
-The biggest GA4 mistake: assuming that form submissions and purchases are automatically tracked. They are not.
-
-You must explicitly mark events as conversions in the GA4 interface OR create custom events via GTM that fire on specific user actions (form submission confirmation, purchase confirmation, click-to-call).
-
-## Step 4: Enhanced Measurement Validation
-
-Enable Enhanced Measurement but validate each event:
-- File downloads: verify the correct file types trigger events
-- Outbound clicks: check that affiliate links and CTA clicks are captured
-- Video engagement: confirm YouTube embeds fire correctly
-
-## Step 5: Custom Reports and Explorations
-
-GA4's default reports are a starting point, not the destination. Build Exploration reports for:
-- User journey funnels from landing page to conversion
-- Cohort analysis of user retention by acquisition source
-- Revenue attribution by traffic channel
-
-A correctly configured GA4 installation is one of the highest-ROI activities in digital marketing. It costs nothing to set up correctly and provides insights that fundamentally change how you allocate marketing spend.
-  `,
-  "saas-development-cost": `
-## The Real Cost of Building a SaaS Product in 2026
-
-The honest answer to "how much does it cost to build a SaaS?" is: it depends on what you are building. But most businesses asking this question are either significantly overestimating or underestimating the cost.
-
-This guide gives you realistic numbers based on real projects.
-
-## The Three Tiers of SaaS Development
-
-### Tier 1: MVP (Minimum Viable Product)
-**Typical cost: $5,000 – $15,000**
-**Timeline: 6–10 weeks**
-
-What this gets you:
-- Core feature set only (2–3 primary user flows)
-- Authentication (email/password login)
-- Basic dashboard or management interface
-- A payment mechanism (Stripe subscription)
-- Vercel or AWS deployment
-- No mobile app
-
-This is the right approach for validating your idea with real paying customers. If you cannot get paying customers with an MVP, adding more features will not fix it.
-
-### Tier 2: Growth-Ready SaaS
-**Typical cost: $15,000 – $50,000**
-**Timeline: 12–18 weeks**
-
-What this adds:
-- Advanced user management and team/organisation support
-- Admin dashboard with analytics
-- Multiple integration points (Zapier, REST API)
-- Email notifications and in-app messaging
-- Custom onboarding flow
-- Mobile-responsive (but not native mobile app)
-
-### Tier 3: Enterprise SaaS Platform
-**Typical cost: $50,000 – $200,000+**
-**Timeline: 6–18 months**
-
-This level involves:
-- Multi-tenancy with complex permission systems
-- Native mobile apps (iOS + Android)
-- Advanced reporting and data exports
-- SSO and enterprise security compliance
-- White-labelling capability
-- Dedicated infrastructure
-
-## What Actually Drives Costs Up
-
-The biggest cost drivers are not what most founders expect:
-- **Scope creep**: Adding features mid-build doubles timeline and cost
-- **Third-party integrations**: Each API integration adds 20–40 hours
-- **Authentication complexity**: SSO, two-factor, and social login add significant time
-- **Mobile**: Native apps add 40–60% to the total cost
-
-## The Right Way to Buy Development
-
-Avoid fixed-price contracts for complex SaaS products — they always end in scope disputes. Work with a partner who will scope work transparently and build in phases, delivering working software at the end of each phase.
-  `,
-  "consumer-psychology-digital-marketing": `
-## Why Psychology is Your Marketing Superpower
-
-The businesses winning in digital marketing are not necessarily running the most ads or spending the most money. They are the ones that understand how people actually make decisions online — and use that understanding to design better campaigns, landing pages, and funnels.
-
-Here are seven evidence-backed consumer psychology principles every digital marketer should know.
-
-## 1. The Anchoring Effect
-
-The first number a customer sees becomes the reference point for everything that follows. This is why pricing pages almost always show the most expensive plan first — it makes middle-tier plans feel like a bargain.
-
-**Apply it**: When presenting pricing, lead with your highest-value package.
-
-## 2. Social Proof and Herding Behaviour
-
-Humans are deeply social animals. We look to what others are doing as a signal of correct behaviour — especially in uncertain situations.
-
-**Apply it**: Show real review counts, client logos, and testimonials prominently. Specificity matters: "47 businesses in London use GMHCO" is more persuasive than "many businesses trust us."
-
-## 3. The Scarcity Principle
-
-Resources that are scarce are perceived as more valuable. Limited availability creates urgency that motivates action.
-
-**Apply it**: Genuine scarcity works ("only 3 onboarding slots available this month"). Fake countdown timers destroy trust.
-
-## 4. Loss Aversion
-
-People are roughly twice as motivated to avoid losing something as they are to gain something equivalent. This is one of the most robust findings in behavioural economics.
-
-**Apply it**: Frame your value proposition around what customers risk losing by not acting, not just what they gain by acting. "Stop losing 40% of your ad budget" is more motivating than "gain better ROAS."
-
-## 5. Cognitive Load Reduction
-
-The easier a decision is to make, the more likely someone is to make it. Every unnecessary option, confusing page element, or unclear CTA adds cognitive load and reduces conversions.
-
-**Apply it**: Ruthlessly simplify your landing pages. One primary CTA. One clear message. Remove navigation menus from landing pages.
-
-## 6. The Mere Exposure Effect
-
-Familiarity breeds preference. People like things they have seen before, even without conscious awareness.
-
-**Apply it**: Retargeting campaigns are not just about reminding people — they are building subconscious brand preference through repeated exposure.
-
-## 7. Authority Signals
-
-People defer to credibility signals when making uncertain decisions. Certifications, credentials, media mentions, and professional design all function as proxies for trustworthiness.
-
-**Apply it**: Surface your qualifications, certifications, and trust signals prominently. GMHCO's 12 active Google certifications appear in the hero section because they reduce purchase risk for potential clients.
-
-Understanding these principles does not make marketing manipulative — it makes it effective. The goal is to remove friction between a customer's genuine need and your genuine solution.
-  `,
-  "mobile-app-development-cost-2026": `
-## The Real Cost of Mobile App Development in 2026
-
-"How much does an app cost?" has no single answer — a to-do list app and a fintech app with biometric login and live payments are not the same build. This guide breaks down realistic cost tiers so you can budget accurately before you start.
-
-## Three Tiers of Mobile App Development
-
-### Tier 1: Simple App / MVP
-**Typical cost: $6,000 – $20,000**
-**Timeline: 6–10 weeks**
-
-What this gets you:
-- 2–3 core user flows, no more
-- Basic authentication (email/password)
-- A simple backend (Firebase or a lightweight API)
-- Single-platform or basic cross-platform build
-- App store submission for one platform
-
-This tier is for validating demand before investing further — the same logic that applies to SaaS MVPs applies here.
-
-### Tier 2: Mid-Complexity App
-**Typical cost: $20,000 – $60,000**
-**Timeline: 10–16 weeks**
-
-What this adds:
-- Push notifications and in-app messaging
-- Third-party integrations (maps, calendars, social login)
-- A proper backend with a real database and admin dashboard
-- Offline support and local data caching
-- True cross-platform (iOS + Android from one codebase)
-
-### Tier 3: Complex / Fintech-Grade App
-**Typical cost: $60,000 – $150,000+**
-**Timeline: 16–28 weeks**
-
-This is where cost climbs fastest:
-- Biometric authentication (Face ID / fingerprint)
-- Live payment processing (Stripe, card tokenisation, PCI compliance)
-- Real-time data feeds (transaction history, live balances)
-- Automated fraud detection
-- Security audits and penetration testing before launch
-
-## What Actually Drives Mobile Costs Up
-
-- **Payments**: Any app touching real money adds compliance, security review, and testing overhead that a simple app never sees
-- **Biometrics and device APIs**: Each native device capability (camera, Face ID, GPS background tracking) adds platform-specific work
-- **Offline-first design**: Apps that must work with no signal require a completely different data-sync architecture
-- **App Store review**: Fintech and health apps face stricter review — budget extra time, not just extra money
-
-## Native vs Cross-Platform
-
-React Native (and similar frameworks) let you ship one codebase to both iOS and Android, typically cutting cost by 30–40% versus building two fully native apps — with no meaningful difference in user experience for the vast majority of apps. Fully native development is only worth the extra cost for apps pushing hard on platform-specific performance (heavy gaming, AR/VR, real-time audio processing).
-
-## The Right Way to Buy Mobile Development
-
-Don't accept a single fixed quote for a Tier 3 app before a proper scoping phase — payment and biometric features have too many edge cases to price accurately upfront. A transparent partner scopes the hard parts first, prices what's actually known, and builds in phases with working software at each stage.
-  `,
-};
 
 export default async function BlogPostPage({
   params,
@@ -343,18 +45,18 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const content = BLOG_CONTENT[slug] ?? post.excerpt;
+  const relatedServices = SERVICES.filter((s) => post.related_service_slugs.includes(s.slug));
 
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
-    datePublished: post.date,
-    dateModified: post.date,
+    datePublished: post.published_at,
+    dateModified: post.updated_at,
     author: { "@type": "Person", name: "Gazi Morshed", url: SITE.url },
     publisher: { "@type": "Organization", name: "GMHCO", url: SITE.url },
     url: `${SITE.url}/blog/${slug}`,
@@ -401,10 +103,10 @@ export default async function BlogPostPage({
             <Tag size={10} /> {post.category}
           </span>
           <span className="text-xs flex items-center gap-1" style={{ color: "#64748b" }}>
-            <Clock size={10} /> {post.readTime}
+            <Clock size={10} /> {post.read_time}
           </span>
           <span className="text-xs" style={{ color: "#64748b" }}>
-            {formatDate(post.date)}
+            {formatDate(post.published_at)}
           </span>
         </div>
 
@@ -422,19 +124,36 @@ export default async function BlogPostPage({
         <div
           className="prose-content space-y-4 text-sm leading-7"
           style={{ color: "#cbd5e1" }}
-          dangerouslySetInnerHTML={{
-            __html: content
-              .trim()
-              .replace(/^## (.+)$/gm, `<h2 style="font-family:Orbitron,sans-serif;color:#e2e8f0;font-size:1.1rem;margin-top:2rem;margin-bottom:0.75rem;">$1</h2>`)
-              .replace(/^### (.+)$/gm, `<h3 style="color:#84ff00;font-size:0.95rem;margin-top:1.5rem;margin-bottom:0.5rem;">$1</h3>`)
-              .replace(/\*\*(.+?)\*\*/g, `<strong style="color:#e2e8f0;">$1</strong>`)
-              .replace(/^- (.+)$/gm, `<li style="margin-left:1rem;list-style:disc;">$1</li>`)
-              .replace(/\n\n/g, `</p><p style="color:#cbd5e1;line-height:1.8;margin-top:1rem;">`)
-              .replace(/^(?!<)(.+)$/gm, `<p style="color:#cbd5e1;line-height:1.8;">$1</p>`)
-              .replace(/<\/p><p[^>]*><\/p>/g, "")
-              .replace(/(<li[^>]*>.+?<\/li>)/gs, `<ul style="margin:1rem 0;padding-left:1.5rem;">$1</ul>`),
-          }}
+          dangerouslySetInnerHTML={{ __html: renderBlogMarkdown(post.content) }}
         />
+
+        {/* Related Services */}
+        {relatedServices.length > 0 && (
+          <div className="mt-12">
+            <h3
+              className="text-sm font-semibold uppercase tracking-wide mb-4"
+              style={{ color: "#64748b" }}
+            >
+              Related Services
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {relatedServices.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-colors hover:-translate-y-0.5"
+                  style={{
+                    background: "#1e293b",
+                    border: "1px solid rgba(132,255,0,0.2)",
+                    color: "#e2e8f0",
+                  }}
+                >
+                  {service.title} <ArrowRight size={14} style={{ color: "#84ff00" }} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* CTA */}
         <div
