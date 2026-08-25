@@ -6,7 +6,7 @@ import { MessageSquare, X, Send, Bot, Loader2 } from "lucide-react";
 
 type Message = { role: "user" | "assistant"; content: string };
 
-const GREETING = `Hi! I'm GMHCO's AI assistant, powered by Llama 3.1.
+const GREETING = `Hi! I'm GMHCO's AI assistant.
 
 I can help you:
 • Understand which service fits your needs
@@ -180,7 +180,7 @@ export default function ChatWidget() {
                 color: "#64748b",
               }}
             >
-              Powered by Llama 3.1 (Groq) · GMHCO AI
+              Powered by GPT-OSS (Groq) · GMHCO AI
             </div>
           </motion.div>
         )}

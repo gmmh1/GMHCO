@@ -842,6 +842,16 @@ export const PORTFOLIO_PROJECTS = [
     link: "https://www.fixies.uk",
   },
   {
+    title: "RPOS — Universal Point-of-Sale & Booking Platform",
+    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&q=80",
+    tags: ["SaaS", "AI", "POS", "Payments"],
+    metric: "Live product · from £20/mo",
+    description:
+      "GMHCO's own SaaS product: an all-in-one till, booking and loyalty system that adapts to any venue type — restaurant, salon, clinic or retail — with a built-in AI assistant, offline-first ordering, Stripe payments, and automatic UK VAT.",
+    category: "SaaS",
+    link: "https://rpos.uk",
+  },
+  {
     title: "SHYN Legal — Immigration Advisory Website",
     image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80",
     tags: ["Web Design", "Next.js"],
