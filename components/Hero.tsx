@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { SITE, STATS } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 
 function ParticleCanvas() {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -42,21 +42,6 @@ function ParticleCanvas() {
   return <canvas ref={ref} className="absolute inset-0 pointer-events-none opacity-70" />;
 }
 
-function Counter({ target, suffix }: { target: number; suffix: string }) {
-  const [n, set] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return; obs.disconnect();
-      let v = 0; const step = Math.ceil(target / 60);
-      const t = setInterval(() => { v += step; if (v >= target) { set(target); clearInterval(t); } else set(v); }, 20);
-    }, { threshold: 0.5 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [target]);
-  return <span ref={ref} className="font-orbitron text-lime">{n}{suffix}</span>;
-}
-
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-navy">
@@ -67,7 +52,7 @@ export default function Hero() {
       {/* Hero content */}
       <div className="relative z-10 w-full pt-28 pb-12 text-center page-wrap-md">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <span className="section-tag">Google-Certified · AI-Native · Enterprise-Grade</span>
+          <span className="section-tag">Digital growth · Software · Technology services</span>
         </motion.div>
 
         <motion.h1
@@ -82,8 +67,7 @@ export default function Hero() {
           className="mt-7 text-base sm:text-lg leading-relaxed text-slate-400 max-w-xl mx-auto"
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
         >
-          AI-Powered IT Solutions · Certified Google Ads · SaaS Development · Data Intelligence.{" "}
-          <span className="text-slate-300">Enterprise-grade technology for businesses that demand real results.</span>
+          Digital growth, software and technology engagements shaped around your business needs.
         </motion.p>
 
         <motion.div
@@ -100,28 +84,14 @@ export default function Hero() {
           className="mt-12 flex flex-wrap items-center justify-center gap-6"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <span className="text-xs uppercase tracking-widest text-slate-500">Certified by</span>
-          {["Google", "HubSpot", "freeCodeCamp", "CILEX"].map(b => (
-            <span key={b} className="text-sm font-semibold text-slate-500">{b}</span>
-          ))}
+          <span className="text-xs uppercase tracking-widest text-slate-500">
+            Selected individual credentials
+          </span>
+          <a href="#certifications" className="text-sm font-semibold text-slate-400 hover:text-lime transition-colors">
+            View details
+          </a>
         </motion.div>
       </div>
-
-      {/* Stats bar */}
-      <motion.div
-        className="relative z-10 w-full page-wrap pb-16"
-        initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
-      >
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 rounded-2xl p-6 sm:p-8"
-          style={{ background: "rgba(30,41,59,0.8)", border: "1px solid rgba(132,255,0,0.15)", backdropFilter: "blur(12px)" }}>
-          {STATS.map(s => (
-            <div key={s.label} className="text-center py-2">
-              <div style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 900, letterSpacing: "-0.02em" }}><Counter target={s.value} suffix={s.suffix} /></div>
-              <div className="mt-2 text-sm text-slate-400">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </motion.div>
 
       <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2 }}>

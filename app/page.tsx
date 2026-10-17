@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import PqcReadiness from "@/components/PqcReadiness";
 import WhyGMHCO from "@/components/WhyGMHCO";
 import Process from "@/components/Process";
 import Certifications from "@/components/Certifications";
@@ -21,6 +22,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <PqcReadiness />
         <WhyGMHCO />
         <Process />
         <Certifications />

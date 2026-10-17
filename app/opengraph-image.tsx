@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "GMHCO — AI-Powered IT Solutions";
+export const alt = "GMHCO — Digital Growth and Technology Services";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -48,7 +48,7 @@ export default async function Image() {
             textTransform: "uppercase",
           }}
         >
-          AI-Powered IT Solutions
+          Digital Growth &amp; Technology Services
         </div>
 
         {/* Headline */}
@@ -86,7 +86,7 @@ export default async function Image() {
             maxWidth: "800px",
           }}
         >
-          Google-Certified · Enterprise-Grade · London, UK
+          Software · Data · Digital Growth · London, UK
         </div>
 
         {/* Domain */}

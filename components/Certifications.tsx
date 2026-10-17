@@ -22,6 +22,7 @@ function CertCard({ cert }: { cert: typeof CERTIFICATIONS[0] }) {
           <p className="text-sm font-semibold leading-snug text-slate-200 line-clamp-2">{cert.name}</p>
           <p className="text-xs mt-1.5 font-medium" style={{ color: cert.color, opacity: 0.85 }}>{cert.issuer}</p>
           <p className="text-xs mt-1 text-slate-400">{cert.issued}</p>
+          <p className="text-xs mt-1 text-slate-500">Expires: {cert.expires}</p>
         </div>
       </div>
     </div>
@@ -40,13 +41,14 @@ export default function Certifications() {
       <div className="page-wrap relative mb-16">
         <motion.div className="flex flex-col items-center text-center"
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="section-tag">Verified Credentials</span>
+          <span className="section-tag">Founder Credentials</span>
           <h2 className="mt-6 py-2 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold font-orbitron text-slate-100 leading-tight">
-            Google-Certified.{" "}
-            <span className="text-gradient-purple">Proven. Trusted.</span>
+            Selected Credentials.{" "}
+            <span className="text-gradient-purple">Clearly Presented.</span>
           </h2>
           <p className="mt-5 max-w-lg mx-auto text-base text-slate-400 leading-relaxed" style={{ textAlign: "center" }}>
-            12+ active industry certifications — every strategy backed by verified expertise.
+            These are individual credentials held by GMHCO&apos;s founder. Their scope and validity
+            vary by issuer; they are not cybersecurity accreditations.
           </p>
         </motion.div>
       </div>
@@ -70,7 +72,7 @@ export default function Certifications() {
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
           <BadgeCheck size={17} className="text-cyan flex-shrink-0" />
           <span className="text-sm font-semibold text-slate-300">
-            {CERTIFICATIONS.length} Active Certifications · All Verifiable on LinkedIn
+            {CERTIFICATIONS.length} credentials listed · Review issuer records for current status
           </span>
         </motion.div>
       </div>

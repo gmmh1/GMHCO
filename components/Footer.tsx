@@ -26,7 +26,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm max-w-xs leading-relaxed" style={{ color: "#94a3b8" }}>
-              AI-Powered IT Solutions & Enterprise Digital Strategy. Helping ambitious businesses scale with technology that actually works.
+              Digital growth, software, and technology engagements alongside GMHCO&apos;s own products.
             </p>
             <div className="mt-6 flex items-center gap-4">
               <a
@@ -87,6 +87,7 @@ export default function Footer() {
                 { href: "#portfolio", label: "Portfolio" },
                 { href: "#case-studies", label: "Case Studies" },
                 { href: "#certifications", label: "Certifications" },
+                { href: "/#pqc-readiness", label: "PQC discovery (in development)" },
                 { href: "/blog", label: "Blog & Insights" },
                 { href: "#contact", label: "Contact" },
                 { href: SITE.cal, label: "Book a Call", external: true },

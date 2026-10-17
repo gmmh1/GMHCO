@@ -161,6 +161,9 @@ export default function Contact() {
                   <select {...register("service")} className="form-input">
                     <option value="">Select a service...</option>
                     {SERVICES.map((s) => <option key={s.slug} value={s.title}>{s.title}</option>)}
+                    <option value="PQC discovery research conversation (in development; not a service request)">
+                      PQC discovery research conversation (in development)
+                    </option>
                     <option value="Not sure — need guidance">Not sure — need guidance</option>
                   </select>
                 </div>

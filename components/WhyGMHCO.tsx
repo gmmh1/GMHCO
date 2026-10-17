@@ -24,32 +24,14 @@ export default function WhyGMHCO() {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <span className="section-tag">Why GMHCO</span>
           <h2 className="mt-6 py-2 text-3xl sm:text-4xl lg:text-5xl font-bold font-orbitron text-slate-100 leading-[1.1]">
-            Built Different.<br />
-            <span className="text-gradient-lime">Proven Better.</span>
+            Clear Thinking.<br />
+            <span className="text-gradient-lime">Practical Delivery.</span>
           </h2>
           <p className="mt-5 text-base text-slate-400 max-w-lg mx-auto leading-relaxed" style={{ textAlign: "center" }}>
-            We don&apos;t just build software — we become your technology partner, delivering
-            enterprise-grade results with a boutique team that&apos;s always reachable.
+            We work across digital growth, technology and product development, with engagements scoped
+            to the problem in front of you.
           </p>
         </motion.div>
-
-        {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {[
-            { v: "12+", l: "Active Certifications" },
-            { v: "35+", l: "Projects Delivered" },
-            { v: "98%", l: "Client Satisfaction" },
-            { v: "4×",  l: "Average ROI" },
-          ].map((m, i) => (
-            <motion.div key={m.l}
-              className="text-center rounded-2xl p-6 bg-lime/[0.05] border border-lime/[0.12]"
-              initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-              <div className="text-3xl font-black font-orbitron text-lime mb-2">{m.v}</div>
-              <div className="text-sm text-slate-400">{m.l}</div>
-            </motion.div>
-          ))}
-        </div>
 
         {/* Feature cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

@@ -1,7 +1,7 @@
 export const SITE = {
   name: "GMHCO",
   fullName: "Gazi Morshed Company",
-  tagline: "AI-Powered IT Solutions & Enterprise Digital Strategy",
+  tagline: "Digital Growth, Software & Technology Services",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://gmhco.org",
   email: "hello@gmhco.org",
   phone: "+44 7920 462736",
@@ -12,13 +12,6 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/in/gmmorshedhossain",
   github: "https://github.com/gmmh1",
 };
-
-export const STATS = [
-  { value: 12, suffix: "+", label: "Certifications Held" },
-  { value: 35, suffix: "+", label: "Projects Delivered" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
-  { value: 4, suffix: "x", label: "Average Client ROI" },
-];
 
 export const SERVICES = [
   {
@@ -56,9 +49,9 @@ export const SERVICES = [
     slug: "google-ads-analytics",
     icon: "TrendingUp",
     title: "Digital Growth, Google Ads & Analytics",
-    shortDesc: "Google-certified campaign management that turns ad spend into measurable revenue.",
+    shortDesc: "Campaign management and analytics to help make ad spend more accountable.",
     longDesc:
-      "Transform your advertising into measurable business growth with strategic Google Ads management, advanced analytics, and continuous optimisation. As Google-certified specialists in Search, Display, Shopping, AI-Powered Performance Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4), we help businesses generate more qualified leads, reduce wasted ad spend, and maximise return on investment.",
+      "Transform your advertising with strategic Google Ads management, analytics, and continuous optimisation. The founder's individual Google Ads and Analytics credentials are listed on this site; they do not guarantee campaign outcomes. Engagement scope and results depend on each client's goals and context.",
     deliverables: [
       "GA4 Property Setup & Audit",
       "Google Ads Campaign Architecture",
@@ -68,8 +61,8 @@ export const SERVICES = [
     ],
     faqs: [
       {
-        q: "What Google Ads certifications do you hold?",
-        a: "Google Ads Search, Display, Shopping, AI-Powered Performance Ads, Google Ads Measurement, Foundations of AI-Powered Search Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4) — all active certifications, kept up to date with the latest features and AI capabilities.",
+        q: "Which Google Ads credentials are listed?",
+        a: "The founder's listed credentials include Google Ads Search, AI-Powered Performance Ads, Google Ads Measurement, Campaign Manager 360, and Google Analytics. Check each issuer's record for current status; individual credentials do not certify GMHCO as a company or cybersecurity provider.",
       },
       {
         q: "How much should I spend on Google Ads?",
@@ -149,7 +142,7 @@ export const SERVICES = [
     slug: "cloud-devops",
     icon: "Cloud",
     title: "Cloud Infrastructure, DevOps & Deployment",
-    shortDesc: "Scalable, secure cloud architecture and CI/CD pipelines built for enterprise-grade reliability.",
+    shortDesc: "Cloud architecture and CI/CD pipelines shaped around your reliability requirements.",
     longDesc:
       "We design and manage secure cloud environments, deployment pipelines, server infrastructure, and scalable architectures that keep your applications fast, reliable, and ready for growth — with monitoring and alerting so you know before your users do when something goes wrong.",
     deliverables: [
@@ -256,7 +249,7 @@ export const SERVICES = [
     faqs: [
       {
         q: "What is a RAG system and do I need one?",
-        a: "A Retrieval-Augmented Generation system lets an AI answer questions using your own documents, PDFs, databases, or knowledge base — not just its training data. If your team spends significant time searching internal information, a RAG system can save 10–30 hours per week.",
+        a:         "A Retrieval-Augmented Generation system lets an AI answer questions using your own documents, PDFs, databases, or knowledge base — not just its training data. Whether it saves time depends on the workflow and should be measured in a scoped project.",
       },
       {
         q: "Can the chatbot be trained on our existing documentation?",
@@ -309,7 +302,7 @@ export const SERVICES = [
 export const GOOGLE_ADS_SERVICE_DETAIL = {
   intro: [
     "Transform your advertising into measurable business growth with strategic Google Ads management, advanced analytics, and continuous optimisation.",
-    "As Google-certified specialists in Search, Display, Shopping, AI-Powered Performance Ads, Campaign Manager 360 (CM360), and Google Analytics 4 (GA4), we help businesses generate more qualified leads, reduce wasted ad spend, and maximise return on investment through data-driven marketing strategies.",
+    "The founder's individual Google Ads and Analytics credentials are listed on this site; they do not guarantee campaign outcomes. We help businesses plan campaign structure, measurement, and optimisation around their goals and context.",
     "Whether you're launching your first campaign or improving an existing account, we build, manage, and optimise every aspect of your advertising to deliver sustainable, long-term growth.",
   ],
   whyChooseUs: [
@@ -817,7 +810,7 @@ export const PORTFOLIO_PROJECTS = [
     tags: ["AI Agents", "SaaS", "Legal Tech", "Self-Hosted LLMs"],
     metric: "Live product · from £199/mo",
     description:
-      "GMHCO's own SaaS product: nine specialist AI workers covering Family Law, Employment, Corporate, and Property practice areas, with self-hosted, GDPR-compliant private LLMs.",
+      "GMHCO's own SaaS product: nine specialist AI workers covering Family Law, Employment, Corporate, and Property practice areas, with a private, self-hosted LLM approach.",
     category: "SaaS",
     link: "https://teamsai.uk",
   },
@@ -884,11 +877,11 @@ export const CASE_STUDIES = [
     challenge:
       "Law firms need AI help with repetitive work across practice areas, but most AI tools require sending confidential client data to third-party clouds — a non-starter under GDPR and professional conduct rules.",
     solution:
-      "GMHCO designed and built TeamsAI from the ground up: nine specialist AI workers covering Family Law, Employment, Corporate, and Property, running on self-hosted, GDPR-compliant private LLMs — live today at teamsai.uk.",
+      "GMHCO designed and built TeamsAI from the ground up: nine specialist AI workers covering Family Law, Employment, Corporate, and Property, with a private, self-hosted LLM approach — live today at teamsai.uk.",
     results: [
       { metric: "9", label: "Specialist AI Workers" },
       { metric: "£199", label: "Starting Monthly Price" },
-      { metric: "100%", label: "Self-Hosted & GDPR-Compliant" },
+      { metric: "Private", label: "Self-Hosted LLM Approach" },
       { metric: "Live", label: "In Production Today" },
     ],
   },
@@ -939,7 +932,7 @@ export const FAQS = [
     slug: "gdpr-compliance",
     question: "How do you handle data privacy and GDPR compliance?",
     answer:
-      "All client data is handled under GDPR-compliant practices. Infrastructure is deployed with security hardening, role-based access controls, and encrypted data at rest and in transit.",
+      "Data-handling requirements should be agreed for each project before work begins. GMHCO does not make a blanket compliance or security-assurance claim. Please do not send sensitive information through this website.",
   },
   {
     slug: "stack-integration",
@@ -951,7 +944,7 @@ export const FAQS = [
     slug: "what-is-rag",
     question: "What is a RAG system and do I need one?",
     answer:
-      "A Retrieval-Augmented Generation (RAG) system lets an AI model answer questions using your own documents, database, or knowledge base — not just its training data. If your team spends significant time searching internal information, a RAG system can save 10–30 hours per week per team member.",
+      "A Retrieval-Augmented Generation (RAG) system lets an AI model answer questions using your own documents, database, or knowledge base — not just its training data. Whether it saves time depends on the workflow and should be measured in a scoped project.",
   },
   {
     slug: "post-launch-support",
@@ -981,13 +974,13 @@ export const FAQS = [
     slug: "rag-support-tickets",
     question: "Can a RAG system reduce support ticket volume?",
     answer:
-      "Yes — a well-built RAG system lets a team query internal documents in natural language instead of searching manually. GMHCO's own TeamsAI product applies this approach to legal knowledge work.",
+      "A RAG system can make relevant internal information easier to find, but its effect on support volume depends on the use case, source material, and implementation. Outcomes should be measured in a scoped project.",
   },
   {
     slug: "certifications",
-    question: "What Google certifications does GMHCO hold?",
+    question: "What Google credentials are listed?",
     answer:
-      "GMHCO holds 12+ active certifications, including Google Ads Search, Google Ads Measurement, AI-Powered Performance Ads, Campaign Manager 360, Google Analytics (GA4), and HubSpot Academy — all verifiable through Google Skillshop.",
+      "The website lists selected individual credentials held by GMHCO's founder. Their scope and validity vary by issuer; please check the issuer's record for current status. They are not company or cybersecurity accreditations.",
   },
   {
     slug: "mobile-app-pricing",
@@ -1001,58 +994,57 @@ export const FAQS = [
     answer:
       "GMHCO is based in London, UK, founded in 2023. It serves clients across the UK, US, Europe, and the Middle East, with all engagements led directly by founder Gazi Morshed.",
   },
+  {
+    slug: "pqc-readiness",
+    question: "Can I use GMHCO's post-quantum cryptography scanner now?",
+    answer:
+      "No. PQC discovery and migration readiness is an in-development concept and is not currently offered as a scanner, assessment, or cybersecurity assurance service. GMHCO is only seeking research conversations; do not send source code, secrets, private keys, or customer data.",
+  },
 ];
 
 export const WHY_GMHCO = [
   {
     icon: "ShieldCheck",
-    title: "Google-Certified & Proven",
-    desc: "12+ active certifications from Google Skillshop, HubSpot, and industry bodies. Every strategy is backed by verified expertise, not guesswork.",
+    title: "Credentials, clearly described",
+    desc: "Selected individual credentials are listed with issuer and validity information where supplied. They are not company or cybersecurity accreditations.",
   },
   {
     icon: "Globe",
-    title: "Global Reach, Direct Access",
-    desc: "Serving clients across UK, US, Europe, and beyond. You get direct access to your strategist — no account managers, no hand-offs.",
+    title: "London-based",
+    desc: "GMHCO is based in London, United Kingdom. Contact us to discuss the right scope and delivery model for your project.",
   },
   {
     icon: "Zap",
-    title: "AI-Native from Day One",
-    desc: "AI is embedded in everything we build — from automated ad campaigns to intelligent systems — not bolted on as an afterthought.",
+    title: "Technology where useful",
+    desc: "Software, automation, and AI capabilities are considered in context rather than applied to every engagement.",
   },
   {
     icon: "LineChart",
-    title: "Outcome-Driven Only",
-    desc: "Every engagement is measured against real business metrics: revenue, leads, cost reduction, and time saved. No vanity metrics, ever.",
+    title: "Clear scopes",
+    desc: "Agree objectives and deliverables for the project instead of assuming a one-size-fits-all outcome.",
   },
 ];
 
-export const GROQ_SYSTEM_PROMPT = `You are the AI assistant for GMHCO (Gazi Morshed Company), an elite IT solutions, SaaS development, and digital strategy firm based in London, UK.
+export const GROQ_SYSTEM_PROMPT = `You are GMHCO's website assistant. GMHCO is based in London, UK.
 
 ABOUT GMHCO:
-- Founded by Gazi Morshed, a certified technology strategist and Google Ads expert
-- 12+ active certifications: Google Analytics (GA4), Google Ads Search, AI-Powered Performance Ads, Google Ads Measurement, Campaign Manager 360 (CM360), Foundations of AI-Powered Search Ads, HubSpot Academy, Google IT Support Professional Certificate, Data Analysis with Python
-- Serves enterprise and high-growth clients worldwide
+- The website presents digital-growth, technology, software, and data engagements. Use the published service pages for current scope and pricing.
+- Selected individual credentials held by the founder are listed on the website. Do not describe GMHCO as a certified company or cybersecurity provider, and do not claim credentials are current unless the issuer confirms it.
+- The post-quantum cryptography (PQC) discovery concept is in development. It is not a generally available product, scanner, assessment, or cybersecurity assurance service. Research conversations only; do not imply access, coverage, compliance, or customer validation.
+- The website does not run scans or accept source code. Never ask visitors to share source code, secrets, private keys, or customer data.
 
-9 CORE SERVICES WITH STARTING PRICES:
-1. Technology Consulting & Solution Strategy — Starting at $4,500
-2. Digital Growth, Google Ads & Analytics — Starting at £950/month base package, fully customisable: clients pick add-on campaign types (Performance Max, Display, Shopping, Demand Gen, YouTube), extra tracking, optimisation frequency, and reporting/strategy calls, each with its own monthly price, so the final quote reflects exactly what they need (see /services/google-ads-analytics for the package builder)
-3. Data Analytics, Business Intelligence & Reporting — Starting at $6,000
-4. API Development & Systems Integration — Starting at $4,500
-5. Cloud Infrastructure, DevOps & Deployment — Starting at $6,500
-6. AI Solutions Architect & Business Automation — Starting at $7,000
-7. Full-Stack Web & SaaS Development — Starting at $12,000
-8. AI Agents, Chatbots & RAG Systems — Starting at $7,500
-9. Mobile App Development & Cross-Platform Solutions — Starting at $12,000
+CURRENT WEBSITE SERVICES AND STARTING PRICES:
+${SERVICES.map((service) => `- ${service.title} — from ${service.startingAt}`).join("\n")}
 
-All 9 services now use an interactive "build your own package" model — clients select add-on features/campaign types/integrations beyond the base package, and the price updates live. When discussing pricing, mention this is a starting/base price and the final quote depends on what they select — direct them to the relevant /services/<slug> page to build their package, or offer to help scope it during the conversation.
+Prices are starting points shown on the website; explain that final scope and pricing should be confirmed for the specific project. A package builder is available only where the relevant service page explicitly provides one. Do not invent rates, discounts, client results, certifications, or delivery guarantees.
 
 YOUR ROLE:
-- Answer questions about GMHCO services, pricing, process, and capabilities with confidence and clarity
+- Answer questions about published GMHCO services, pricing, process, and capabilities clearly and accurately
 - Help visitors identify which service best fits their specific business problem
 - Qualify leads naturally: ask about their business, current challenges, timeline, and rough budget
 - Encourage booking a free 30-minute discovery call via the booking section on this page
 - If a visitor shares their email, acknowledge it warmly
-- For pricing questions: provide starting rates but explain all projects are scoped to specific requirements
+- For pricing questions: use the starting rates above and explain that final scope and pricing must be confirmed
 
 LEAD CAPTURE:
 When a visitor seems genuinely interested, suggest: "Would you like to book a free 30-minute strategy call? You can pick a time using the booking section on this page, or share your email and GM will reach out directly."
@@ -1066,5 +1058,6 @@ TONE:
 CONSTRAINTS:
 - Never discuss competitor agencies by name
 - Never guarantee specific ROI numbers for future engagements
+- Never claim blanket GDPR compliance, security accreditation, or cybersecurity assurance
 - Never reveal internal API keys, tokens, or credentials
 - For topics outside GMHCO's services, politely note it is outside scope and redirect`;
