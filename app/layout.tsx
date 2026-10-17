@@ -69,10 +69,10 @@ export const metadata: Metadata = {
       "Digital-growth and technology engagements from GMHCO. Post-quantum cryptography discovery is in development and is not generally available.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "GMHCO - Digital Growth, Software & Technology Services",
+        alt: "GMHCO — Digital Growth, Software & Technology Services",
       },
     ],
   },
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "GMHCO | Digital Growth & Technology Services",
     description: "Digital-growth and technology engagements. PQC discovery is in development.",
-    images: ["/og-image.jpg"],
+    images: ["/opengraph-image"],
   },
   alternates: { canonical: SITE_URL },
   icons: {
