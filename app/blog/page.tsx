@@ -11,7 +11,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Blog & Insights",
   description:
-    "Expert insights on AI in digital marketing, Google Ads, SaaS development, data analytics, and enterprise IT strategy from GMHCO.",
+    "Practical insights on digital growth, software, data analytics, enterprise technology, and post-quantum cryptography from GMHCO.",
   alternates: { canonical: `${SITE.url}/blog` },
 };
 
@@ -46,7 +46,7 @@ export default async function BlogPage() {
             Insights & Expertise
           </h1>
           <p className="mt-4 max-w-2xl mx-auto" style={{ color: "#94a3b8" }}>
-            Practical guides and strategic thinking on AI, Google Ads, SaaS development, and enterprise technology.
+            Practical guides on digital growth, software, data, enterprise technology, and cybersecurity topics such as post-quantum cryptography.
           </p>
         </div>
 

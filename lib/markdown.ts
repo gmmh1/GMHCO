@@ -1,9 +1,20 @@
 // Minimal markdown-to-HTML renderer for blog post bodies. Handles the subset
 // of markdown actually used in posts: ##/### headings, **bold**, - bullet
-// lists, and paragraph breaks. Not a general-purpose markdown parser.
+// lists, HTTPS links, and paragraph breaks. Not a general-purpose markdown parser.
 export function renderBlogMarkdown(content: string): string {
-  return content
+  const escaped = content
     .trim()
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+  return escaped
+    .replace(
+      /\[([^\]]+)\]\((https:\/\/[^)\s]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:#84ff00;text-decoration:underline;">$1</a>'
+    )
     .replace(/^## (.+)$/gm, `<h2 style="font-family:Orbitron,sans-serif;color:#e2e8f0;font-size:1.1rem;margin-top:2rem;margin-bottom:0.75rem;">$1</h2>`)
     .replace(/^### (.+)$/gm, `<h3 style="color:#84ff00;font-size:0.95rem;margin-top:1.5rem;margin-bottom:0.5rem;">$1</h3>`)
     .replace(/\*\*(.+?)\*\*/g, `<strong style="color:#e2e8f0;">$1</strong>`)
